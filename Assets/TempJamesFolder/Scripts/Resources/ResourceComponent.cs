@@ -12,10 +12,15 @@ public class ResourceComponent : MonoBehaviour
     [SerializeField]
     private int ResourceRarity;
     [SerializeField]
-    private Image ResourceIcon;
+    private Sprite ResourceIcon;
     [SerializeField]
     private bool ShipPart;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Sprite GetImage()
+    {
+        return ResourceIcon;
+    }
+
     void Start()
     {
         

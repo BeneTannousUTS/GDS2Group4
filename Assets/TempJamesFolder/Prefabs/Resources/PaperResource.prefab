@@ -48,4 +48,5 @@ MonoBehaviour:
   ResourceName: Paper
   ResourceWeight: 2
   ResourceRarity: 1
-  ResourceIcon: {fileID: 0}
+  ResourceIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  ShipPart: 0

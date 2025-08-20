@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private int currentCapacity;
     [SerializeField]
-    private GameObject inventoryUI;
+    private InventoryUI inventoryUI;
     public GameObject testResource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +19,10 @@ public class Inventory : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+    }
+
+    void Test()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -39,6 +43,7 @@ public class Inventory : MonoBehaviour
         if (currentCapacity < inventorySize)
         {
             hands[currentCapacity] = resource;
+            inventoryUI.UpdateInventoryUI(currentCapacity, resource.GetComponent<ResourceComponent>().GetImage());
             currentCapacity++;
         }
     }
@@ -48,6 +53,7 @@ public class Inventory : MonoBehaviour
         Instantiate(hands[position]);
         hands[position] = null;
         currentCapacity--;
+        inventoryUI.ClearInventoryUI(currentCapacity);
     }
 
     void StoreResources()
@@ -58,5 +64,7 @@ public class Inventory : MonoBehaviour
         }
         hands = new GameObject[2];
         currentCapacity = 0;
+        inventoryUI.ClearInventoryUI(0);
+        inventoryUI.ClearInventoryUI(1);
     }
 }
