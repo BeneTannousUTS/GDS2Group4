@@ -49,11 +49,15 @@ public class Inventory : MonoBehaviour
 
     void CollectResource(BaseItem resource)
     {
-        if (currentCapacity < inventorySize)
+        for (int i = 0; i < hands.Length; i++)
         {
-            hands[currentCapacity] = resource;
-            inventoryUI.UpdateInventoryUI(currentCapacity, resource.GetImage());
-            currentCapacity++;
+            if (!hands[i])
+            {
+                hands[i] = resource;
+                inventoryUI.UpdateInventoryUI(i, resource.GetImage());
+                currentCapacity++;
+                return;
+            }
         }
     }
 

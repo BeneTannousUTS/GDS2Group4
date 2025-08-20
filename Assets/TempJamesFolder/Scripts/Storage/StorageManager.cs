@@ -9,41 +9,53 @@ public class StorageManager : MonoBehaviour
     private int storageCapacity;
     [SerializeField]
     private int maxStorage;
-    [SerializeField]
-    private List<BaseItem> itemStorage = new List<BaseItem>();
+    public Dictionary<BaseItem, int> itemStorage = new Dictionary<BaseItem, int>();
     [SerializeField]
     private StorageUI storageUI;
-    void Update()
-    {
-    }
-
     public bool StoreItem(BaseItem item)
     {
+        if (itemStorage.ContainsKey(item))
+        {
+            itemStorage[item] += 1;
+            storageUI.UpdateUI();
+            return true;
+        }
+        else
+        {
             if (storageCapacity < maxStorage)
-                {
-                    itemStorage.Add(item);
-                    storageUI.SetSlotImage(storageCapacity, item.GetImage(), item.GetName());
-                    storageCapacity++;
-                    return true;
-                }
-        return false;
+            {
+                itemStorage.Add(item, 1);
+                storageUI.UpdateUI();
+                storageCapacity++;
+                return true;
+            }
+            return false;
+        }
     }
 
     public int CheckQuantity(BaseItem item, int quant)
     {
-        if (itemStorage.Contains(item))
+        if (itemStorage.ContainsKey(item))
         {
-        } 
+            return itemStorage[item];
+        }
         return 0;
     }
 
     public void RemoveItem(BaseItem item, int quant)
     {
-        if (itemStorage.Contains(item))
+        if (itemStorage.ContainsKey(item))
         {
-                itemStorage.Remove(item);
-                storageCapacity--;
+            if (itemStorage[item] > quant)
+            {
+                itemStorage[item] -= quant;
             }
+            else
+            {
+                itemStorage.Remove(item);
+            }
+        }
+        storageUI.UpdateUI();
     }
 
     public int GetMax() { return maxStorage; }
