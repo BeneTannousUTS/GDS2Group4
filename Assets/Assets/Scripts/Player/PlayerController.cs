@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 
     public float cameraSensitivity = 10f, moveSpeed = 5f;
     float upperLookLimit = 89f, lowerLookLimit = -89f;
+
+    private float interactCooldown = 0.2f;
     Transform camObject;
     private bool isCamLocked = false;
     private float vertical, horizontal, currentCamY = 0f;
@@ -28,16 +30,12 @@ public class PlayerController : MonoBehaviour
     {
         GetInputs();
         HandleMovement();
+        HandleCooldowns();
     }
 
     void LateUpdate()
     {
         MouseLook();
-    }
-
-    void FixedUpdate()
-    {
-        
     }
 
     public void ToggleCamLock()
@@ -73,5 +71,27 @@ public class PlayerController : MonoBehaviour
         horizontal = lookAction.ReadValue<Vector2>().x * cameraSensitivity * Time.fixedDeltaTime;
         vertical = lookAction.ReadValue<Vector2>().y * -cameraSensitivity * Time.fixedDeltaTime;
         moveVector = new Vector3(moveAction.ReadValue<Vector2>().x, 0, moveAction.ReadValue<Vector2>().y);
+        if (interactAction.WasPressedThisFrame() && interactCooldown < 0f)
+        {
+            Interact();
+            Debug.Log("INTERACT PRESSED");
+        }
+    }
+
+    private void HandleCooldowns()
+    {
+        interactCooldown -= Time.deltaTime;
+    }
+
+    private void Interact()
+    {
+        RaycastHit hitObject;
+        if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, 2f))
+        {
+            if (hitObject.transform.gameObject.GetComponent<Interactable>())
+            {
+                hitObject.transform.gameObject.GetComponent<Interactable>().OnInteract();
+            }
+        }
     }
 }
