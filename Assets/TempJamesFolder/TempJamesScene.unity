@@ -791,7 +791,7 @@ MonoBehaviour:
   inventorySize: 2
   currentCapacity: 0
   inventoryUI: {fileID: 413839313}
-  testResource: {fileID: 1295232917789218376, guid: 68d8e6c7a2b053343a84afa51792d9c5, type: 3}
+  testResource: {fileID: 11400000, guid: b4c99ec560168354cb959f9337244051, type: 2}
   storageManager: {fileID: 510461647}
 --- !u!4 &567194252
 Transform:

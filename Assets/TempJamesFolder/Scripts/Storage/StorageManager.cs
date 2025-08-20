@@ -10,26 +10,26 @@ public class StorageManager : MonoBehaviour
     [SerializeField]
     private int maxStorage;
     [SerializeField]
-    private List<GameObject> itemStorage = new List<GameObject>();
+    private List<BaseItem> itemStorage = new List<BaseItem>();
     [SerializeField]
     private StorageUI storageUI;
     void Update()
     {
     }
 
-    public bool StoreItem(GameObject item)
+    public bool StoreItem(BaseItem item)
     {
             if (storageCapacity < maxStorage)
                 {
                     itemStorage.Add(item);
-                    storageUI.SetSlotImage(storageCapacity, item.GetComponent<ResourceComponent>().GetImage(), item.GetComponent<ResourceComponent>().GetName());
+                    storageUI.SetSlotImage(storageCapacity, item.GetImage(), item.GetName());
                     storageCapacity++;
                     return true;
                 }
         return false;
     }
 
-    public int CheckQuantity(GameObject item, int quant)
+    public int CheckQuantity(BaseItem item, int quant)
     {
         if (itemStorage.Contains(item))
         {
@@ -37,7 +37,7 @@ public class StorageManager : MonoBehaviour
         return 0;
     }
 
-    public void RemoveItem(GameObject item, int quant)
+    public void RemoveItem(BaseItem item, int quant)
     {
         if (itemStorage.Contains(item))
         {

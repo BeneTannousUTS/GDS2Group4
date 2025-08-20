@@ -4,14 +4,14 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] hands = new GameObject[2];
+    private BaseItem[] hands = new BaseItem[2];
     [SerializeField]
     private int inventorySize;
     [SerializeField]
     private int currentCapacity;
     [SerializeField]
     private InventoryUI inventoryUI;
-    public GameObject testResource;
+    public BaseItem testResource;
     [SerializeField]
     private StorageManager storageManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,12 +47,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void CollectResource(GameObject resource)
+    void CollectResource(BaseItem resource)
     {
         if (currentCapacity < inventorySize)
         {
             hands[currentCapacity] = resource;
-            inventoryUI.UpdateInventoryUI(currentCapacity, resource.GetComponent<ResourceComponent>().GetImage());
+            inventoryUI.UpdateInventoryUI(currentCapacity, resource.GetImage());
             currentCapacity++;
         }
     }
