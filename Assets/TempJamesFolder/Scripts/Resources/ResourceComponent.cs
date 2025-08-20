@@ -20,4 +20,9 @@ public class ResourceComponent : MonoBehaviour
     {
         return ResourceIcon;
     }
+
+    public string GetName()
+    {
+        return ResourceName;
+    }
 }

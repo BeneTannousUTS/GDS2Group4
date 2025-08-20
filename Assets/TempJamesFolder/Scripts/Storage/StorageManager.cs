@@ -11,7 +11,8 @@ public class StorageManager : MonoBehaviour
     private int maxStorage;
     [SerializeField]
     private List<GameObject> itemStorage = new List<GameObject>();
-    
+    [SerializeField]
+    private StorageUI storageUI;
     void Update()
     {
     }
@@ -21,6 +22,7 @@ public class StorageManager : MonoBehaviour
             if (storageCapacity < maxStorage)
                 {
                     itemStorage.Add(item);
+                    storageUI.SetSlotImage(storageCapacity, item.GetComponent<ResourceComponent>().GetImage(), item.GetComponent<ResourceComponent>().GetName());
                     storageCapacity++;
                     return true;
                 }
@@ -43,6 +45,8 @@ public class StorageManager : MonoBehaviour
                 storageCapacity--;
             }
     }
+
+    public int GetMax() { return maxStorage; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
