@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e2c46b01f68f4ebea8c5e3f6df368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResourceID: 0
+  ResourceName: 
+  ResourceWeight: 0
+  ResourceRarity: 0
+  ResourceIcon: {fileID: 0}
+  ShipPart: 0
+  quantity: 1

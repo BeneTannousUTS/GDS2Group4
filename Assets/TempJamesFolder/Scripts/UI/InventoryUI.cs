@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryUI
+public class InventoryUI : MonoBehaviour
 {
     [SerializeField]
     private Image[] hands = new Image[2];

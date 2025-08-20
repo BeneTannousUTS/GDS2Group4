@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -11,6 +12,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private InventoryUI inventoryUI;
     public GameObject testResource;
+    [SerializeField]
+    private StorageManager storageManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +23,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Test();
     }
 
     void Test()
@@ -30,8 +34,13 @@ public class Inventory : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            DropResource(currentCapacity - 1);
-        }
+            if (currentCapacity > 0)
+            {
+
+                DropResource(currentCapacity - 1);
+            }
+
+            }
         if (Input.GetKeyDown(KeyCode.R))
         {
             StoreResources();
@@ -58,13 +67,17 @@ public class Inventory : MonoBehaviour
 
     void StoreResources()
     {
-        foreach(GameObject resource in hands)
+        for (int i = inventorySize-1; i >= 0; i--)
         {
-            //Stub for adding resource to storage
+            if (hands[i] != null)
+            {
+                if (storageManager.StoreItem(hands[i]))
+                {
+                    hands[i] = null;
+                    currentCapacity--;
+                    inventoryUI.ClearInventoryUI(i);
+                }
+            }
         }
-        hands = new GameObject[2];
-        currentCapacity = 0;
-        inventoryUI.ClearInventoryUI(0);
-        inventoryUI.ClearInventoryUI(1);
     }
 }
