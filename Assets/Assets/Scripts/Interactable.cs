@@ -1,0 +1,46 @@
+using UnityEngine;
+
+public class Interactable : MonoBehaviour
+{
+    public enum InteractType // what type of object is it? just made some random names feel free to change
+    {
+        Pickup,
+        Switch,
+        Obstacle,
+        Test
+    }
+
+    public InteractType interactType;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void OnInteract()
+    {
+        switch (interactType)
+        {
+            case InteractType.Pickup:
+                //get picked up?
+                break;
+            case InteractType.Switch:
+                //activate the switch?
+                break;
+            case InteractType.Obstacle:
+                //check if you have the item you need to bypass the obstacle?
+                break;
+            case InteractType.Test:
+                Debug.Log("TESTING IF INTERACT WORKS");
+                break;
+        }
+    }
+}
+
+    
