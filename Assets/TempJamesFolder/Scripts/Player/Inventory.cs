@@ -63,7 +63,6 @@ public class Inventory : MonoBehaviour
 
     void DropResource(int position)
     {
-        Instantiate(hands[position]);
         hands[position] = null;
         currentCapacity--;
         inventoryUI.ClearInventoryUI(currentCapacity);
