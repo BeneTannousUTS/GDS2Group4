@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BaseRecipe", menuName = "Scriptable Objects/BaseRecipe")]
@@ -13,9 +15,16 @@ public class BaseRecipe : ScriptableObject
     [SerializeField]
     private GameObject recipePrefab;
     [SerializeField]
-    private BaseItem[] recipeIngredients;
+    private List<BaseItem> recipeIngredients;
+    [SerializeField]
+    private List<int> recipeQuant;
     [SerializeField]
     private Sprite recipeIcon;
 
     public Sprite GetImage() { return recipeIcon; }
+    public string GetName() { return recipeName; }
+
+    public List<BaseItem> GetRecipeIngredients() { return recipeIngredients; }
+
+    public int GetQuant(BaseItem ing) { return recipeQuant[recipeIngredients.IndexOf(ing)]; }
 }
