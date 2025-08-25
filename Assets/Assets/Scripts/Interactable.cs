@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -40,6 +41,11 @@ public class Interactable : MonoBehaviour
                 Debug.Log("TESTING IF INTERACT WORKS");
                 break;
         }
+    }
+
+    public void ActivateOutline(int isOutlined) // using an int instead of a bool because shadergraph uses ints to represent bools
+    {
+        gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
     }
 }
 

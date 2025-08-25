@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVector;
     private CharacterController characterController;
     InputAction lookAction, moveAction, interactAction;
+    private GameObject targetedInteractable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         GetInputs();
         HandleMovement();
+        CheckForInteracts();
         HandleCooldowns();
     }
 
@@ -85,12 +87,44 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        if (targetedInteractable != null)
+        {
+            targetedInteractable.GetComponent<Interactable>().OnInteract();
+        }
+    }
+
+    private void CheckForInteracts()
+    {
         RaycastHit hitObject;
         if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, 2f))
         {
             if (hitObject.transform.gameObject.GetComponent<Interactable>())
             {
-                hitObject.transform.gameObject.GetComponent<Interactable>().OnInteract();
+                if (targetedInteractable != hitObject.transform.gameObject)
+                {
+                    if (targetedInteractable != null)
+                    {
+                        targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                    }
+                    targetedInteractable = hitObject.transform.gameObject;
+                    targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
+                }
+            }
+            else
+            {
+                if (targetedInteractable != null)
+                {
+                    targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                    targetedInteractable = null;
+                }
+            }
+        }
+        else
+        {
+            if (targetedInteractable != null)
+            {
+                targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                targetedInteractable = null;
             }
         }
     }
