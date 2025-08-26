@@ -1,4 +1,6 @@
+using System;
 using System.Net.Sockets;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,30 +11,29 @@ public class PickupHold : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     private Rigidbody pickupRB;
     [SerializeField] float objectCarrySpeed = 1000f;
+    float dampingModifier = 1.2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pickupRB = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (isHeld)
         {
-            pickupRB.linearDamping = 1f * pickupRB.linearVelocity.magnitude / Vector3.Distance(transform.position, playerHoldZone.position);
-            //Debug.Log("linear damping = " + gameObject.GetComponent<Rigidbody>().linearDamping);
+            pickupRB.linearDamping = dampingModifier * pickupRB.linearVelocity.magnitude / math.max(math.square(Vector3.Distance(transform.position, playerHoldZone.position)), 0.01f);
+            //pickupRB.linearDamping = Mathf.Clamp((2 - Vector3.Distance(transform.position, playerHoldZone.position)) / 2, 0, 1) * dampingModifier;
             pickupRB.AddForce(Vector3.Normalize(playerHoldZone.position - transform.position) * Vector3.Distance(transform.position, playerHoldZone.position) * Time.deltaTime * objectCarrySpeed);
-            Debug.Log("Distance from player: " + Vector3.Distance(transform.position, playerTransform.position));
-            if (Vector3.Distance(transform.position, playerTransform.position) < 1.5f)
-            {
-                //gameObject.GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(playerTransform.position - transform.position) * Time.deltaTime * 100000f);
-            }
+            //Debug.Log("Distance from player: " + Vector3.Distance(transform.position, playerTransform.position));
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y, playerHoldZone.eulerAngles.z);
+            if (Vector3.Distance(transform.position, playerHoldZone.parent.transform.position) < playerHoldZone.transform.localPosition.z)
+            {
+                pickupRB.AddForce(Vector3.Normalize(transform.position - playerHoldZone.parent.transform.position) * Time.deltaTime * objectCarrySpeed * 10f * (playerHoldZone.transform.localPosition.z - Vector3.Distance(transform.position, playerHoldZone.parent.transform.position)));
+            }
+            //pickupRB.linearVelocity += playerTransform.GetComponent<CharacterController>().velocity;
+            pickupRB.AddRelativeForce(new Vector3(playerTransform.GetComponent<PlayerController>().GetMouseInputs().x, -playerTransform.GetComponent<PlayerController>().GetMouseInputs().y, 0f) * objectCarrySpeed * Time.deltaTime);
+            //Debug.Log(playerTransform.GetComponent<PlayerController>().GetMouseInputs());
         }
     }
 
@@ -43,5 +44,10 @@ public class PickupHold : MonoBehaviour
         pickupRB.linearDamping = 0f;
         pickupRB.useGravity = !pickupRB.useGravity;
         pickupRB.freezeRotation = !pickupRB.freezeRotation;
+        if (isHeld)
+        {
+            gameObject.layer = 6; // no collision with player
+        }
+        else gameObject.layer = 0;
     }
 }

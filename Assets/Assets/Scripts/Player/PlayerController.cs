@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     InputAction lookAction, moveAction, interactAction;
     private GameObject targetedInteractable;
     private bool isHoldingObject = false;
+    private LayerMask noPlayerMask;
+    private float gravity = -2f, interactDistance = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
         camObject = GetComponentInChildren<Camera>().transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        noPlayerMask = LayerMask.GetMask("Player");
     }
 
     void Update()
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
         moveVector.Normalize();
         if (!characterController.isGrounded)
         {
-            moveVector.y = -2;
+            moveVector.y = gravity;
         }
         moveVector = transform.TransformDirection(moveVector);
         characterController.Move(moveVector * Time.deltaTime * moveSpeed);
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour
         else if (targetedInteractable != null)
         {
             targetedInteractable.GetComponent<Interactable>().OnInteract();
-            if(targetedInteractable.GetComponent<Interactable>().interactType == Interactable.InteractType.Pickup)
+            if (targetedInteractable.GetComponent<Interactable>().interactType == Interactable.InteractType.Pickup)
             {
                 isHoldingObject = true;
             }
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isHoldingObject) return;
         RaycastHit hitObject;
-        if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, 2f))
+        if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, interactDistance, ~noPlayerMask))
         {
             if (hitObject.transform.gameObject.GetComponent<Interactable>())
             {
@@ -138,5 +141,10 @@ public class PlayerController : MonoBehaviour
                 targetedInteractable = null;
             }
         }
+    }
+
+    public Vector2 GetMouseInputs()
+    {
+        return new Vector2(lookAction.ReadValue<Vector2>().x * cameraSensitivity * Time.fixedDeltaTime, -lookAction.ReadValue<Vector2>().y * cameraSensitivity * Time.fixedDeltaTime);
     }
 }
