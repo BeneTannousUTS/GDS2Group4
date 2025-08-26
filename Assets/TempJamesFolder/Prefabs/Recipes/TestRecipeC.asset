@@ -15,7 +15,7 @@ MonoBehaviour:
   rType: 2
   recipeID: 3
   recipeName: TestC
-  recipePrefab: {fileID: 0}
+  recipeItem: {fileID: 11400000, guid: f25b69eb177eca44c9b1b3c1d077efb1, type: 2}
   recipeIngredients:
   - {fileID: 11400000, guid: b4c99ec560168354cb959f9337244051, type: 2}
   - {fileID: 11400000, guid: f25b69eb177eca44c9b1b3c1d077efb1, type: 2}

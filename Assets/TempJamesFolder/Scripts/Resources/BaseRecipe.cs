@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BaseRecipe", menuName = "Scriptable Objects/BaseRecipe")]
 public class BaseRecipe : ScriptableObject
 {
-    enum recipeType { resouce, defence, tool }
+    public enum recipeType { resouce, defence, tool }
     [SerializeField]
     private recipeType rType;
     [SerializeField]
@@ -13,7 +13,7 @@ public class BaseRecipe : ScriptableObject
     [SerializeField]
     private string recipeName;
     [SerializeField]
-    private GameObject recipePrefab;
+    private BaseItem recipeItem;
     [SerializeField]
     private List<BaseItem> recipeIngredients;
     [SerializeField]
@@ -23,8 +23,9 @@ public class BaseRecipe : ScriptableObject
 
     public Sprite GetImage() { return recipeIcon; }
     public string GetName() { return recipeName; }
-
+    public BaseItem GetRecipeItem() { return recipeItem; }
     public List<BaseItem> GetRecipeIngredients() { return recipeIngredients; }
 
     public int GetQuant(BaseItem ing) { return recipeQuant[recipeIngredients.IndexOf(ing)]; }
+    public recipeType GetRType() { return rType; }
 }
