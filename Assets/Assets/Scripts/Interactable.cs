@@ -30,6 +30,8 @@ public class Interactable : MonoBehaviour
         {
             case InteractType.Pickup:
                 //get picked up?
+                gameObject.GetComponent<PickupHold>().ToggleHeld();
+                Debug.Log("Get picked up");
                 break;
             case InteractType.Switch:
                 //activate the switch?

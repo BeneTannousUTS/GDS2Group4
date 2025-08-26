@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     InputAction lookAction, moveAction, interactAction;
     private GameObject targetedInteractable;
+    private bool isHoldingObject = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -76,7 +77,6 @@ public class PlayerController : MonoBehaviour
         if (interactAction.WasPressedThisFrame() && interactCooldown < 0f)
         {
             Interact();
-            Debug.Log("INTERACT PRESSED");
         }
     }
 
@@ -87,14 +87,25 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if (targetedInteractable != null)
+        if (isHoldingObject)
+        {
+            targetedInteractable.GetComponent<PickupHold>().ToggleHeld();
+            targetedInteractable = null;
+            isHoldingObject = false;
+        }
+        else if (targetedInteractable != null)
         {
             targetedInteractable.GetComponent<Interactable>().OnInteract();
+            if(targetedInteractable.GetComponent<Interactable>().interactType == Interactable.InteractType.Pickup)
+            {
+                isHoldingObject = true;
+            }
         }
     }
 
     private void CheckForInteracts()
     {
+        if (isHoldingObject) return;
         RaycastHit hitObject;
         if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, 2f))
         {
