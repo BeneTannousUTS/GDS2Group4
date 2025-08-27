@@ -606,9 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6c6b1832d2eef49877e0046fbce05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hands:
-  - {fileID: 0}
-  - {fileID: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
   inventorySize: 2
   currentCapacity: 0
   inventoryUI: {fileID: 413839313}
@@ -2150,6 +2149,7 @@ MonoBehaviour:
   listCanvas: {fileID: 222169223}
   itemCanvas: {fileID: 166856420}
   craftResultImg: {fileID: 266141715}
+  craftBtn: {fileID: 1703777420}
 --- !u!114 &2028625831
 MonoBehaviour:
   m_ObjectHideFlags: 0

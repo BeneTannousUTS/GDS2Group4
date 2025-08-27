@@ -1,10 +1,13 @@
 using Mono.Cecil;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    private BaseItem[] hands = new BaseItem[2];
+    private BaseItem leftHand;
+    [SerializeField]
+    private BaseItem rightHand;
     [SerializeField]
     private int inventorySize;
     [SerializeField]
@@ -32,15 +35,6 @@ public class Inventory : MonoBehaviour
         {
             CollectResource(testResource);
         }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (currentCapacity > 0)
-            {
-
-                DropResource(currentCapacity - 1);
-            }
-
-            }
         if (Input.GetKeyDown(KeyCode.R))
         {
             StoreResources();
@@ -49,38 +43,47 @@ public class Inventory : MonoBehaviour
 
     void CollectResource(BaseItem resource)
     {
-        for (int i = 0; i < hands.Length; i++)
+        if (leftHand == null)
         {
-            if (!hands[i])
-            {
-                hands[i] = resource;
-                inventoryUI.UpdateInventoryUI(i, resource.GetImage());
-                currentCapacity++;
-                return;
-            }
+            leftHand = resource;
+            inventoryUI.UpdateInventoryUI(0, resource.GetImage());
+        }
+        else if (rightHand == null)
+        {
+            rightHand = resource;
+            inventoryUI.UpdateInventoryUI(1, resource.GetImage());
         }
     }
 
-    void DropResource(int position)
+    void DropResource(string hand)
     {
-        hands[position] = null;
-        currentCapacity--;
-        inventoryUI.ClearInventoryUI(currentCapacity);
+        if (hand == "left")
+        {
+            Instantiate(leftHand.GetPrefab()).transform.position = gameObject.transform.position;
+            leftHand = null;
+            inventoryUI.ClearInventoryUI(0);
+        }
+        if (hand == "right")
+        {
+            Instantiate(rightHand.GetPrefab()).transform.position = gameObject.transform.position;
+            rightHand = null;
+            inventoryUI.ClearInventoryUI(1);
+        }
     }
 
     void StoreResources()
     {
-        for (int i = inventorySize-1; i >= 0; i--)
+        if (leftHand)
         {
-            if (hands[i] != null)
-            {
-                if (storageManager.StoreItem(hands[i]))
-                {
-                    hands[i] = null;
-                    currentCapacity--;
-                    inventoryUI.ClearInventoryUI(i);
-                }
-            }
+            storageManager.StoreItem(leftHand);
+            leftHand = null;
+            inventoryUI.ClearInventoryUI(0);
+        }
+        if (rightHand)
+        {
+            storageManager.StoreItem(rightHand);
+            rightHand = null;
+            inventoryUI.ClearInventoryUI(1);
         }
     }
 }

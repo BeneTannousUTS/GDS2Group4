@@ -21,5 +21,7 @@ public class BaseItem : ScriptableObject
 
     public Sprite GetImage() { return itemIcon; }
 
+    public GameObject GetPrefab() { return prefab; }
+
     public string GetName() { return itemName; }
 }

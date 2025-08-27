@@ -21,6 +21,8 @@ public class CraftingUI : MonoBehaviour
     private bool canCraft = true;
     [SerializeField]
     private Image craftResultImg;
+    [SerializeField]
+    private Button craftBtn;
     private BaseRecipe selectedRecipe;
     private RecipeSlot selectedSlot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,6 +84,8 @@ public class CraftingUI : MonoBehaviour
 
     public void CraftView(RecipeSlot slot)
     {
+        craftBtn.image.color = Color.blue;
+        craftBtn.enabled = true;
         BaseRecipe recipe = slot.GetRecipe();
         selectedRecipe = recipe;
         selectedSlot = slot;
@@ -107,6 +111,11 @@ public class CraftingUI : MonoBehaviour
                     canCraft = false;
                 }
             }
+        }
+        if (!canCraft)
+        {
+            craftBtn.image.color = Color.grey;
+            craftBtn.enabled = false;
         }
     }
 
