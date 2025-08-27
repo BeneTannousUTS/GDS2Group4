@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BaseItem", menuName = "Scriptable Objects/BaseItem")]
 public class BaseItem : ScriptableObject
 {
-    enum itemType { resouce, ship, tool }
+    public enum itemType { resouce, ship, tool }
     [SerializeField]
     private itemType iType;
     [SerializeField]
@@ -24,4 +24,6 @@ public class BaseItem : ScriptableObject
     public GameObject GetPrefab() { return prefab; }
 
     public string GetName() { return itemName; }
+
+    public itemType GetIType() { return iType; }
 }
