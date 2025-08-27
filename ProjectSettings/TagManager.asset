@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Base
+  - Turret
+  - TurretDisplay
+  - Repair
   layers:
   - Default
   - TransparentFX
