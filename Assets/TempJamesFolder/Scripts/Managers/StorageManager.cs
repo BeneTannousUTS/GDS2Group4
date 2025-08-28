@@ -33,7 +33,7 @@ public class StorageManager : MonoBehaviour
         }
     }
 
-    public int CheckQuantity(BaseItem item, int quant)
+    public int CheckQuantity(BaseItem item)
     {
         if (itemStorage.ContainsKey(item))
         {
