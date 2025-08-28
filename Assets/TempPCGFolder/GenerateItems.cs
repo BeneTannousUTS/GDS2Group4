@@ -15,10 +15,9 @@ public class GenerateItems : MonoBehaviour
 
     void Start()
     {
-        ScatterObjects();
     }
 
-    void ScatterObjects()
+    public void ScatterObjects()
     {
         TerrainData terrainData = terrain.terrainData;
         Vector3 terrainSize = terrainData.size;
@@ -30,15 +29,28 @@ public class GenerateItems : MonoBehaviour
         {
             float x = Random.Range(0, terrainSize.x);
             float z = Random.Range(0, terrainSize.z);
-            float y = terrain.SampleHeight(new Vector3(x, 0, z));
 
-            Vector3 position = new Vector3(x, y, z) + terrain.transform.position;
-
+            float terrainHeight = terrain.SampleHeight(new Vector3(x, 0, z));
+            Vector3 normal = terrainData.GetInterpolatedNormal(x / terrainSize.x, z / terrainSize.z);
+            
             GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
             float scale = Random.Range(minScale, maxScale);
-
-            GameObject instance = Instantiate(prefab, position, Quaternion.identity);
+            GameObject instance = Instantiate(prefab);
             instance.transform.localScale *= scale;
+            
+            Renderer rend = instance.GetComponentInChildren<Renderer>();
+            float pivotOffset = 0f;
+            if (rend != null)
+            {
+                pivotOffset = rend.bounds.extents.y - (rend.bounds.max.y - rend.bounds.min.y) / 2f;
+            }
+            
+            Vector3 position = new Vector3(x, terrainHeight + pivotOffset, z) + terrain.transform.position;
+            instance.transform.position = position;
+            
+            instance.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
+            
+            instance.transform.Rotate(0f, Random.Range(0f, 360f), 0f, Space.Self);
         }
     }
 }
