@@ -12,6 +12,7 @@ using MapMagic.Products;
 using MapMagic.Nodes;
 using MapMagic.Terrains;
 using MapMagic.Locks;
+using Random = System.Random;
 
 namespace MapMagic.Core 
 {
@@ -328,8 +329,10 @@ namespace MapMagic.Core
 					throw new Exception("MapMagic: Graph data is not assigned");
 
 				if (draft || main)
-					foreach (TerrainTile tile in tiles.All())
-						tile.StartGenerate(graph, main, draft);  //enqueue all of chunks before starting generate
+				{
+					foreach (TerrainTile tile in tiles.All()) 
+						tile.StartGenerate(graph, main, draft); //enqueue all of chunks before starting generate
+				}
 			}
 
 
