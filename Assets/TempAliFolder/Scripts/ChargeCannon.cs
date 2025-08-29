@@ -1,29 +1,27 @@
 using UnityEngine;
 
-public class Turret : Defence
+public class ChargeCannon : Defence
 {
     int currentSide = 0;
     bool damaged = false;
 
     public override float GetDamage(int side) {
         if (side == GetSide()) {
-            if (damaged) {
-                return damage * Mathf.Max(currentDurability / maxDurability, 0.25f);
-            }
-            else {
-                return damage;
-            }
+            return damage;
         }
         return 0f;
     }
 
-    public override void RotateRight() {
+    public override void RotateRight()
+    {
         transform.Rotate(new Vector3(0f, 0f, -90f));
 
-        if (currentSide == 3) {
+        if (currentSide == 3)
+        {
             currentSide = 0;
         }
-        else {
+        else
+        {
             currentSide += 1;
         }
     }
@@ -43,9 +41,9 @@ public class Turret : Defence
         currentDurability -= damageValue;
         currentDurability = Mathf.Max(0f, currentDurability);
 
-        if (damaged == false && currentDurability <= maxDurability / 2) {
+        if (damaged == false && currentDurability == 0f) {
             damaged = true;
-            GameObject.FindWithTag("Base").GetComponent<Base>().TriggerRepair("Turret");
+            GameObject.FindWithTag("Base").GetComponent<Base>().TriggerRepair("ChargeCannon");
         }
     }
 

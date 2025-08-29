@@ -6,12 +6,10 @@ public class TurretRotate : Activator
 
     public override void Activate() {
         if (rotateRight) {
-            GameObject.FindWithTag("Turret").GetComponent<Turret>().RotateRight();
-            GameObject.FindWithTag("TurretDisplay").GetComponent<TurretDisplay>().RotateRight();
+            GameObject.FindWithTag("Base").GetComponent<Base>().RotateRight();
         }
         else {
-            GameObject.FindWithTag("Turret").GetComponent<Turret>().RotateLeft();
-            GameObject.FindWithTag("TurretDisplay").GetComponent<TurretDisplay>().RotateLeft();
+            GameObject.FindWithTag("Base").GetComponent<Base>().RotateLeft();
         }
     }
 }

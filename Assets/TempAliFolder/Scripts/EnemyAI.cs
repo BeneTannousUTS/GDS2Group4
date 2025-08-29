@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
             transform.position = startPos + ((hitPos - startPos) * (timeTillHit/enemySpeed));
             if (Vector3.Distance(transform.position, hitPos) <= 0.01f) {
                 Deaggro();
-                GameObject.FindWithTag("Base").GetComponent<Base>().TakeDamage(side);
+                GameObject.FindWithTag("Base").GetComponent<Base>().TakeDamage(this);
             }
         }
         else if (currentState == AiState.Run) {
