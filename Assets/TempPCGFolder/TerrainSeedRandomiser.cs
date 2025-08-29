@@ -1,29 +1,32 @@
 using System;
 using Den.Tools;
 using MapMagic.Core;
+using MapMagic.Terrains;
 using UnityEngine;
 using Random = System.Random;
 
+[ExecuteInEditMode]
 public class TerrainSeedRandomiser : MonoBehaviour
 {
     MapMagicObject mapMagicObject;
-
-    private bool shouldRegenerate;
-    private bool readyToScatter = false;
+    
     private bool checkGenerationStatus = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Random rnd = new Random();
-        GetComponent<MapMagicObject>().graph.random = new Noise(rnd.Next(1,99999), permutationCount: 32768);
-        GetComponent<MapMagicObject>().StartGenerate();
-        checkGenerationStatus = true;
+        RandomiseTerrain();
     }
 
-    void Awake()
+    public void RandomiseTerrain()
     {
-        
+        mapMagicObject = GetComponent<MapMagicObject>();
+        mapMagicObject.gameObject.GetComponentInChildren<TerrainTile>().ResetTerrain();
+        Random rnd = new Random();
+        mapMagicObject.graph.random = new Noise(rnd.Next(1,99999), permutationCount: 32768);
+        mapMagicObject.setDirty = true;
+        mapMagicObject.StartGenerate();
+        checkGenerationStatus = true;
     }
 
     // Update is called once per frame
@@ -32,12 +35,13 @@ public class TerrainSeedRandomiser : MonoBehaviour
         if (checkGenerationStatus)
         {
             Debug.Log("MapMagic: Generation Progress = " + GetComponent<MapMagicObject>().GetProgress());
-            if (Mathf.Approximately(GetComponent<MapMagicObject>().GetProgress(), 1))
+            if (GetComponent<MapMagicObject>().GetProgress() == 1)
             {
                 GetComponent<GenerateItems>().terrain = GetComponent<MapMagicObject>().gameObject.GetComponentInChildren<Terrain>();
                 Debug.Log("Terrain Set, scattering objects");
                 GetComponent<GenerateItems>().ScatterObjects();
                 Debug.Log("Objects Scattered");
+                GetComponent<GenerateItems>().PlaceBunker();
                 checkGenerationStatus = false;
             }
         }

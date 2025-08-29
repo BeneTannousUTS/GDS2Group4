@@ -1,3 +1,4 @@
+using MapMagic.Terrains;
 using UnityEngine;
 
 public class GenerateItems : MonoBehaviour
@@ -8,6 +9,9 @@ public class GenerateItems : MonoBehaviour
 
     [Header("Assets to Scatter")]
     public GameObject[] prefabs;
+    
+    [Header("Bunker Prefab")]
+    public GameObject bunkerPrefab;
 
     [Header("Placement Settings")]
     public float minScale = 0.8f;
@@ -17,8 +21,54 @@ public class GenerateItems : MonoBehaviour
     {
     }
 
+    public void PlaceBunker()
+    {
+        if (terrain == null || bunkerPrefab == null)
+        {
+            Debug.LogWarning("Terrain or bunker prefab not assigned!");
+            return;
+        }
+
+        TerrainData terrainData = terrain.terrainData;
+        Vector3 terrainSize = terrainData.size;
+        
+        float x = terrainSize.x / 2f;
+        float z = terrainSize.z / 2f;
+        
+        float terrainHeight = terrain.SampleHeight(new Vector3(x, 0, z));
+        Vector3 normal = terrainData.GetInterpolatedNormal(x / terrainSize.x, z / terrainSize.z);
+        
+        GameObject bunker = Instantiate(bunkerPrefab, transform, true);
+        
+        Renderer rend = bunker.GetComponentInChildren<Renderer>();
+        float pivotOffset = 0f;
+        if (rend != null)
+        {
+            pivotOffset = rend.bounds.extents.y - (rend.bounds.max.y - rend.bounds.min.y) / 2f;
+        }
+        
+        Vector3 position = new Vector3(x, terrainHeight + pivotOffset, z) + terrain.transform.position;
+        bunker.transform.position = position;
+        
+        bunker.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
+
+        // Random yaw rotation for variety
+        bunker.transform.Rotate(0f, Random.Range(0f, 360f), 0f, Space.Self);
+    }
+    
     public void ScatterObjects()
     {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Transform child = transform.GetChild(i);
+
+            // Skip if this child has a Terrain component
+            if (child.GetComponent<TerrainTile>() != null)
+                continue;
+
+            DestroyImmediate(child.gameObject);
+        }
+        
         TerrainData terrainData = terrain.terrainData;
         Vector3 terrainSize = terrainData.size;
 
@@ -35,7 +85,7 @@ public class GenerateItems : MonoBehaviour
             
             GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
             float scale = Random.Range(minScale, maxScale);
-            GameObject instance = Instantiate(prefab);
+            GameObject instance = Instantiate(prefab, transform, true);
             instance.transform.localScale *= scale;
             
             Renderer rend = instance.GetComponentInChildren<Renderer>();
