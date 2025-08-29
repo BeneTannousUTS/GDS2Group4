@@ -14,8 +14,6 @@ public class ChargeCannon : Defence
 
     public override void RotateRight()
     {
-        transform.Rotate(new Vector3(0f, 0f, -90f));
-
         if (currentSide == 3)
         {
             currentSide = 0;
@@ -27,12 +25,12 @@ public class ChargeCannon : Defence
     }
 
     public override void RotateLeft() {
-        transform.Rotate(new Vector3(0f, 0f, 90f));
-
-        if (currentSide == 0) {
+        if (currentSide == 0)
+        {
             currentSide = 3;
         }
-        else {
+        else
+        {
             currentSide -= 1;
         }
     }

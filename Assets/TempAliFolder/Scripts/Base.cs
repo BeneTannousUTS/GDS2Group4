@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class Base : MonoBehaviour
 {
@@ -13,14 +14,28 @@ public class Base : MonoBehaviour
     public List<Defence> defences;
     public List<Repair> repairTasks;
 
+    public TMP_Text bunkerHealthDisplay;
+    public TMP_Text turretHealthDisplay;
+
+    public List<GameObject> ccObjects;
+    public List<GameObject> spikeObjects;
+
     void Start()
     {
         currentBunkerDurability = maxBunkerDurability;
     }
 
+    void UpdateDisplay()
+    {
+        bunkerHealthDisplay.text = $"Bunker Integrity: {Mathf.Floor((currentBunkerDurability * 100f) / maxBunkerDurability)}%";
+        turretHealthDisplay.text = $"Turret Integrity: {Mathf.Floor(defences[0].GetCurrentDurability())}%";
+    }
+
     // Update is called once per frame
     void Update()
     {
+        UpdateDisplay();
+
         foreach (Defence defence in defences)
         {
             if (defence.GetIsRanged() && defence.GetIsActive())
@@ -79,6 +94,11 @@ public class Base : MonoBehaviour
         if (defenceHit == false)
         {
             currentBunkerDurability -= 50f;
+
+            if (currentBunkerDurability == 0f)
+            {
+                // YOU LOSE
+            }
         }
     }
 
@@ -132,6 +152,25 @@ public class Base : MonoBehaviour
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemy.GetComponent<EnemyAI>().DealDamage(defence.GetDamage(enemy.GetComponent<EnemyAI>().GetSide()));
+        }
+    }
+
+    public void ActivateTurrets(bool value)
+    {
+        defences[0].SetIsActive(value);
+    }
+
+    public void UnlockChargeCannon()
+    {
+        foreach (GameObject ccObject in ccObjects) {
+            ccObject.SetActive(true);
+        }
+    }
+
+    public void UnlockSpikes()
+    {
+        foreach (GameObject spikeObject in spikeObjects) {
+            spikeObject.SetActive(true);
         }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class EnemyAI : MonoBehaviour
     float deaggroMeter = 0f;
     public float deaggroMax = 10f;
 
-    private enum AiState {
+    private enum AiState
+    {
         Attack,
         Run
     }
@@ -30,11 +32,13 @@ public class EnemyAI : MonoBehaviour
         startPos = startPositions[side];
         hitPos = hitPositions[side];
 
-        if (side == 0 || side == 2) {
+        if (side == 0 || side == 2)
+        {
             startPos.x += Random.Range(-0.2f, 0.2f);
             hitPos.x += Random.Range(-0.05f, 0.05f);
         }
-        else {
+        else
+        {
             startPos.y += Random.Range(-0.2f, 0.2f);
             hitPos.y += Random.Range(-0.04f, 0.04f);
         }
@@ -45,35 +49,52 @@ public class EnemyAI : MonoBehaviour
     {
         timeTillHit += Time.deltaTime;
 
-        if (currentState == AiState.Attack) {
-            transform.position = startPos + ((hitPos - startPos) * (timeTillHit/enemySpeed));
-            if (Vector3.Distance(transform.position, hitPos) <= 0.01f) {
+        if (currentState == AiState.Attack)
+        {
+            transform.position = startPos + ((hitPos - startPos) * (timeTillHit / enemySpeed));
+            if (Vector3.Distance(transform.position, hitPos) <= 0.01f)
+            {
                 Deaggro();
                 GameObject.FindWithTag("Base").GetComponent<Base>().TakeDamage(this);
             }
         }
-        else if (currentState == AiState.Run) {
-            transform.position = hitPos + ((startPos - hitPos) * (timeTillHit/(enemySpeed * 2f)));
-            if (Vector3.Distance(transform.position, startPos) <= 0.01f) {
+        else if (currentState == AiState.Run)
+        {
+            transform.position = hitPos + ((startPos - hitPos) * (timeTillHit / (enemySpeed * 0.5f)));
+            if (Vector3.Distance(transform.position, startPos) <= 0.01f)
+            {
                 Destroy(gameObject);
             }
+            
         }
     }
 
-    void Deaggro() {
-        timeTillHit = 8f - 2f * timeTillHit;
+    void Deaggro()
+    {
+        timeTillHit = (enemySpeed * 0.5f) - (0.5f * timeTillHit);
         currentState = AiState.Run;
+        StartCoroutine(Flash());
     }
 
-    public void DealDamage(float damage) {
+    public void DealDamage(float damage)
+    {
         deaggroMeter += damage;
 
-        if (deaggroMeter >= deaggroMax && currentState == AiState.Attack) {
+        if (deaggroMeter >= deaggroMax && currentState == AiState.Attack)
+        {
             Deaggro();
         }
     }
 
-    public int GetSide() {
+    public int GetSide()
+    {
         return side;
+    }
+
+    IEnumerator Flash()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
+        StartCoroutine(Flash());
     }
 }
