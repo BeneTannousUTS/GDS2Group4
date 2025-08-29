@@ -34,7 +34,8 @@ public class Interactable : MonoBehaviour
                 Debug.Log("Get picked up");
                 break;
             case InteractType.Switch:
-                //activate the switch?
+                Debug.Log("Activate");
+                GetComponent<Activator>().Activate();
                 break;
             case InteractType.Obstacle:
                 //check if you have the item you need to bypass the obstacle?
