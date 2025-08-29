@@ -131,5 +131,5 @@ MonoBehaviour:
   - {x: 0.105, y: 2.2, z: 2.25}
   - {x: 0, y: 2.05, z: 2.25}
   - {x: -0.105, y: 2.2, z: 2.25}
-  enemySpeed: 4
-  deaggroMax: 10
+  enemySpeed: 10
+  deaggroMax: 20

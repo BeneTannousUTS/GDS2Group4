@@ -9,40 +9,78 @@ public class Defence : MonoBehaviour
 
     public bool isRanged = true;
     public bool isActive = true;
+    public bool isCounter = false;
 
-    
-    void Start() {
+
+    void Start()
+    {
         currentDurability = maxDurability;
     }
 
-    void Update() {
-        TakeDamage(passiveDrain * Time.deltaTime);
+    void Update()
+    {
+        if (isActive)
+        {
+            TakeDamage(passiveDrain * Time.deltaTime);
+        }
     }
 
-    public bool GetIsRanged() {
+    public bool GetIsRanged()
+    {
         return isRanged;
     }
 
-    public bool GetIsActive() {
+    public bool GetIsActive()
+    {
         return isActive;
     }
 
-    public virtual float GetDamage(int side) {
-        if (side == GetSide()) {
+    public bool GetIsCounter()
+    {
+        return isCounter;
+    }
+
+    public virtual void SetIsActive(bool value)
+    {
+        isActive = value;
+    }
+
+    public virtual float GetDamage(int side)
+    {
+        if (side == GetSide())
+        {
             return damage;
         }
         return 0f;
     }
 
-    public virtual void TakeDamage(float damageValue) {
+    public virtual void TakeDamage(float damageValue)
+    {
         currentDurability -= damageValue;
     }
 
-    public virtual void Repair() {
+    public virtual void Repair()
+    {
         currentDurability = maxDurability;
     }
 
-    public virtual int GetSide() {
+    public virtual int GetSide()
+    {
         return 4;
+    }
+
+    public virtual void RotateLeft()
+    {
+
+    }
+
+    public virtual void RotateRight()
+    {
+
+    }
+
+    public float GetCurrentDurability()
+    {
+        return currentDurability;
     }
 }
