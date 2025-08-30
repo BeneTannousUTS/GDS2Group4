@@ -6116,11 +6116,33 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to the bunker. Welcome to the bunker. Welcome to the bunker. Welcome
-    to the bunker. Welcome to the bunker. Welcome to the bunker. Welcome to the bunker.
-    Welcome to the bunker. Welcome to the bunker. Welcome to the bunker. Welcome
-    to the bunker. Welcome to the bunker. Welcome to the bunker. Welcome to the bunker.
-    Welcome to the bunker. '
+  m_text: 'Welcome to the bunker, there are a few things you might need to know in
+    order to have the smoothest possible experience here.
+
+
+    There are creatures
+    who roam these lands. Hostile creatures. All attempts made to kill said creatures
+    have proven useless, however they like all things feel pain.
+
+
+    Your bunker
+    is equipped with defences in order to dissuade those creatures from breaking
+    into the bunker and taking you away. Right know there is only the turrets but
+    more can be aquired through the upgrade terminal.
+
+
+    The turrets however can
+    only be active on one side at a time, thus the bunker is equipped with rotate
+    levers that will allow you to change the side the turrets are targetting.
+
+
+    The
+    technology in the bunker is also very volatile. If gas starts leaking the emergency
+    lights will turn on and you will need to fix the leak.
+
+
+    Now good luck and
+    don''t let the creatures bite! : )'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6154,7 +6176,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7235,6 +7257,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8bb4421d34bc22b40bc56b77e216dc5d, type: 2}
   - {fileID: 11400000, guid: 99b91af1b6edd8b4c9152ff74fe3d5d8, type: 2}
   - {fileID: 11400000, guid: 5008b126551b1d4479c6e81e856bebdd, type: 2}
+  - {fileID: 11400000, guid: b0f8a22878420434a9401ab02dfde4e5, type: 2}
+  - {fileID: 11400000, guid: 82712228c57d049418628b3b226015d3, type: 2}
   craftingUI: {fileID: 1296540871}
   storageManager: {fileID: 1714645109}
 --- !u!4 &1389643993
@@ -7818,6 +7842,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1047453543337987720, guid: 5b52eab476f1ba7408f655937788636e, type: 3}
   m_PrefabInstance: {fileID: 3751938984494818167}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1482154312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482154314}
+  - component: {fileID: 1482154313}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1482154313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482154312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d76221f6df388e498e5fb4642d6ef2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1482154314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482154312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 176.99225, y: 126.984146, z: -205.14711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485314187
 GameObject:
   m_ObjectHideFlags: 0
@@ -21321,3 +21389,4 @@ SceneRoots:
   - {fileID: 537878477}
   - {fileID: 1393515555}
   - {fileID: 409567210}
+  - {fileID: 1482154314}

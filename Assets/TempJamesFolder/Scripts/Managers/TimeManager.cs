@@ -50,6 +50,7 @@ public class TimeManager : MonoBehaviour
                     currentTime = 0;
                     gameState = GameState.defence;
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
+                    FindAnyObjectByType<EnemySpawner>().StartDefencePhase();
                     door.SetActive(true);
                 }
                 else
