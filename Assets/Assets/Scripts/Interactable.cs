@@ -52,7 +52,10 @@ public class Interactable : MonoBehaviour
     }
     public void ActivateOutline(int isOutlined) // using an int instead of a bool because shadergraph uses ints to represent bools
     {
-        gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
+        if (gameObject.GetComponent<Renderer>())
+        {
+            gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
+        } 
     }
 }
 

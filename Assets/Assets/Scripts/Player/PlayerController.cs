@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isHoldingObject = false;
     private LayerMask noPlayerMask;
     private float gravity = -2f, interactDistance = 2f;
+    [SerializeField] private GameObject interactCanvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -120,12 +121,14 @@ public class PlayerController : MonoBehaviour
                     {
                         targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
                     }
+                    interactCanvas.SetActive(true);
                     targetedInteractable = hitObject.transform.gameObject;
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
                 }
             }
             else
             {
+                interactCanvas.SetActive(false);
                 if (targetedInteractable != null)
                 {
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
