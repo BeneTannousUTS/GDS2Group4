@@ -24,6 +24,7 @@ public class StorageManager : MonoBehaviour
         {
             if (storageCapacity < maxStorage)
             {
+                Debug.Log(item);
                 itemStorage.Add(item, 1);
                 storageUI.UpdateUI();
                 storageCapacity++;

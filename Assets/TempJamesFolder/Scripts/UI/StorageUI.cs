@@ -59,6 +59,9 @@ public class StorageUI : MonoBehaviour
                 case BaseItem.itemType.ship:
                     parentCanvas = canvasArray[2].gameObject;
                     break;
+                case BaseItem.itemType.defence:
+                    parentCanvas = canvasArray[3].gameObject;
+                    break;
             }
             GameObject slot = Instantiate(baseSlot, parentCanvas.transform);
             slot.transform.position += new Vector3(200 * x, -250 * y);
