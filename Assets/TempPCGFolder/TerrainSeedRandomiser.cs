@@ -21,11 +21,10 @@ public class TerrainSeedRandomiser : MonoBehaviour
     public void RandomiseTerrain()
     {
         mapMagicObject = GetComponent<MapMagicObject>();
-        mapMagicObject.gameObject.GetComponentInChildren<TerrainTile>().ResetTerrain();
         Random rnd = new Random();
         mapMagicObject.graph.random = new Noise(rnd.Next(1,99999), permutationCount: 32768);
         mapMagicObject.setDirty = true;
-        mapMagicObject.StartGenerate();
+        mapMagicObject.Refresh();
         checkGenerationStatus = true;
     }
 
@@ -37,11 +36,10 @@ public class TerrainSeedRandomiser : MonoBehaviour
             Debug.Log("MapMagic: Generation Progress = " + GetComponent<MapMagicObject>().GetProgress());
             if (GetComponent<MapMagicObject>().GetProgress() == 1)
             {
-                GetComponent<GenerateItems>().terrain = GetComponent<MapMagicObject>().gameObject.GetComponentInChildren<Terrain>();
+                GetComponent<GenerateItems>().centerTerrain = GetComponent<MapMagicObject>().gameObject.GetComponentInChildren<Terrain>();
                 Debug.Log("Terrain Set, scattering objects");
                 GetComponent<GenerateItems>().ScatterObjects();
                 Debug.Log("Objects Scattered");
-                GetComponent<GenerateItems>().PlaceBunker();
                 checkGenerationStatus = false;
             }
         }
