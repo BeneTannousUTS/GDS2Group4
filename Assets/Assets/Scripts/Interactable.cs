@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
         Pickup,
         Switch,
         Obstacle,
+        UI,
         Test
     }
 
@@ -43,12 +44,15 @@ public class Interactable : MonoBehaviour
             case InteractType.Test:
                 Debug.Log("TESTING IF INTERACT WORKS");
                 break;
+            case InteractType.UI: 
+                GetComponent<UIActivator>().ActivateCanvas();
+                break;
+
         }
     }
-
     public void ActivateOutline(int isOutlined) // using an int instead of a bool because shadergraph uses ints to represent bools
     {
-        gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
+        //gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
     }
 }
 

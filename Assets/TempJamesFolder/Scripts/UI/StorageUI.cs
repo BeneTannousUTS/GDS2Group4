@@ -25,7 +25,16 @@ public class StorageUI : MonoBehaviour
     private Canvas[] canvasArray;
     [SerializeField]
     private int canvasPos = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Button closeBtn;
+    [SerializeField] private GameObject deploy;
+
+    public void CloseUI()
+    {
+        FindAnyObjectByType<PlayerController>().enabled = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        gameObject.SetActive(false);
+    }
 
     public void UpdateUI()
     {
@@ -94,7 +103,7 @@ public class StorageUI : MonoBehaviour
     {
         if (selectedItem)
         {
-            Instantiate(selectedItem.GetPrefab()).transform.position = spawnPos.transform.position;
+            Instantiate(selectedItem.GetPrefab()).transform.position = deploy.transform.position;
             storageManager.RemoveItem(selectedItem, 1);
         }
         ResetUI();
