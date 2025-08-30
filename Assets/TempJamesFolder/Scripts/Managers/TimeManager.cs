@@ -18,6 +18,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField]
     private Light bunkerLight;
     [SerializeField] private BaseEvent[] events;
+    [SerializeField] private GameObject warningCanvas;
+    private bool playerInBunker;
 
     public void AssignEvent()
     {
@@ -33,11 +35,26 @@ public class TimeManager : MonoBehaviour
 
     private void UpdateTime()
     {
-        currentTime += Time.deltaTime*40;
-        if (currentTime > scavengeLength && gameState == GameState.scavenge)
+        currentTime += Time.deltaTime;
+        if (gameState == GameState.scavenge)
         {
-            currentTime = 0;
-            gameState = GameState.defence;
+            if (currentTime > scavengeLength-30)
+            {
+                warningCanvas.SetActive(true);
+            }
+            if (currentTime > scavengeLength)
+            {
+                if (playerInBunker)
+                {
+                    currentTime = 0;
+                    gameState = GameState.defence;
+                    warningCanvas.GetComponent<WarningUI>().ResetWarning();
+                }
+                else
+                {
+                    //insert code for game over
+                }
+            }
         }
         if (currentTime > defenceLength && gameState == GameState.defence)
         {
@@ -52,6 +69,11 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public void ReturnedToBunker(bool inBunker)
+    {
+        playerInBunker = inBunker;
+    }
+
     public void ChangeScavLength(float length) { scavengeLength = length; }
     public void ChangeDefLength(float length) { defenceLength = length; }
     public float GetScavengeLength() { return scavengeLength; }
@@ -60,7 +82,7 @@ public class TimeManager : MonoBehaviour
     public GameState GetGameState() { return gameState; }
     void Start()
     {
-        
+        playerInBunker = true;
     }
 
     // Update is called once per frame

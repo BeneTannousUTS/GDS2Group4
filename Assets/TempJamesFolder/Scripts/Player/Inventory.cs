@@ -59,13 +59,13 @@ public class Inventory : MonoBehaviour
     {
         if (hand == "left")
         {
-            Instantiate(leftHand.GetPrefab()).transform.position = gameObject.transform.position;
+            Instantiate(leftHand.GetPrefab()).transform.position = gameObject.transform.position+gameObject.transform.forward;
             leftHand = null;
             inventoryUI.ClearInventoryUI(0);
         }
         if (hand == "right")
         {
-            Instantiate(rightHand.GetPrefab()).transform.position = gameObject.transform.position;
+            Instantiate(rightHand.GetPrefab()).transform.position = gameObject.transform.position+gameObject.transform.forward;
             rightHand = null;
             inventoryUI.ClearInventoryUI(1);
         }

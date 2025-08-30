@@ -2,7 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TypeTextIntro : MonoBehaviour
+public class TypeText : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI text;
@@ -12,6 +12,7 @@ public class TypeTextIntro : MonoBehaviour
     [SerializeField]
     private float textSpeed;
     private float timeCheck;
+    [SerializeField] private bool selfDestruct;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +34,7 @@ public class TypeTextIntro : MonoBehaviour
         }
         else
         {
-            if (timeCheck > 6)
+            if (timeCheck > 6 && selfDestruct)
             {
                 Destroy(gameObject);
                 //insert code to give player control
