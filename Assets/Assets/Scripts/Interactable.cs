@@ -31,6 +31,7 @@ public class Interactable : MonoBehaviour
         {
             case InteractType.Pickup:
                 //get picked up?
+                gameObject.GetComponent<PickupHold>().SetPlayerHoldZone(playerRef);
                 gameObject.GetComponent<PickupHold>().ToggleHeld();
                 Debug.Log("Get picked up");
                 break;
@@ -54,7 +55,7 @@ public class Interactable : MonoBehaviour
     {
         if (gameObject.GetComponent<Renderer>())
         {
-            gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
+            gameObject.GetComponent<Renderer>().materials.ToList()[-1].SetInt("_isOutlined", isOutlined);
         } 
     }
 }
