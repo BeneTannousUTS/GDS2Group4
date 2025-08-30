@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private GameObject targetedInteractable;
     private bool isHoldingObject = false;
     private LayerMask noPlayerMask;
-    private float gravity = -2f, interactDistance = 2f;
+    private float gravity = -2f, interactDistance = 4f;
     [SerializeField] private GameObject interactCanvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

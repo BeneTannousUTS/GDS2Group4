@@ -41,7 +41,7 @@ public class TypeText : MonoBehaviour
             {
                 timer.SetActive(true);
                 player.enabled = true;
-                iCanvas.SetActive(true);
+                //iCanvas.SetActive(true);
                 Destroy(gameObject);
                 //insert code to give player control
             }
