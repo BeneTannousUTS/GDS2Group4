@@ -67,6 +67,13 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             waveIndex = -1;
+            StartCoroutine(WinState());
         }
+    }
+
+    IEnumerator WinState()
+    {
+        yield return new WaitForSeconds(12f);
+        FindAnyObjectByType<GameManager>().WinState();
     }
 }

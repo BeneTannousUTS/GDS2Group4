@@ -97,7 +97,7 @@ public class Base : MonoBehaviour
 
             if (currentBunkerDurability == 0f)
             {
-                // YOU LOSE
+                FindAnyObjectByType<GameManager>().LoseState(); // YOU LOSE
             }
         }
     }
