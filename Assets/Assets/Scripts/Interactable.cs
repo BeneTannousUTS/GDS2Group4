@@ -31,6 +31,7 @@ public class Interactable : MonoBehaviour
         {
             case InteractType.Pickup:
                 //get picked up?
+                gameObject.GetComponent<PickupHold>().SetPlayerHoldZone(playerRef);
                 gameObject.GetComponent<PickupHold>().ToggleHeld();
                 Debug.Log("Get picked up");
                 break;
@@ -52,7 +53,7 @@ public class Interactable : MonoBehaviour
     }
     public void ActivateOutline(int isOutlined) // using an int instead of a bool because shadergraph uses ints to represent bools
     {
-        gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
+        gameObject.GetComponent<Renderer>().materials.ToList()[-1].SetInt("_isOutlined", isOutlined);
     }
 }
 

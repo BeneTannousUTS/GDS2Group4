@@ -50,4 +50,10 @@ public class PickupHold : MonoBehaviour
         }
         else gameObject.layer = 0;
     }
+
+    public void SetPlayerHoldZone(GameObject player)
+    {
+        playerTransform = player.transform;
+        playerHoldZone = playerTransform.Find("Main Camera").Find("PickupZone");
+    }
 }
