@@ -13,6 +13,9 @@ public class TypeText : MonoBehaviour
     private float textSpeed;
     private float timeCheck;
     [SerializeField] private bool selfDestruct;
+    [SerializeField] private PlayerController player;
+    [SerializeField] private GameObject timer;
+    [SerializeField] private GameObject iCanvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +39,9 @@ public class TypeText : MonoBehaviour
         {
             if (timeCheck > 6 && selfDestruct)
             {
+                timer.SetActive(true);
+                player.enabled = true;
+                iCanvas.SetActive(true);
                 Destroy(gameObject);
                 //insert code to give player control
             }

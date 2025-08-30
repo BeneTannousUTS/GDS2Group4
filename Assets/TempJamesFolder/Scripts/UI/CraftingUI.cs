@@ -25,8 +25,16 @@ public class CraftingUI : MonoBehaviour
     private Button craftBtn;
     private BaseRecipe selectedRecipe;
     private RecipeSlot selectedSlot;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Button closeBtn;
 
+    public void CloseUI()
+    {
+        ListView();
+        FindAnyObjectByType<PlayerController>().enabled = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        gameObject.SetActive(false);
+    }
     public void AddUI(BaseRecipe item)
     {
         GameObject temp = Instantiate(recipeSlot, listCanvas.transform);

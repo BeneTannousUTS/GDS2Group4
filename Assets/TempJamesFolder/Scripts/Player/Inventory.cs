@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void StoreResources()
+    public void StoreResources()
     {
         if (leftHand)
         {

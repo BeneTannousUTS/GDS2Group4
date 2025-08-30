@@ -19,6 +19,7 @@ public class TimeManager : MonoBehaviour
     private Light bunkerLight;
     [SerializeField] private BaseEvent[] events;
     [SerializeField] private GameObject warningCanvas;
+    [SerializeField] private GameObject door;
     private bool playerInBunker;
 
     public void AssignEvent()
@@ -49,10 +50,10 @@ public class TimeManager : MonoBehaviour
                     currentTime = 0;
                     gameState = GameState.defence;
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
+                    door.SetActive(true);
                 }
                 else
                 {
-                    //insert code for game over
                 }
             }
         }
@@ -61,6 +62,7 @@ public class TimeManager : MonoBehaviour
             currentTime = 0;
             gameState = GameState.scavenge;
             currentDay++;
+            door.SetActive(false);
             AssignEvent();
         }
         if (gameState == GameState.scavenge)
