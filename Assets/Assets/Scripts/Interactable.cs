@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
 
     }
 
-    public void OnInteract()
+    public void OnInteract(GameObject playerRef)
     {
         switch (interactType)
         {
@@ -39,7 +39,7 @@ public class Interactable : MonoBehaviour
                 GetComponent<Activator>().Activate();
                 break;
             case InteractType.Obstacle:
-                //check if you have the item you need to bypass the obstacle?
+                GetComponent<Obstacle>().Unlock(playerRef.GetComponent<Inventory>().GetHeldItemNames());
                 break;
             case InteractType.Test:
                 Debug.Log("TESTING IF INTERACT WORKS");
@@ -52,7 +52,7 @@ public class Interactable : MonoBehaviour
     }
     public void ActivateOutline(int isOutlined) // using an int instead of a bool because shadergraph uses ints to represent bools
     {
-        //gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
+        gameObject.GetComponent<Renderer>().materials.ToList()[1].SetInt("_isOutlined", isOutlined);
     }
 }
 

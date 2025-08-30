@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Mono.Cecil;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,7 +22,7 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -59,13 +61,13 @@ public class Inventory : MonoBehaviour
     {
         if (hand == "left")
         {
-            Instantiate(leftHand.GetPrefab()).transform.position = gameObject.transform.position+gameObject.transform.forward;
+            Instantiate(leftHand.GetPrefab()).transform.position = gameObject.transform.position + gameObject.transform.forward;
             leftHand = null;
             inventoryUI.ClearInventoryUI(0);
         }
         if (hand == "right")
         {
-            Instantiate(rightHand.GetPrefab()).transform.position = gameObject.transform.position+gameObject.transform.forward;
+            Instantiate(rightHand.GetPrefab()).transform.position = gameObject.transform.position + gameObject.transform.forward;
             rightHand = null;
             inventoryUI.ClearInventoryUI(1);
         }
@@ -85,5 +87,13 @@ public class Inventory : MonoBehaviour
             rightHand = null;
             inventoryUI.ClearInventoryUI(1);
         }
+    }
+
+    public List<string> GetHeldItemNames()
+    {
+        List<string> heldItemNames = new();
+        if (leftHand) heldItemNames.Add(leftHand.GetName());
+        if (rightHand) heldItemNames.Add(rightHand.GetName());
+        return heldItemNames;
     }
 }

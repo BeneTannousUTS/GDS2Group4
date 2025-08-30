@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (targetedInteractable != null)
         {
-            targetedInteractable.GetComponent<Interactable>().OnInteract();
+            targetedInteractable.GetComponent<Interactable>().OnInteract(gameObject);
             if (targetedInteractable.GetComponent<Interactable>().interactType == Interactable.InteractType.Pickup)
             {
                 isHoldingObject = true;
