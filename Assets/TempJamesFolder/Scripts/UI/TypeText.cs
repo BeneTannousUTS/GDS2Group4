@@ -37,7 +37,7 @@ public class TypeText : MonoBehaviour
         }
         else
         {
-            if (timeCheck > 6 && selfDestruct)
+            if (timeCheck > 1 && selfDestruct)
             {
                 timer.SetActive(true);
                 player.enabled = true;

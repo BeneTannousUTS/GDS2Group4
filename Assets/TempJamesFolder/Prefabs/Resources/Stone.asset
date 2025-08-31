@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab86f91011455e64f8b54a5a6e25e2e7, type: 3}
-  m_Name: Iron
+  m_Name: Stone
   m_EditorClassIdentifier: 
   iType: 0
   itemID: 2
-  itemName: Iron
-  prefab: {fileID: -3820324903258562283, guid: 9d82ee18364ffe440831f8bccd18c03a, type: 3}
+  itemName: Stone
+  prefab: {fileID: 8783299471594330318, guid: b5dbb135d53384340b0bc0b3a31fc280, type: 3}
   itemWeight: 10
   itemRarity: 1
-  itemIcon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  itemIcon: {fileID: -2131128061, guid: 31c5e55ebb94b2b428147c550d546e16, type: 3}
