@@ -93,7 +93,7 @@ public class Base : MonoBehaviour
 
         if (defenceHit == false)
         {
-            currentBunkerDurability -= 50f;
+            currentBunkerDurability -= 5f;
 
             if (currentBunkerDurability == 0f)
             {

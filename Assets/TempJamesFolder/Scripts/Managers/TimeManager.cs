@@ -55,14 +55,19 @@ public class TimeManager : MonoBehaviour
                 }
                 else
                 {
+                    FindAnyObjectByType<GameManager>().LoseState();
                 }
             }
         }
         if (currentTime > defenceLength && gameState == GameState.defence)
         {
+            currentDay++;
+            if (currentDay >= 2)
+            {
+                FindAnyObjectByType<GameManager>().WinState();
+            }
             currentTime = 0;
             gameState = GameState.scavenge;
-            currentDay++;
             door.SetActive(false);
             AssignEvent();
         }

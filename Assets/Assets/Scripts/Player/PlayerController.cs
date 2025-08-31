@@ -93,7 +93,10 @@ public class PlayerController : MonoBehaviour
     {
         if (isHoldingObject)
         {
-            targetedInteractable.GetComponent<PickupHold>().ToggleHeld();
+            if (targetedInteractable)
+            {
+                targetedInteractable.GetComponent<PickupHold>().ToggleHeld();
+            }
             targetedInteractable = null;
             isHoldingObject = false;
         }

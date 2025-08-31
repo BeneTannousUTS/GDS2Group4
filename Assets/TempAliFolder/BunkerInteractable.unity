@@ -1096,7 +1096,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!4 &103245305 stripped
 Transform:
@@ -1408,7 +1408,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &169235731
 GameObject:
@@ -1968,7 +1968,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1001 &284813914
 PrefabInstance:
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1076039161}
   charCount: 0
-  textSpeed: 400
+  textSpeed: 40
   selfDestruct: 1
   player: {fileID: 190199004}
   timer: {fileID: 567852608}
@@ -2442,7 +2442,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &349431014
 RectTransform:
@@ -2647,6 +2647,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -1912865722939267393, guid: 03dfc7b657553f347a5b18f311986349, type: 3}
       insertIndex: -1
       addedObject: {fileID: 277275837}
+    - targetCorrespondingSourceObject: {fileID: -1912865722939267393, guid: 03dfc7b657553f347a5b18f311986349, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982661148}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2638332497102006003, guid: 03dfc7b657553f347a5b18f311986349, type: 3}
       insertIndex: -1
@@ -2833,7 +2836,7 @@ Transform:
   m_GameObject: {fileID: 409567209}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.215, z: 5.485}
+  m_LocalPosition: {x: 4.705, y: 1.332, z: -12.311}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4009,7 +4012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63ef99fb12651f41b1de9a0e94caf60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 1
+  gameState: 0
   currentTime: 0
   currentDay: 0
   scavengeLength: 180
@@ -4020,7 +4023,6 @@ MonoBehaviour:
   - {fileID: 2839901119205371027, guid: fad7a11fb17b32d4a86de6d5157182a1, type: 3}
   - {fileID: -6562928849186498260, guid: 058bd645fb9655c40954925c7ff5da8b, type: 3}
   - {fileID: -6369392889999221118, guid: 8d87a124f846e3e4987cc2eed559d14d, type: 3}
-  - {fileID: 2778345053802364529, guid: 2d6dd1c5d2cfa8c4594d0e3663a42034, type: 3}
   warningCanvas: {fileID: 434031013}
   door: {fileID: 459431389}
 --- !u!4 &567852610
@@ -4429,7 +4431,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &637529751
 RectTransform:
@@ -5765,7 +5767,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.6576934, y: -17.127851, z: -75.97293}
-  m_LocalScale: {x: 12, y: 0.5, z: 3}
+  m_LocalScale: {x: 11, y: 0.5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 909136889}
@@ -7580,8 +7582,144 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!1 &1035717779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035717780}
+  - component: {fileID: 1035717782}
+  - component: {fileID: 1035717781}
+  m_Layer: 5
+  m_Name: BunkerHealthDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1035717780
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035717779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1982661148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1035717781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035717779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Place Items HERE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4279697152
+  m_fontColor: {r: 0, g: 1, b: 0.08750057, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.3
+  m_fontSizeBase: 0.3
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -0.6228969, y: 0.090973854, z: -0.14157486, w: -0.032504797}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1035717782
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035717779}
+  m_CullTransparentMesh: 1
 --- !u!1 &1041367183
 GameObject:
   m_ObjectHideFlags: 0
@@ -7863,32 +8001,32 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Welcome to the bunker, there are a few things you might need to know in
-    order to have the smoothest possible experience here.
-
-
-    There are creatures
-    who roam these lands. Hostile creatures. All attempts made to kill said creatures
+    order to have the smoothest possible experience here. There are creatures who
+    roam these lands. Hostile creatures. All attempts made to kill said creatures
     have proven useless, however they like all things feel pain.
 
 
-    Your bunker
-    is equipped with defences in order to dissuade those creatures from breaking
-    into the bunker and taking you away. Right know there is only the turrets but
-    more can be aquired through the upgrade terminal.
+    Each day,
+    you must go out and scavenge the local enviroment, collecting resources and dropping
+    them into the storage crate outside. When alerted you MUST return to the bunker
+    before nightfall otherwise you will not survive.
 
 
-    The turrets however can
-    only be active on one side at a time, thus the bunker is equipped with rotate
-    levers that will allow you to change the side the turrets are targetting.
+    Your bunker is equipped
+    with defences in order to dissuade those creatures from breaking into the bunker
+    and taking you away. Right know there is only the turrets but more can be aquired
+    through the upgrade terminal. The turrets however can only be active on one side
+    at a time, thus the bunker is equipped with rotate levers that will allow you
+    to change the side the turrets are targetting.
 
 
-    The
-    technology in the bunker is also very volatile. If gas starts leaking the emergency
-    lights will turn on and you will need to fix the leak.
+    The technology in the bunker
+    is also very volatile. If gas starts leaking the emergency lights will turn on
+    and you will need to fix the leak.
 
 
-    Now good luck and
-    don''t let the creatures bite! : )'
+    Now good luck and don''t let the creatures
+    bite! : )'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9146,7 +9284,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &1343449880
 GameObject:
@@ -9612,9 +9750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipeList:
-  - {fileID: 11400000, guid: 8bb4421d34bc22b40bc56b77e216dc5d, type: 2}
-  - {fileID: 11400000, guid: 99b91af1b6edd8b4c9152ff74fe3d5d8, type: 2}
-  - {fileID: 11400000, guid: 5008b126551b1d4479c6e81e856bebdd, type: 2}
   - {fileID: 11400000, guid: b0f8a22878420434a9401ab02dfde4e5, type: 2}
   - {fileID: 11400000, guid: 82712228c57d049418628b3b226015d3, type: 2}
   craftingUI: {fileID: 1296540871}
@@ -12983,8 +13118,8 @@ Transform:
   m_GameObject: {fileID: 1734128632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 0.052666664, z: -0.5085}
-  m_LocalScale: {x: 0.050000004, y: 1, z: 20}
+  m_LocalPosition: {x: -10.39, y: 0.052666664, z: -0.5085}
+  m_LocalScale: {x: 0.050000004, y: 1, z: 21}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1158614863}
@@ -18451,7 +18586,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 215
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0668fc460a3bc0f4b85824557818c8fa, type: 2}
   m_TargetDisplay: 0
@@ -19072,6 +19207,84 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5dbb135d53384340b0bc0b3a31fc280, type: 3}
+--- !u!1 &1982661147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1982661148}
+  - component: {fileID: 1982661150}
+  - component: {fileID: 1982661149}
+  m_Layer: 5
+  m_Name: Canvas (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1982661148
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982661147}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -15.501}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1035717780}
+  m_Father: {fileID: 1051177173}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 7.16, y: 2.24}
+  m_SizeDelta: {x: 3, y: 3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1982661149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982661147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1982661150
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982661147}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
 --- !u!1 &1987765382
 GameObject:
   m_ObjectHideFlags: 0

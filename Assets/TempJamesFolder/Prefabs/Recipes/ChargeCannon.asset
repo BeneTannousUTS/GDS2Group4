@@ -15,9 +15,10 @@ MonoBehaviour:
   rType: 0
   recipeID: 5
   recipeName: Charge Cannon
-  recipeItem: {fileID: 0}
+  recipeItem: {fileID: 11400000, guid: b2f7d9312a050b742aedcc27f4f32177, type: 2}
   recipeIngredients:
   - {fileID: 11400000, guid: b4c99ec560168354cb959f9337244051, type: 2}
-  - {fileID: 11400000, guid: f25b69eb177eca44c9b1b3c1d077efb1, type: 2}
-  recipeQuant: 0300000002000000
-  recipeIcon: {fileID: 0}
+  - {fileID: 11400000, guid: 9f68248550cdbb4499543c377f5509ad, type: 2}
+  - {fileID: 11400000, guid: 2d43ac27d8826e84bba44591b6fa2626, type: 2}
+  recipeQuant: 030000000200000001000000
+  recipeIcon: {fileID: 21300000, guid: 000037d85bd6f6043bdc2a7b1adeb771, type: 3}
