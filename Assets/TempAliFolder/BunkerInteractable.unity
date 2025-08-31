@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!114 &53485853
 MonoBehaviour:
@@ -1406,6 +1407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!65 &201189595
 BoxCollider:
@@ -2223,6 +2225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!65 &397991297
 BoxCollider:
@@ -3605,6 +3608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 0
 --- !u!65 &698971263
 BoxCollider:
@@ -4133,6 +4137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 3
 --- !u!1 &786421018
 GameObject:
@@ -4633,6 +4638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!1 &859716255 stripped
 GameObject:
@@ -7439,6 +7445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!65 &1415372386
 BoxCollider:
@@ -7898,6 +7905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 3
 --- !u!65 &1495948540
 BoxCollider:
@@ -8306,6 +8314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!4 &1534104608 stripped
 Transform:
@@ -8451,6 +8460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineObjects: []
   interactType: 1
 --- !u!65 &1572274444
 BoxCollider:

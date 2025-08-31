@@ -19,7 +19,7 @@ public class MeshCombiner : MonoBehaviour
         }
 
         var mesh = new Mesh();
-        mesh.CombineMeshes(combine, false);
+        mesh.CombineMeshes(combine);
         targetMeshFilter.mesh = mesh;
     }
 }
