@@ -21,10 +21,11 @@ public class TerrainSeedRandomiser : MonoBehaviour
     public void RandomiseTerrain()
     {
         mapMagicObject = GetComponent<MapMagicObject>();
+        mapMagicObject.ResetTerrains();
         Random rnd = new Random();
         mapMagicObject.graph.random = new Noise(rnd.Next(1,99999), permutationCount: 32768);
         mapMagicObject.setDirty = true;
-        mapMagicObject.Refresh();
+        mapMagicObject.StartGenerate();
         checkGenerationStatus = true;
     }
 

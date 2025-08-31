@@ -110,7 +110,7 @@ public class GenerateItems : MonoBehaviour
                     pivotOffset = rend.bounds.extents.y - (rend.bounds.max.y - rend.bounds.min.y) / 2f;
                 }
 
-                Vector3 position = new Vector3(localX, terrainHeight + pivotOffset, localZ) + tilePos;
+                Vector3 position = new Vector3(localX, terrainHeight + pivotOffset + 0.5f, localZ) + tilePos;
                 instance.transform.position = position;
 
                 instance.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
