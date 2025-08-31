@@ -8,10 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4436119515029288369, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4436119515029288369, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: 1957778254936029870, guid: e8740ab60263f864eb61a65446486e75, type: 3}
       propertyPath: m_Name
       value: planksPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 4560083510620463042, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560083510620463042, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: 6385835643625949571, guid: e8740ab60263f864eb61a65446486e75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -68,6 +84,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6684505387679880646, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684505387679880646, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
+    - target: {fileID: 7970792962056175543, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970792962056175543, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -88,6 +120,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -5874469146336330122}
   m_SourcePrefab: {fileID: 8686905464242370237, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+--- !u!1 &161318430124468470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 15631731633010378, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+  m_PrefabInstance: {fileID: 147095671109803580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811003716385203346 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1957778254936029870, guid: e8740ab60263f864eb61a65446486e75, type: 3}
@@ -105,7 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineObjects: []
+  outlineObjects:
+  - {fileID: 5552460629445061971}
+  - {fileID: 161318430124468470}
+  - {fileID: 2195106871291052854}
+  - {fileID: 2002112465319321024}
   interactType: 0
 --- !u!54 &7543091852987227265
 Rigidbody:
@@ -183,3 +224,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItem: {fileID: 11400000, guid: b4c99ec560168354cb959f9337244051, type: 2}
+--- !u!1 &2002112465319321024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1856178033384358908, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+  m_PrefabInstance: {fileID: 147095671109803580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2195106871291052854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7170855774603846390, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+  m_PrefabInstance: {fileID: 147095671109803580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5552460629445061971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5693916888222233455, guid: e8740ab60263f864eb61a65446486e75, type: 3}
+  m_PrefabInstance: {fileID: 147095671109803580}
+  m_PrefabAsset: {fileID: 0}

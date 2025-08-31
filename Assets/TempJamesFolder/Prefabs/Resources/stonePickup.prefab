@@ -64,10 +64,34 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -711896127738483061, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -711896127738483061, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
+    - target: {fileID: 2179277597307387132, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179277597307387132, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: 2638332497102006003, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
       propertyPath: m_Name
       value: stonePickup
       objectReference: {fileID: 0}
+    - target: {fileID: 3456809836901517597, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456809836901517597, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -88,6 +112,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4105925617387045079}
   m_SourcePrefab: {fileID: 8686905464242370237, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+--- !u!1 &3412059602469925502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224596674237811779, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+  m_PrefabInstance: {fileID: 6735609572211555901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5761493504074227274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7886543017913130889, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+  m_PrefabInstance: {fileID: 6735609572211555901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6149592191708693317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 589422603583880568, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
+  m_PrefabInstance: {fileID: 6735609572211555901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8783299471594330318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2638332497102006003, guid: 759acf10132eaeb4780607f3cb4cd7a4, type: 3}
@@ -105,7 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineObjects: []
+  outlineObjects:
+  - {fileID: 5761493504074227274}
+  - {fileID: 3412059602469925502}
+  - {fileID: 6149592191708693317}
   interactType: 0
 --- !u!54 &1028487228873880728
 Rigidbody:

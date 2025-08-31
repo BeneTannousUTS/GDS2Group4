@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2418220497141426053, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2418220497141426053, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: -1912865722939267393, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -64,10 +72,26 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1163367895863651787, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1163367895863651787, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: 2638332497102006003, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
       propertyPath: m_Name
       value: batteryPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 5695360869558161726, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695360869558161726, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -105,7 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineObjects: []
+  outlineObjects:
+  - {fileID: 6123726409101298070}
+  - {fileID: 5032219197556493848}
+  - {fileID: 5593289863677159526}
   interactType: 0
 --- !u!136 &3629167533264976225
 CapsuleCollider:
@@ -185,3 +212,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItem: {fileID: 11400000, guid: 9f68248550cdbb4499543c377f5509ad, type: 2}
+--- !u!1 &5032219197556493848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8067275645653775738, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+  m_PrefabInstance: {fileID: 3036183471205383010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5593289863677159526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7475390135238841092, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+  m_PrefabInstance: {fileID: 3036183471205383010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6123726409101298070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -82920224563481868, guid: 54bef63cf8fb0d346b35e0c3cc3c97d1, type: 3}
+  m_PrefabInstance: {fileID: 3036183471205383010}
+  m_PrefabAsset: {fileID: 0}
