@@ -93,7 +93,7 @@ public class Base : MonoBehaviour
 
         if (defenceHit == false)
         {
-            currentBunkerDurability -= 50f;
+            currentBunkerDurability -= 5f;
 
             if (currentBunkerDurability == 0f)
             {
@@ -160,14 +160,27 @@ public class Base : MonoBehaviour
         defences[0].SetIsActive(value);
     }
 
-    public void UnlockChargeCannon()
+    public void UnlockDefence(string defenceString)
     {
-        foreach (GameObject ccObject in ccObjects) {
+        if (defenceString.Equals("Charge Cannon"))
+        {
+            UnlockChargeCannon();
+        }
+        if (defenceString.Equals("Spikes"))
+        {
+            UnlockSpikes();
+        }
+    }
+
+    void UnlockChargeCannon()
+    {
+        foreach (GameObject ccObject in ccObjects)
+        {
             ccObject.SetActive(true);
         }
     }
 
-    public void UnlockSpikes()
+    void UnlockSpikes()
     {
         foreach (GameObject spikeObject in spikeObjects) {
             spikeObject.SetActive(true);

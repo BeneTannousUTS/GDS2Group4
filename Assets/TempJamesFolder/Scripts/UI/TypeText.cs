@@ -37,11 +37,11 @@ public class TypeText : MonoBehaviour
         }
         else
         {
-            if (timeCheck > 6 && selfDestruct)
+            if (timeCheck > 5 && selfDestruct)
             {
                 timer.SetActive(true);
                 player.enabled = true;
-                iCanvas.SetActive(true);
+                //iCanvas.SetActive(true);
                 Destroy(gameObject);
                 //insert code to give player control
             }

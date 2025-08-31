@@ -58,7 +58,7 @@ public class Interactable : MonoBehaviour
     {
         foreach (GameObject childObject in outlineObjects)
         {
-            childObject.GetComponent<Renderer>().materials.ToList().Last().SetInt("_isOutlined", isOutlined);
+            if (childObject.GetComponent<Renderer>()) childObject.GetComponent<Renderer>().materials.ToList().Last().SetInt("_isOutlined", isOutlined);
         }
     }
 }

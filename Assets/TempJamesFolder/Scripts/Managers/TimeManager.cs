@@ -50,18 +50,24 @@ public class TimeManager : MonoBehaviour
                     currentTime = 0;
                     gameState = GameState.defence;
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
+                    FindAnyObjectByType<EnemySpawner>().StartDefencePhase();
                     door.SetActive(true);
                 }
                 else
                 {
+                    FindAnyObjectByType<GameManager>().LoseState();
                 }
             }
         }
         if (currentTime > defenceLength && gameState == GameState.defence)
         {
+            currentDay++;
+            if (currentDay >= 2)
+            {
+                FindAnyObjectByType<GameManager>().WinState();
+            }
             currentTime = 0;
             gameState = GameState.scavenge;
-            currentDay++;
             door.SetActive(false);
             AssignEvent();
         }

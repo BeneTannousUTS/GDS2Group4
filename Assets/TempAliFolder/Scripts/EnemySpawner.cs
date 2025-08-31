@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        StartDefencePhase();
+        // StartDefencePhase();
     }
 
     public void StartDefencePhase()
@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             waveIndex = -1;
-            StartCoroutine(WinState());
+            // StartCoroutine(WinState());
         }
     }
 

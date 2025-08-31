@@ -152,10 +152,14 @@ public class CraftingUI : MonoBehaviour
                     recipeManager.GetStorageManger().RemoveItem(ingredient, 1);
                 }
             }
-            recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
             if (selectedRecipe.GetRType() == BaseRecipe.recipeType.defence)
             {
                 selectedSlot.SetUnlocked(true);
+                FindAnyObjectByType<Base>().UnlockDefence(selectedRecipe.GetName());
+            }
+            else
+            {
+                recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
             }
             UpdateUI();
             ListView();
