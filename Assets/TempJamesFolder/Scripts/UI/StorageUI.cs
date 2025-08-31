@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class StorageUI : MonoBehaviour
 {
-    public List<GameObject> slots = new List<GameObject>();
+    public List<GameObject> slots;
     public GameObject baseSlot;
     public StorageManager storageManager;
     private int x = 0;
@@ -38,46 +37,58 @@ public class StorageUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        foreach (var slot in slots)
+        if (slots != null)
         {
-            Destroy(slot.gameObject);
-        }
-        x = 0;
-        y = 0;
-        slots.Clear();
-        foreach (var item in storageManager.itemStorage)
-        {
-            GameObject parentCanvas = gameObject;
-            switch (item.Key.GetIType())
+            foreach (var slot in slots)
             {
-                case BaseItem.itemType.resouce:
-                    parentCanvas = canvasArray[0].gameObject;
-                    break;
-                case BaseItem.itemType.tool:
-                    parentCanvas = canvasArray[1].gameObject;
-                    break;
-                case BaseItem.itemType.ship:
-                    parentCanvas = canvasArray[2].gameObject;
-                    break;
-                case BaseItem.itemType.defence:
-                    parentCanvas = canvasArray[3].gameObject;
-                    break;
-            }
-            GameObject slot = Instantiate(baseSlot, parentCanvas.transform);
-            slot.transform.position += new Vector3(200 * x, -250 * y);
-            slots.Add(slot);
-            x++;
-            if (x > 7)
-            {
+                Destroy(slot.gameObject);
                 x = 0;
-                y++;
+                y = 0;
             }
-            slot.GetComponent<Image>().sprite = item.Key.GetImage();
-            slot.transform.Find("Name").GetComponent<TMP_Text>().text = item.Key.GetName();
-            slot.transform.Find("Quantity").GetComponent<TMP_Text>().text = item.Value.ToString();
-            slot.GetComponent<Button>().onClick.AddListener(delegate { SelectItem(slot); });
-            ResourceSlot rSlot = slot.GetComponent<ResourceSlot>();
-            rSlot.SetItem(item.Key);
+            slots.Clear();
+        }
+        if (storageManager != null)
+        {
+            foreach (var item in storageManager.items)
+            {
+                if (item != null)
+                {
+                    GameObject parentCanvas = canvasArray[0].gameObject;
+                    switch (item.GetIType())
+                    {
+                        case BaseItem.itemType.resouce:
+                            parentCanvas = canvasArray[0].gameObject;
+                            break;
+                        case BaseItem.itemType.tool:
+                            parentCanvas = canvasArray[1].gameObject;
+                            break;
+                        case BaseItem.itemType.ship:
+                            parentCanvas = canvasArray[2].gameObject;
+                            break;
+                        case BaseItem.itemType.defence:
+                            parentCanvas = canvasArray[3].gameObject;
+                            break;
+                    }
+                    if (baseSlot)
+                    {
+                        GameObject slot = Instantiate(baseSlot, parentCanvas.transform);
+                        slot.transform.position += new Vector3(200 * x, -250 * y);
+                        slots.Add(slot);
+                        x++;
+                        if (x > 7)
+                        {
+                            x = 0;
+                            y++;
+                        }
+                        slot.GetComponent<Image>().sprite = item.GetImage();
+                        slot.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName();
+                        slot.transform.Find("Quantity").GetComponent<TMP_Text>().text = storageManager.quantity[item.itemID].ToString();
+                        slot.GetComponent<Button>().onClick.AddListener(delegate { SelectItem(slot); });
+                        ResourceSlot rSlot = slot.GetComponent<ResourceSlot>();
+                        rSlot.SetItem(item);
+                    }
+                }
+            }
         }
     }
 
@@ -142,6 +153,8 @@ public class StorageUI : MonoBehaviour
 
     void Start()
     {
+        slots = new List<GameObject>();
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame

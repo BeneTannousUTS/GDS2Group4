@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class CraftingUI : MonoBehaviour
 {
@@ -159,7 +158,7 @@ public class CraftingUI : MonoBehaviour
             }
             else
             {
-                recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
+                //recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
             }
             UpdateUI();
             ListView();

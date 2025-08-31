@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Mono.Cecil;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -77,13 +76,13 @@ public class Inventory : MonoBehaviour
     {
         if (leftHand)
         {
-            storageManager.StoreItem(leftHand);
+            //storageManager.StoreItem(leftHand);
             leftHand = null;
             inventoryUI.ClearInventoryUI(0);
         }
         if (rightHand)
         {
-            storageManager.StoreItem(rightHand);
+            //storageManager.StoreItem(rightHand);
             rightHand = null;
             inventoryUI.ClearInventoryUI(1);
         }

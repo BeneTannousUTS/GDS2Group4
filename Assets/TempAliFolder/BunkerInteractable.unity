@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1076039161}
   charCount: 0
-  textSpeed: 40
+  textSpeed: 50
   selfDestruct: 1
   player: {fileID: 190199004}
   timer: {fileID: 567852608}
@@ -7462,7 +7462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1026043191
 MonoBehaviour:
   m_ObjectHideFlags: 0

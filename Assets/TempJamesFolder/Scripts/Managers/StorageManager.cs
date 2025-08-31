@@ -9,52 +9,35 @@ public class StorageManager : MonoBehaviour
     private int storageCapacity;
     [SerializeField]
     private int maxStorage;
-    public Dictionary<BaseItem, int> itemStorage = new Dictionary<BaseItem, int>();
+    public BaseItem[] items;
+    public int[] quantity = new int[100];
     [SerializeField]
     private StorageUI storageUI;
-    public bool StoreItem(BaseItem item)
+    public bool StoreItem(GameObject a)
     {
-        if (itemStorage.ContainsKey(item))
-        {
-            itemStorage[item] += 1;
-            storageUI.UpdateUI();
-            return true;
-        }
-        else
-        {
-            if (storageCapacity < maxStorage)
-            {
-                Debug.Log(item);
-                itemStorage.Add(item, 1);
-                storageUI.UpdateUI();
-                storageCapacity++;
-                return true;
-            }
-            return false;
-        }
+        BaseItem item = a.GetComponent<ItemInfo>().baseItem;
+        items[item.itemID] = item;
+        quantity[item.itemID]++;
+        storageUI.UpdateUI();
+        a.SetActive(false);
+        return true;
     }
 
     public int CheckQuantity(BaseItem item)
     {
-        if (itemStorage.ContainsKey(item))
-        {
-            return itemStorage[item];
-        }
-        return 0;
+        return quantity[item.itemID];
     }
 
     public void RemoveItem(BaseItem item, int quant)
     {
-        if (itemStorage.ContainsKey(item))
+        if (quantity[item.itemID] > quant)
         {
-            if (itemStorage[item] > quant)
-            {
-                itemStorage[item] -= quant;
-            }
-            else
-            {
-                itemStorage.Remove(item);
-            }
+            quantity[item.itemID] -= quant;
+        }
+        else
+        {
+            quantity[item.itemID] = 0;
+            items[item.itemID] = null;
         }
         storageUI.UpdateUI();
     }
@@ -64,6 +47,8 @@ public class StorageManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        items = new BaseItem[100];
+        quantity = new int[100];
+
     }
 }
