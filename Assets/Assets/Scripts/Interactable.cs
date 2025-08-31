@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class Interactable : MonoBehaviour
         UI,
         Test
     }
+
+    [SerializeField] List<GameObject> outlineObjects;
 
     public InteractType interactType;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,10 +56,10 @@ public class Interactable : MonoBehaviour
     }
     public void ActivateOutline(int isOutlined) // using an int instead of a bool because shadergraph uses ints to represent bools
     {
-        if (gameObject.GetComponent<Renderer>())
+        foreach (GameObject childObject in outlineObjects)
         {
-            gameObject.GetComponent<Renderer>().materials.ToList()[-1].SetInt("_isOutlined", isOutlined);
-        } 
+            if (childObject.GetComponent<Renderer>()) childObject.GetComponent<Renderer>().materials.ToList().Last().SetInt("_isOutlined", isOutlined);
+        }
     }
 }
 
