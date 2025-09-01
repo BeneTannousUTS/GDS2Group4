@@ -11070,7 +11070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikes: {fileID: 1534104609}
-  spikeValueDisplay: {fileID: 0}
+  spikeValueDisplay: {fileID: 28829113}
 --- !u!1 &1563496259
 GameObject:
   m_ObjectHideFlags: 0
