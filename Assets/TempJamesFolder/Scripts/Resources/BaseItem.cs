@@ -7,7 +7,7 @@ public class BaseItem : ScriptableObject
     [SerializeField]
     private itemType iType;
     [SerializeField]
-    private int itemID;
+    public int itemID;
     [SerializeField]
     private string itemName;
     [SerializeField]

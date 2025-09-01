@@ -19,8 +19,7 @@ public class CollectResource : MonoBehaviour
     {
         if (other.GetComponent<ItemInfo>())
         {
-            storageManager.StoreItem(other.GetComponent<ItemInfo>().baseItem);
-            Destroy(other.gameObject);
+            storageManager.StoreItem(other.gameObject);
         }
     }
 }
