@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private float interactCooldown = 0.2f;
     Transform camObject;
-    private bool isCamLocked = false;
+    private bool isCamLocked = false, isClimbing = false;
     private float vertical, horizontal, currentCamY = 0f;
     private Vector3 moveVector;
     private CharacterController characterController;
@@ -65,7 +65,11 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         moveVector.Normalize();
-        if (!characterController.isGrounded)
+        if (isClimbing)
+        {
+            moveVector.y = moveVector.z;
+        }
+        else if (!characterController.isGrounded)
         {
             moveVector.y = gravity;
         }
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
         }
+        //Debug.Log(moveVector);
     }
 
     private void HandleCooldowns()
@@ -152,5 +157,21 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetMouseInputs()
     {
         return new Vector2(lookAction.ReadValue<Vector2>().x * cameraSensitivity * Time.fixedDeltaTime, -lookAction.ReadValue<Vector2>().y * cameraSensitivity * Time.fixedDeltaTime);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+        }
     }
 }
