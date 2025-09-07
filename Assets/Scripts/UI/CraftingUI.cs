@@ -104,19 +104,18 @@ public class CraftingUI : MonoBehaviour
         listCanvas.gameObject.SetActive(false);
         foreach (var ingredient in recipe.GetRecipeIngredients())
         {
-            for (int i = 0; i < recipe.GetQuant(ingredient); i++)
+            GameObject temp = Instantiate(itemSlot, itemCanvas.transform);
+            temp.transform.position += new Vector3(200 * x, -100 * y);
+            ingredients.Add(temp);
+            x++;
+            temp.GetComponent<Image>().sprite = ingredient.GetImage();
+            int quant = recipe.GetQuant(ingredient);
+            temp.transform.Find("Name").GetComponent<TMP_Text>().text = ingredient.GetName();
+            temp.transform.Find("Quantity").GetComponent<TMP_Text>().text = quant.ToString();
+            if (recipeManager.GetStorageManger().CheckQuantity(ingredient) < quant)
             {
-                GameObject temp = Instantiate(itemSlot, itemCanvas.transform);
-                temp.transform.position += new Vector3(200 * x, -100 * y);
-                ingredients.Add(temp);
-                x++;
-                temp.GetComponent<Image>().sprite = ingredient.GetImage();
-                temp.transform.Find("Name").GetComponent<TMP_Text>().text = ingredient.GetName();
-                if (recipeManager.GetStorageManger().CheckQuantity(ingredient) <= i)
-                {
-                    temp.transform.Find("Name").GetComponent<TMP_Text>().color = Color.red;
-                    canCraft = false;
-                }
+                temp.transform.Find("Name").GetComponent<TMP_Text>().color = Color.red;
+                canCraft = false;
             }
         }
         if (!canCraft)
