@@ -154,7 +154,7 @@ public class StorageUI : MonoBehaviour
     void Start()
     {
         slots = new List<GameObject>();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
