@@ -36,16 +36,9 @@ public class Base : MonoBehaviour
     {
         UpdateDisplay();
 
-        foreach (Defence defence in defences)
-        {
-            if (defence.GetIsRanged() && defence.GetIsActive())
-            {
-                foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-                {
-                    enemy.GetComponent<EnemyAI>().DealDamage(defence.GetDamage(enemy.GetComponent<EnemyAI>().GetSide()) * Time.deltaTime);
-                }
-            }
-        }
+        if (defences[0].GetIsActive()) {
+            FindAnyObjectByType<EnemySpawner>().DamageEnemies(defences[0].GetSide(), 1000f, false, defences[0].GetDamage(4) * Time.deltaTime);
+        }        
 
         bool repairRequired = false;
         foreach (Repair repairTask in repairTasks)
@@ -73,7 +66,7 @@ public class Base : MonoBehaviour
         }
     }
 
-    public void TakeDamage(EnemyAI enemy)
+    public void AttackBunker(EnemyAI enemy)
     {
         bool defenceHit = false;
 
@@ -100,6 +93,16 @@ public class Base : MonoBehaviour
                 FindAnyObjectByType<GameManager>().LoseState(); // YOU LOSE
             }
         }
+    }
+
+    public void AttackBarrier(EnemyAI enemy)
+    {
+
+    }
+
+    public void AttackAudioLure(EnemyAI enemy)
+    {
+
     }
 
     public void TriggerRepair(string defenceName)
@@ -182,8 +185,19 @@ public class Base : MonoBehaviour
 
     void UnlockSpikes()
     {
-        foreach (GameObject spikeObject in spikeObjects) {
+        foreach (GameObject spikeObject in spikeObjects)
+        {
             spikeObject.SetActive(true);
         }
+    }
+
+    public bool GetBarrierActive(int side)
+    {
+        return false;
+    }
+
+    public bool GetAudioLureActive(int side)
+    {
+        return false;
     }
 }

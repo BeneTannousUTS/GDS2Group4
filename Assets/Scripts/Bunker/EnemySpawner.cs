@@ -8,6 +8,11 @@ public class EnemySpawner : MonoBehaviour
     public List<float> waitTimes;
     public List<float> maxSpawnIntervals;
     public List<float> minSpawnIntervals;
+    public List<Vector3> EnemySpawnPositions;
+    public List<Vector3> BunkerSidePositions;
+    public List<Vector3> BarrierPositions;
+    public List<Vector3> AudioLurePositions;
+    private List<List<EnemyAI>> enemyList;
     public int waveCount;
     private int waveIndex = -1;
 
@@ -17,9 +22,16 @@ public class EnemySpawner : MonoBehaviour
     private float minTimeTillNext = 1f;
     private int enemiesLeft;
 
+    private int nextSide = 0;
+
     void Start()
     {
+        enemyList = new List<List<EnemyAI>>();
         // StartDefencePhase();
+        for (int i = 0; i < 4; i++)
+        {
+            enemyList.Add(new List<EnemyAI>());
+        }
     }
 
     public void StartDefencePhase()
@@ -36,7 +48,21 @@ public class EnemySpawner : MonoBehaviour
             if (timeTillNext <= 0f)
             {
                 GameObject.FindWithTag("Base").GetComponent<Base>().ActivateTurrets(true);
-                Instantiate(enemyPrefab);
+
+                GameObject tempEnemy = Instantiate(enemyPrefab);
+                tempEnemy.GetComponent<EnemyAI>().Initialise(nextSide, EnemySpawnPositions[nextSide] + transform.position, BunkerSidePositions[nextSide] + transform.position);
+                if (FindAnyObjectByType<Base>().GetBarrierActive(nextSide))
+                {
+                    tempEnemy.GetComponent<EnemyAI>().BarrierActivate(BarrierPositions[nextSide] + transform.position);
+                }
+                if (FindAnyObjectByType<Base>().GetAudioLureActive(nextSide))
+                {
+                    tempEnemy.GetComponent<EnemyAI>().AudioLureActivate(AudioLurePositions[nextSide] + transform.position);
+                }
+                enemyList[nextSide].Add(tempEnemy.GetComponent<EnemyAI>());
+
+                nextSide = Random.Range(0, 4);
+
                 enemiesLeft -= 1;
                 if (enemiesLeft == 0)
                 {
@@ -71,9 +97,61 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void RemoveEnemy(int side, EnemyAI enemy)
+    {
+        enemyList[side].Remove(enemy);
+    }
+
     IEnumerator WinState()
     {
         yield return new WaitForSeconds(12f);
         FindAnyObjectByType<GameManager>().WinState();
+    }
+
+    public void BarrierDestroyed(int side)
+    {
+        foreach (EnemyAI enemy in enemyList[side])
+        {
+            enemy.ResumePath();
+        }
+    }
+
+    public void AudioLureDestroyed(int side)
+    {
+        foreach (EnemyAI enemy in enemyList[side])
+        {
+            if (FindAnyObjectByType<Base>().GetBarrierActive(side))
+            {
+                enemy.BarrierActivate(BarrierPositions[side] + transform.position);
+            }
+            else
+            {
+                enemy.ResumePath();
+            }
+        }
+    }
+
+    public void AudioLureActivate(int side)
+    {
+        foreach (EnemyAI enemy in enemyList[side])
+        {
+            enemy.AudioLureActivate(AudioLurePositions[side] + transform.position);
+        }
+    }
+
+    public void DamageEnemies(int side, float distance, bool pierce, float damage)
+    {
+        foreach (EnemyAI enemy in enemyList[side])
+        {
+            if (enemy.GetDistanceToBunker() <= distance)
+            {
+                enemy.DealDamage(damage);
+
+                if (!pierce)
+                {
+                    break;
+                }
+            }
+        }
     }
 }
