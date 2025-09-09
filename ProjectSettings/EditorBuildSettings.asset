@@ -12,13 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/JulesTestScene.unity
     guid: 4b83a8ce0fe51f54c9f83c855abfb1ed
   - enabled: 1
-    path: Assets/TempAliFolder/BunkerInteractable.unity
+    path: Assets/Scenes/BunkerInteractable.unity
     guid: c9438c87dbf4f81468e9bb71429960fa
   - enabled: 1
-    path: Assets/TempAliFolder/LoseState.unity
+    path: Assets/Scenes/LoseState.unity
     guid: 39b2b55e64416f949ac68bea04aba8ba
   - enabled: 1
-    path: Assets/TempAliFolder/WinState.unity
+    path: Assets/Scenes/WinState.unity
     guid: cbda4cf627c258d41b9d94f1e5afa464
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

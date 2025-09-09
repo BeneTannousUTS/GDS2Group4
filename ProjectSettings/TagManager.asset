@@ -10,6 +10,7 @@ TagManager:
   - TurretDisplay
   - Repair
   - Bball
+  - Ladder
   layers:
   - Default
   - TransparentFX
