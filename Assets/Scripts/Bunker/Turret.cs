@@ -6,15 +6,12 @@ public class Turret : Defence
     bool damaged = false;
 
     public override float GetDamage(int side) {
-        if (side == GetSide()) {
-            if (damaged) {
-                return damage * Mathf.Max(currentDurability / maxDurability, 0.25f);
-            }
-            else {
-                return damage;
-            }
+        if (damaged) {
+            return damage * Mathf.Max(currentDurability / maxDurability, 0.25f);
         }
-        return 0f;
+        else {
+            return damage;
+        }
     }
 
     public override void RotateRight() {
