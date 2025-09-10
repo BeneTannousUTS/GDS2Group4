@@ -6,42 +6,82 @@ public class EnemyAI : MonoBehaviour
 {
     int side = 0;
     Vector3 startPos;
-    public List<Vector3> startPositions = new List<Vector3>();
+    Vector3 endPos;
     Vector3 hitPos;
-    public List<Vector3> hitPositions = new List<Vector3>();
+    Vector3 barrierPos;
+    Vector3 audioLurePos;
+
+    float distanceToBunker = 0f;
 
     float timeTillHit = 0f;
     public float enemySpeed = 4f;
+    public float attackSpeed = 5f;
 
     float deaggroMeter = 0f;
     public float deaggroMax = 10f;
 
     private enum AiState
     {
-        Attack,
+        ApproachBunker,
+        ApproachBarrier,
+        ApproachAudioLure,
+        AttackBunker,
+        AttackBarrier,
+        AttackAudioLure,
         Run
     }
 
-    AiState currentState = AiState.Attack;
+    AiState currentState = AiState.ApproachBunker;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        side = Random.Range(0, 4);
 
-        startPos = startPositions[side];
-        hitPos = hitPositions[side];
+    }
+
+    public void Initialise(int spawnSide, Vector3 spawnStartPos, Vector3 spawnHitPos)
+    {
+        side = spawnSide;
+
+        startPos = spawnStartPos;
+        hitPos = spawnHitPos;
 
         if (side == 0 || side == 2)
         {
-            startPos.x += Random.Range(-0.2f, 0.2f);
-            hitPos.x += Random.Range(-0.05f, 0.05f);
+            startPos.x += Random.Range(-0.6f, 0.6f);
+            hitPos.x += Random.Range(-0.15f, 0.15f);
         }
         else
         {
-            startPos.y += Random.Range(-0.2f, 0.2f);
-            hitPos.y += Random.Range(-0.04f, 0.04f);
+            startPos.y += Random.Range(-0.6f, 0.6f);
+            hitPos.y += Random.Range(-0.12f, 0.12f);
         }
+
+        endPos = startPos;
+        distanceToBunker = Vector3.Distance(startPos, hitPos);
+        transform.position = startPos;
+    }
+
+    public void BarrierActivate(Vector3 spawnBarrierPos)
+    {
+        startPos = transform.position;
+        currentState = AiState.ApproachBarrier;
+        barrierPos = spawnBarrierPos;
+        timeTillHit = 0f;
+    }
+
+    public void AudioLureActivate(Vector3 spawnAudioLurePos)
+    {
+        startPos = transform.position;
+        currentState = AiState.ApproachAudioLure;
+        audioLurePos = spawnAudioLurePos;
+        timeTillHit = 0f;
+    }
+
+    public void ResumePath()
+    {
+        startPos = endPos;
+        timeTillHit = enemySpeed * (1 - (Vector3.Distance(transform.position, hitPos) / distanceToBunker));
     }
 
     // Update is called once per frame
@@ -49,29 +89,66 @@ public class EnemyAI : MonoBehaviour
     {
         timeTillHit += Time.deltaTime;
 
-        if (currentState == AiState.Attack)
+        if (currentState == AiState.ApproachBunker)
         {
             transform.position = startPos + ((hitPos - startPos) * (timeTillHit / enemySpeed));
             if (Vector3.Distance(transform.position, hitPos) <= 0.01f)
             {
-                Deaggro();
-                GameObject.FindWithTag("Base").GetComponent<Base>().TakeDamage(this);
+                currentState = AiState.AttackBunker;
             }
         }
+
+        else if (currentState == AiState.ApproachBarrier)
+        {
+            transform.position = startPos + ((barrierPos - startPos) * (timeTillHit / (enemySpeed * 0.8f)));
+            if (Vector3.Distance(transform.position, barrierPos) <= 0.01f)
+            {
+                currentState = AiState.AttackBarrier;
+            }
+        }
+
+        else if (currentState == AiState.ApproachAudioLure)
+        {
+            transform.position = startPos + ((audioLurePos - startPos) * (timeTillHit / enemySpeed));
+            if (Vector3.Distance(transform.position, audioLurePos) <= 0.01f)
+            {
+                currentState = AiState.AttackAudioLure;
+            }
+        }
+
+        else if (currentState == AiState.AttackBunker && timeTillHit >= attackSpeed)
+        {
+            GameObject.FindWithTag("Base").GetComponent<Base>().AttackBunker(this);
+            timeTillHit = 0f;
+        }
+
+        else if (currentState == AiState.AttackBarrier && timeTillHit >= attackSpeed)
+        {
+            GameObject.FindWithTag("Base").GetComponent<Base>().AttackBarrier(this);
+            timeTillHit = 0f;
+        }
+
+        else if (currentState == AiState.AttackAudioLure && timeTillHit >= attackSpeed)
+        {
+            GameObject.FindWithTag("Base").GetComponent<Base>().AttackAudioLure(this);
+            timeTillHit = 0f;
+        }
+
         else if (currentState == AiState.Run)
         {
-            transform.position = hitPos + ((startPos - hitPos) * (timeTillHit / (enemySpeed * 0.5f)));
-            if (Vector3.Distance(transform.position, startPos) <= 0.01f)
+            transform.position = hitPos + ((endPos - hitPos) * (timeTillHit / (enemySpeed * 0.5f)));
+            if (Vector3.Distance(transform.position, endPos) <= 0.01f)
             {
                 Destroy(gameObject);
             }
-            
         }
     }
 
     void Deaggro()
     {
-        timeTillHit = (enemySpeed * 0.5f) - (0.5f * timeTillHit);
+        FindAnyObjectByType<EnemySpawner>().RemoveEnemy(side, this);
+        timeTillHit = 0.5f * enemySpeed * (Vector3.Distance(transform.position, hitPos) / distanceToBunker);
+        Debug.Log(timeTillHit);
         currentState = AiState.Run;
         StartCoroutine(Flash());
     }
@@ -80,7 +157,7 @@ public class EnemyAI : MonoBehaviour
     {
         deaggroMeter += damage;
 
-        if (deaggroMeter >= deaggroMax && currentState == AiState.Attack)
+        if (deaggroMeter >= deaggroMax && currentState != AiState.Run)
         {
             Deaggro();
         }
@@ -96,5 +173,10 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
         StartCoroutine(Flash());
+    }
+
+    public float GetDistanceToBunker()
+    {
+        return distanceToBunker;
     }
 }

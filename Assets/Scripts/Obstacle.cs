@@ -23,4 +23,9 @@ public class Obstacle : MonoBehaviour
             if (itemName == UnlockItemName) Destroy(gameObject);
         }
     }
+
+    public string getUnlockItemName()
+    {
+        return UnlockItemName;
+    }
 }
