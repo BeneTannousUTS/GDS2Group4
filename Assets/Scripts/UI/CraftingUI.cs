@@ -105,7 +105,7 @@ public class CraftingUI : MonoBehaviour
         foreach (var ingredient in recipe.GetRecipeIngredients())
         {
             GameObject temp = Instantiate(itemSlot, itemCanvas.transform);
-            temp.transform.position += new Vector3(200 * x, -100 * y);
+            temp.transform.localPosition += new Vector3(200 * x, -100 * y);
             ingredients.Add(temp);
             x++;
             temp.GetComponent<Image>().sprite = ingredient.GetImage();

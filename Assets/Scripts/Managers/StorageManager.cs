@@ -37,7 +37,6 @@ public class StorageManager : MonoBehaviour
         else
         {
             quantity[item.itemID] = 0;
-            items[item.itemID] = null;
         }
         storageUI.UpdateUI();
     }
@@ -47,8 +46,8 @@ public class StorageManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        items = new BaseItem[100];
-        quantity = new int[100];
+        //items = new BaseItem[100];
+        //quantity = new int[100];
 
     }
 }

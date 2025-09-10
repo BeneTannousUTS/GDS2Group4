@@ -24,5 +24,5 @@ public class CollectResource : MonoBehaviour
         {
             storageManager.StoreItem(other.gameObject);
         }
-    }
+    }   
 }

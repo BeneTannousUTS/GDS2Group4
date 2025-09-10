@@ -42,7 +42,7 @@ public class StorageUI : MonoBehaviour
             foreach (var slot in slots)
             {
                 Destroy(slot.gameObject);
-                x = 0;
+                x = 1;
                 y = 0;
             }
             slots.Clear();
@@ -51,7 +51,7 @@ public class StorageUI : MonoBehaviour
         {
             foreach (var item in storageManager.items)
             {
-                if (item != null)
+                if (item != null && storageManager.quantity[item.itemID] != 0)
                 {
                     GameObject parentCanvas = canvasArray[0].gameObject;
                     switch (item.GetIType())
@@ -69,23 +69,26 @@ public class StorageUI : MonoBehaviour
                             parentCanvas = canvasArray[3].gameObject;
                             break;
                     }
-                    if (baseSlot)
+                    if (parentCanvas == canvasArray[canvasPos].gameObject)
                     {
-                        GameObject slot = Instantiate(baseSlot, parentCanvas.transform);
-                        slot.transform.position += new Vector3(200 * x, -250 * y);
-                        slots.Add(slot);
-                        x++;
-                        if (x > 7)
+                        if (baseSlot)
                         {
-                            x = 0;
-                            y++;
+                            GameObject slot = Instantiate(baseSlot, parentCanvas.transform);
+                            slot.transform.localPosition += new Vector3(200 * x, -250 * y);
+                            slots.Add(slot);
+                            x++;
+                            if (x > 5)
+                            {
+                                x = 0;
+                                y++;
+                            }
+                            slot.GetComponent<Image>().sprite = item.GetImage();
+                            slot.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName();
+                            slot.transform.Find("Quantity").GetComponent<TMP_Text>().text = storageManager.quantity[item.itemID].ToString();
+                            slot.GetComponent<Button>().onClick.AddListener(delegate { SelectItem(slot); });
+                            ResourceSlot rSlot = slot.GetComponent<ResourceSlot>();
+                            rSlot.SetItem(item);
                         }
-                        slot.GetComponent<Image>().sprite = item.GetImage();
-                        slot.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName();
-                        slot.transform.Find("Quantity").GetComponent<TMP_Text>().text = storageManager.quantity[item.itemID].ToString();
-                        slot.GetComponent<Button>().onClick.AddListener(delegate { SelectItem(slot); });
-                        ResourceSlot rSlot = slot.GetComponent<ResourceSlot>();
-                        rSlot.SetItem(item);
                     }
                 }
             }
@@ -137,7 +140,6 @@ public class StorageUI : MonoBehaviour
 
     public void ChangeScreen(int change)
     {
-        ResetUI();
         canvasArray[canvasPos].gameObject.SetActive(false);
         canvasPos += change;
         if (canvasPos < 0)
@@ -148,6 +150,7 @@ public class StorageUI : MonoBehaviour
         {
             canvasPos = 0;
         }
+        ResetUI();
         canvasArray[canvasPos].gameObject.SetActive(true);
     }
 
