@@ -6,7 +6,10 @@ public class CollectResource : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (storageManager == null)
+        {
+            storageManager = FindAnyObjectByType<StorageManager>();
+        }
     }
 
     // Update is called once per frame
