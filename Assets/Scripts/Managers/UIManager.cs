@@ -1,4 +1,6 @@
+using GLTFast.Schema;
 using UnityEngine;
+using Camera = UnityEngine.Camera;
 
 public class UIManager : MonoBehaviour
 {
@@ -6,6 +8,9 @@ public class UIManager : MonoBehaviour
     public GameObject storageCanvas;
     public GameObject guideCanvas;
     public GameObject currentCanvas;
+    [SerializeField] private Camera mainCamera;
+    public Camera uiCamera;
+    public UIActivator uiActive;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,9 +32,6 @@ public class UIManager : MonoBehaviour
 
     public void CloseCanvas()
     {
-        FindAnyObjectByType<PlayerController>().enabled = true;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        gameObject.SetActive(false);
+        uiActive.returnCamera = true;
     }
 }
