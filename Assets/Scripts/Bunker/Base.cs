@@ -133,8 +133,6 @@ public class Base : MonoBehaviour
                 defence.RotateLeft();
             }
         }
-
-        GameObject.FindWithTag("TurretDisplay").GetComponent<TurretDisplay>().RotateLeft();
     }
 
     public void RotateRight()
@@ -146,8 +144,6 @@ public class Base : MonoBehaviour
                 defence.RotateRight();
             }
         }
-
-        GameObject.FindWithTag("TurretDisplay").GetComponent<TurretDisplay>().RotateRight();
     }
 
     public void Attack(Defence defence)
