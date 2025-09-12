@@ -121,16 +121,16 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitObject;
         if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, interactDistance, ~noPlayerMask))
         {
-            if (hitObject.transform.gameObject.GetComponent<Interactable>())
+            if (hitObject.collider.transform.gameObject.GetComponent<Interactable>())
             {
-                if (targetedInteractable != hitObject.transform.gameObject)
+                if (targetedInteractable != hitObject.collider.transform.gameObject)
                 {
                     if (targetedInteractable != null)
                     {
                         targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
                     }
                     interactCanvas.SetActive(true);
-                    targetedInteractable = hitObject.transform.gameObject;
+                    targetedInteractable = hitObject.collider.transform.gameObject;
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
                 }
             }
