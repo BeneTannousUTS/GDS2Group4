@@ -174,4 +174,22 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+
+        if (rb != null && !rb.isKinematic)
+        {
+            Vector3 pushForce = hit.controller.velocity.magnitude * hit.normal * -1 * moveSpeed;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            rb.AddForceAtPosition(pushForce * rb.mass / 2, hit.point);
+            rb.constraints = RigidbodyConstraints.None;
+        }
+    }
+
+    public void StopClimbing()
+    {
+        isClimbing = false;
+    }
 }
