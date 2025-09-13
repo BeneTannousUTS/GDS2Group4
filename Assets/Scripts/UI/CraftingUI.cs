@@ -37,10 +37,10 @@ public class CraftingUI : MonoBehaviour
     }
     public void AddUI(BaseRecipe item)
     {
-        GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
+        GameObject temp = Instantiate(recipeSlot, listCanvas.gameObject.transform);
         RecipeSlot slot = temp.GetComponent<RecipeSlot>();
         slot.SetRecipe(item);
-        temp.transform.position += new Vector3(200 * x, -250 * y);
+        temp.transform.localPosition += new Vector3(200 * x, -250 * y);
         slots.Add(temp);
         x++;
         if (x > 7)
@@ -67,7 +67,7 @@ public class CraftingUI : MonoBehaviour
             GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
             RecipeSlot slot = temp.GetComponent<RecipeSlot>();
             slot.SetRecipe(item);
-            temp.transform.position += new Vector3(200 * x, -250 * y);
+            temp.transform.localPosition += new Vector3(200 * x, -250 * y);
             slots.Add(temp);
             x++;
             if (x > 7)

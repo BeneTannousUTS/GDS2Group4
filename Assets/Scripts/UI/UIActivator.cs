@@ -13,6 +13,8 @@ public class UIActivator : MonoBehaviour
     private Quaternion playerRot;
     public GameObject player;
     public bool returnCamera;
+    public bool tutorial;
+    public GameObject guideCanvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public void ActivateCanvas()
@@ -45,6 +47,12 @@ public class UIActivator : MonoBehaviour
                 uiCamera.gameObject.SetActive(true);
                 timer = 0;
                 moveCamera = false;
+                if (tutorial)
+                {
+                    FindAnyObjectByType<UIManager>().tutorialAnim = false;
+                    guideCanvas.SetActive(true);
+                    tutorial = false;
+                }
             }
         }
         if (returnCamera)

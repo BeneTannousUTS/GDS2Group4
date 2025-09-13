@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GuideUI : MonoBehaviour
 {
     public GameObject[] screens;
-    public int selectedOption;
+    public int selectedOption = 0;
     public List<BaseItem> items = new List<BaseItem>();
     private List<GameObject> slots = new List<GameObject>();
     public GameObject selectionCanvas;
