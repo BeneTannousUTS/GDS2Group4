@@ -69,7 +69,7 @@ public class TimeManager : MonoBehaviour
             currentTime = 0;
             gameState = GameState.scavenge;
             door.SetActive(false);
-            AssignEvent();
+            //AssignEvent();
         }
         if (gameState == GameState.scavenge)
         {

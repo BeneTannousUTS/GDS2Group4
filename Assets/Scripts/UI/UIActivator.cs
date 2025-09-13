@@ -1,3 +1,4 @@
+using Den.Tools;
 using UnityEngine;
 
 public class UIActivator : MonoBehaviour
@@ -50,6 +51,7 @@ public class UIActivator : MonoBehaviour
                 if (tutorial)
                 {
                     FindAnyObjectByType<UIManager>().tutorialAnim = false;
+                    FindAnyObjectByType<UIManager>().background.color = new Color32(0, 79, 0, 255);
                     guideCanvas.SetActive(true);
                     tutorial = false;
                 }

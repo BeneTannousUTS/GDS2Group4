@@ -16,6 +16,9 @@ MonoBehaviour:
   itemID: 99
   itemName: Crowbar
   prefab: {fileID: 0}
-  itemWeight: 5
+  itemWeight: 40
   itemRarity: 1
   itemIcon: {fileID: 21300000, guid: 156c5814226e5e245801c6b007a3b11c, type: 3}
+  itemDesc: 
+  useDesc: 
+  useImg: {fileID: 0}
