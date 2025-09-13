@@ -11,6 +11,7 @@ TagManager:
   - Repair
   - Bball
   - Ladder
+  - Tree
   layers:
   - Default
   - TransparentFX
