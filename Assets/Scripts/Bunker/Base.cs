@@ -8,6 +8,10 @@ public class Base : MonoBehaviour
     public GameObject emergencyLight;
     bool repair = false;
 
+     public AudioClip turretShoot;
+    public AudioClip steamSound;
+    bool steam = false;
+
     public float maxBunkerDurability = 250f;
     float currentBunkerDurability;
 
@@ -36,9 +40,20 @@ public class Base : MonoBehaviour
     {
         UpdateDisplay();
 
-        if (defences[0].GetIsActive()) {
+        if (defences[0].GetIsActive() == false && FindAnyObjectByType<EnemySpawner>().EnemyCount(defences[0].GetSide()) != 0)
+        {
+            defences[0].SetIsActive(true);
+            StartCoroutine(PlayTurretSound());
+        }
+        else if (FindAnyObjectByType<EnemySpawner>().EnemyCount(defences[0].GetSide()) == 0)
+        {
+            defences[0].SetIsActive(false);
+        }
+
+        if (defences[0].GetIsActive())
+        {
             FindAnyObjectByType<EnemySpawner>().DamageEnemies(defences[0].GetSide(), 1000f, false, defences[0].GetDamage(4) * Time.deltaTime);
-        }        
+        }
 
         bool repairRequired = false;
         foreach (Repair repairTask in repairTasks)
@@ -63,6 +78,26 @@ public class Base : MonoBehaviour
         else
         {
             emergencyLight.SetActive(false);
+        }
+    }
+
+    IEnumerator PlaySteamSound()
+    {
+        yield return new WaitForSeconds(1.5f);
+        if (steam)
+        {
+            FindAnyObjectByType<AudioManager>().PlaySound(steamSound);
+            StartCoroutine(PlaySteamSound());
+        }
+    }
+
+    IEnumerator PlayTurretSound()
+    {
+        if (defences[0].GetIsActive())
+        {
+            FindAnyObjectByType<AudioManager>().PlaySound(turretShoot);
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(PlayTurretSound());
         }
     }
 
@@ -195,5 +230,19 @@ public class Base : MonoBehaviour
     public bool GetAudioLureActive(int side)
     {
         return false;
+    }
+
+    public void StartSteamSound()
+    {
+        if (steam != true)
+        {
+            steam = true;
+            StartCoroutine(PlaySteamSound());
+        }
+    }
+
+    public void StopSteamSound()
+    {
+        steam = false;
     }
 }

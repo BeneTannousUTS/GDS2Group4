@@ -20,6 +20,9 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private BaseEvent[] events;
     [SerializeField] private GameObject warningCanvas;
     [SerializeField] private GameObject door;
+
+    [SerializeField] private AudioClip doorClose;
+    [SerializeField] private AudioClip doorOpen;
     private bool playerInBunker;
 
     public void AssignEvent()
@@ -51,7 +54,9 @@ public class TimeManager : MonoBehaviour
                     gameState = GameState.defence;
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
                     FindAnyObjectByType<EnemySpawner>().StartDefencePhase();
-                    door.SetActive(true);
+                    door.GetComponent<BoxCollider>().enabled = true;
+                    door.GetComponent<Animator>().SetTrigger("Close");
+                    FindAnyObjectByType<AudioManager>().PlaySound(doorClose);
                 }
                 else
                 {
@@ -68,7 +73,9 @@ public class TimeManager : MonoBehaviour
             }
             currentTime = 0;
             gameState = GameState.scavenge;
-            door.SetActive(false);
+            door.GetComponent<BoxCollider>().enabled = false;
+            door.GetComponent<Animator>().SetTrigger("Open");
+            FindAnyObjectByType<AudioManager>().PlaySound(doorOpen);
             //AssignEvent();
         }
         if (gameState == GameState.scavenge)

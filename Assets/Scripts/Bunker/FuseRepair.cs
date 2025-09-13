@@ -4,21 +4,33 @@ public class FuseRepair : Repair
 {
     public GameObject visualFuse;
 
-    public override void Activate() {
-        if (repairRequired && true) { // Will eventually be if holding fuse
+    public override void Activate()
+    {
+        foreach (string item in FindAnyObjectByType<Inventory>().GetHeldItemNames())
+        {
+            Debug.Log(item);
+        }
+        if (repairRequired && FindAnyObjectByType<Inventory>().GetHeldItemNames().Contains("Fuse"))
+        { // Will eventually be if holding fuse
             repairRequired = false;
             defence.Repair();
+            VisualRepair();
         }
-
-        VisualRepair();
     }
 
-    public override void VisualRepair() {
+    public override void VisualRepair()
+    {
         visualFuse.SetActive(true);
     }
 
-    public override void TakeDamage() {
+    public override void TakeDamage()
+    {
         repairRequired = true;
         visualFuse.SetActive(false);
+    }
+
+    public override void PlayAnimation()
+    {
+        
     }
 }

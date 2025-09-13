@@ -41,6 +41,8 @@ public class Interactable : MonoBehaviour
             case InteractType.Switch:
                 Debug.Log("Activate");
                 GetComponent<Activator>().Activate();
+                GetComponent<Activator>().PlaySound();
+                GetComponent<Activator>().PlayAnimation();
                 break;
             case InteractType.Obstacle:
                 GetComponent<Obstacle>().Unlock(playerRef.GetComponent<Inventory>().GetHeldItemNames());
