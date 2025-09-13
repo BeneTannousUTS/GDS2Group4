@@ -26,6 +26,7 @@ public class CraftingUI : MonoBehaviour
     private RecipeSlot selectedSlot;
     [SerializeField] private Button closeBtn;
 
+
     public void CloseUI()
     {
         ListView();

@@ -26,6 +26,7 @@ public class StorageUI : MonoBehaviour
     private int canvasPos = 0;
     [SerializeField] private Button closeBtn;
     [SerializeField] private GameObject deploy;
+    public Canvas deployCanvas;
 
     public void CloseUI()
     {
@@ -62,11 +63,8 @@ public class StorageUI : MonoBehaviour
                         case BaseItem.itemType.tool:
                             parentCanvas = canvasArray[1].gameObject;
                             break;
-                        case BaseItem.itemType.ship:
-                            parentCanvas = canvasArray[2].gameObject;
-                            break;
                         case BaseItem.itemType.defence:
-                            parentCanvas = canvasArray[3].gameObject;
+                            parentCanvas = canvasArray[2].gameObject;
                             break;
                     }
                     if (parentCanvas == canvasArray[canvasPos].gameObject)
@@ -125,7 +123,7 @@ public class StorageUI : MonoBehaviour
             }
             else if (selectedItem.GetIType() == BaseItem.itemType.defence)
             {
-
+                deployCanvas.gameObject.SetActive(true);
             }
             else
             {
@@ -134,6 +132,11 @@ public class StorageUI : MonoBehaviour
             }
         }
         ResetUI();
+    }
+
+    public void CancelDeploy()
+    {
+        deployCanvas.gameObject.SetActive(false);
     }
 
     private void ResetUI()
@@ -162,6 +165,12 @@ public class StorageUI : MonoBehaviour
         }
         ResetUI();
         canvasArray[canvasPos].gameObject.SetActive(true);
+    }
+
+    public void DeployDefence(int pos)
+    {
+        storageManager.RemoveItem(selectedItem, 1);
+        deployCanvas.gameObject.SetActive(false);
     }
 
     void Start()
