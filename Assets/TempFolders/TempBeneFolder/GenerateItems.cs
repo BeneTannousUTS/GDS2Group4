@@ -46,56 +46,57 @@ public class GenerateItems : MonoBehaviour
 
             if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit hit, Mathf.Infinity))
             {
-                if (!hit.collider.transform.IsChildOf(terrain.transform) && !hit.collider.CompareTag("Tree"))
+                // Only spawn on terrain & don't spawn on top of trees and buildings
+                if (!hit.collider.transform.IsChildOf(terrain.transform) &&
+                    !hit.collider.CompareTag("Tree") &&
+                    !hit.collider.CompareTag("Base"))
                     continue;
 
+                // Slope check
                 float slope = Vector3.Angle(Vector3.up, hit.normal);
                 if (slope > maxSlope)
                     continue;
 
                 // Build weighted list based on hit
                 List<GameObject> weightedList = new List<GameObject>();
+                weightedList.AddRange(allResources); // base chance
 
-                // Always add all resources once (equal base chance)
-                weightedList.AddRange(allResources);
-
-                // Boost forest resources if hit terrain layer 1 (forest)
                 if (IsTerrainTexture(hit.point, 1))
-                {
-                    for (int w = 0; w < 3; w++) // weight multiplier
-                        weightedList.AddRange(forestBiomeResources);
-                }
+                    AddWeighted(weightedList, forestBiomeResources, 3);
 
-                // Boost factory resources if hit terrain layer 2 (factory)
                 if (IsTerrainTexture(hit.point, 2))
-                {
-                    for (int w = 0; w < 3; w++)
-                        weightedList.AddRange(factoryBiomeResources);
-                }
+                    AddWeighted(weightedList, mountainBiomeResources, 3);
 
-                // Boost mountain resources if hit terrain layer 3 (mountain)
                 if (IsTerrainTexture(hit.point, 3))
-                {
-                    for (int w = 0; w < 3; w++)
-                        weightedList.AddRange(mountainBiomeResources);
-                }
+                    AddWeighted(weightedList, factoryBiomeResources, 3);
 
-                // Pick random from weighted list
+                // Pick prefab
                 GameObject prefab = weightedList[Random.Range(0, weightedList.Count)];
-                GameObject instance = Instantiate(prefab, transform, true);
-
-                Renderer rend = instance.GetComponentInChildren<Renderer>();
+                
                 float pivotOffset = 0f;
-                if (rend != null)
+                Renderer prefabRenderer = prefab.GetComponentInChildren<Renderer>();
+                if (prefabRenderer != null)
                 {
-                    pivotOffset = rend.bounds.extents.y - (rend.bounds.max.y - rend.bounds.min.y) / 2f;
+                    pivotOffset = prefabRenderer.bounds.extents.y -
+                                  (prefabRenderer.bounds.max.y - prefabRenderer.bounds.min.y) / 2f;
                 }
+                
+                Vector3 spawnPos = hit.point + Vector3.up * (pivotOffset + 0.5f);
+                Quaternion spawnRot = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                spawnRot *= Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+                
+                GameObject instance = Instantiate(prefab, spawnPos, spawnRot);
+                instance.transform.SetParent(transform, true);
 
-                instance.transform.position = hit.point + Vector3.up * (pivotOffset + 0.5f);
-                instance.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                instance.transform.Rotate(0f, Random.Range(0f, 360f), 0f, Space.Self);
+                Debug.Log($"Instantiated {instance.name} at {spawnPos}");
             }
         }
+    }
+
+    private void AddWeighted(List<GameObject> list, GameObject[] items, int weight)
+    {
+        for (int w = 0; w < weight; w++)
+            list.AddRange(items);
     }
 
     // Check dominant terrain texture at a world position
