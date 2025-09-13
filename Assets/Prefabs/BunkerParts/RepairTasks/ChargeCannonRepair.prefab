@@ -144,6 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9e6bfdae3c5c449af7a6ab348b79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivatorSounds:
+  - {fileID: 8300000, guid: 35a4015dedb46d840ac26ad434cd262d, type: 3}
+  - {fileID: 8300000, guid: f4564eb212befb248857e84957840b6f, type: 3}
+  - {fileID: 8300000, guid: e3a37ee5c6c9e28459382a6bc205287e, type: 3}
+  - {fileID: 8300000, guid: c54efbfa07f372841ac34f08d27a00fc, type: 3}
+  - {fileID: 8300000, guid: ca0a92ad11c7ddc4d8de295e48122f2c, type: 3}
   defence: {fileID: 0}
   repairRequired: 0
   visualFuse: {fileID: 5066170711960624230}

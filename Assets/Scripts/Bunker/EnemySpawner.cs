@@ -47,8 +47,6 @@ public class EnemySpawner : MonoBehaviour
         {
             if (timeTillNext <= 0f)
             {
-                GameObject.FindWithTag("Base").GetComponent<Base>().ActivateTurrets(true);
-
                 GameObject tempEnemy = Instantiate(enemyPrefab);
                 tempEnemy.GetComponent<EnemyAI>().Initialise(nextSide, EnemySpawnPositions[nextSide] + transform.position, BunkerSidePositions[nextSide] + transform.position);
                 if (FindAnyObjectByType<Base>().GetBarrierActive(nextSide))
@@ -153,5 +151,10 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    public int EnemyCount(int side)
+    {
+        return enemyList[side].Count;
     }
 }
