@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: 2638332497102006003, guid: b93b68428c37cae4b971fbd67cca3088, type: 3}
       propertyPath: m_Name
-      value: Crystals
+      value: CrystalResource
       objectReference: {fileID: 0}
     - target: {fileID: 5695360869558161726, guid: b93b68428c37cae4b971fbd67cca3088, type: 3}
       propertyPath: m_Materials.Array.size
@@ -207,7 +207,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &7565031265627952884

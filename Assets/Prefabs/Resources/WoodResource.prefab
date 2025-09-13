@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: 1957778254936029870, guid: e8740ab60263f864eb61a65446486e75, type: 3}
       propertyPath: m_Name
-      value: planksPickup
+      value: WoodResource
       objectReference: {fileID: 0}
     - target: {fileID: 4560083510620463042, guid: e8740ab60263f864eb61a65446486e75, type: 3}
       propertyPath: m_Materials.Array.size
@@ -172,7 +172,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &5213802050340141324
