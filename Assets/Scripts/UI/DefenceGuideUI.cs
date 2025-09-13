@@ -17,6 +17,7 @@ public class DefenceGuideUI : BaseGuideUI
     public override void SetupUI()
     {
         UpdateList();
+        useImg.gameObject.SetActive(true);
         if (canvasPos >= defenceList.Count)
         {
             canvasPos = 0;
@@ -24,8 +25,15 @@ public class DefenceGuideUI : BaseGuideUI
         defName.text = defenceList[canvasPos].name;
         defDesc.text = defenceList[canvasPos].itemDesc;
         useDesc.text = defenceList[canvasPos].useDesc;
+        if (defenceList[canvasPos].useImg)
+        {
+            useImg.sprite = defenceList[canvasPos].useImg;
+        }
+        else
+        {
+            useImg.gameObject.SetActive(false);
+        }
         defImg.sprite = defenceList[canvasPos].GetImage();
-        useImg.sprite = defenceList[canvasPos].useImg;
     }
 
     public override void CanvasMax()

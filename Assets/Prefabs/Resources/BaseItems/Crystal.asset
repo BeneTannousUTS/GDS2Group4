@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab86f91011455e64f8b54a5a6e25e2e7, type: 3}
-  m_Name: Wood
+  m_Name: Crystal
   m_EditorClassIdentifier: 
   iType: 0
-  itemID: 1
-  itemName: Wood
-  prefab: {fileID: 1811003716385203346, guid: b182bfef99af5ed46872e6fd5c379482, type: 3}
+  itemID: 3
+  itemName: Crystal
+  prefab: {fileID: 6389179716384688820, guid: 4c3b710db6ebacf40ba9e0c72cf33a5f, type: 3}
   itemWeight: 5
-  itemRarity: 1
-  itemIcon: {fileID: 21300000, guid: cbc25d6919ff6d648aad905b5e4011c8, type: 3}
-  itemDesc: a
+  itemRarity: 5
+  itemIcon: {fileID: 21300000, guid: d9d7281b161c7fc44829daf0eb4db0d7, type: 3}
+  itemDesc: Some crystals
   useDesc: a
   useImg: {fileID: 0}

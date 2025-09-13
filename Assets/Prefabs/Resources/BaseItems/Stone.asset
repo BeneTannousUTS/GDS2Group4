@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab86f91011455e64f8b54a5a6e25e2e7, type: 3}
-  m_Name: Spikes
+  m_Name: Stone
   m_EditorClassIdentifier: 
-  iType: 3
-  itemID: 4
-  itemName: Spikes
-  prefab: {fileID: 0}
+  iType: 0
+  itemID: 1
+  itemName: Stone
+  prefab: {fileID: 8783299471594330318, guid: b5dbb135d53384340b0bc0b3a31fc280, type: 3}
   itemWeight: 10
-  itemRarity: 5
-  itemIcon: {fileID: 21300000, guid: 5272dc47b5d310d49bb440ff5f8b8493, type: 3}
-  itemDesc: The spikes are great at stopping invaders
-  useDesc: Automatically repels the first invader to collide with the spikes
+  itemRarity: 1
+  itemIcon: {fileID: -2131128061, guid: 31c5e55ebb94b2b428147c550d546e16, type: 3}
+  itemDesc: A pile of stones. Used for upgrading and crafting
+  useDesc: 
   useImg: {fileID: 0}
