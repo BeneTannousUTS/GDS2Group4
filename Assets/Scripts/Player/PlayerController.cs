@@ -121,16 +121,16 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitObject;
         if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, interactDistance, ~noPlayerMask))
         {
-            if (hitObject.transform.gameObject.GetComponent<Interactable>())
+            if (hitObject.collider.transform.gameObject.GetComponent<Interactable>())
             {
-                if (targetedInteractable != hitObject.transform.gameObject)
+                if (targetedInteractable != hitObject.collider.transform.gameObject)
                 {
                     if (targetedInteractable != null)
                     {
                         targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
                     }
                     interactCanvas.SetActive(true);
-                    targetedInteractable = hitObject.transform.gameObject;
+                    targetedInteractable = hitObject.collider.transform.gameObject;
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
                 }
             }
@@ -173,5 +173,23 @@ public class PlayerController : MonoBehaviour
         {
             isClimbing = false;
         }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+
+        if (rb != null && !rb.isKinematic)
+        {
+            Vector3 pushForce = hit.controller.velocity.magnitude * hit.normal * -1 * moveSpeed;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            rb.AddForceAtPosition(pushForce * rb.mass / 2, hit.point);
+            rb.constraints = RigidbodyConstraints.None;
+        }
+    }
+
+    public void StopClimbing()
+    {
+        isClimbing = false;
     }
 }
