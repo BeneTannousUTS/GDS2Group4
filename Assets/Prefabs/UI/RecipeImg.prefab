@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 7619537687287003141}
   - component: {fileID: 7567400797640295839}
   - component: {fileID: 8889244338550850325}
+  - component: {fileID: 62409961250405081}
   m_Layer: 5
   m_Name: RecipeImg
   m_TagString: Untagged
@@ -459,6 +460,19 @@ MonoBehaviour:
   recipe: {fileID: 0}
   backgroundImg: {fileID: 273446198624871405}
   cross: {fileID: 6859950042830368219}
+--- !u!114 &62409961250405081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870136769869885380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578f1f61987f3b347a90c41cea333c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: e4e59ddd496494b4c8788214e6b4b25a, type: 3}
 --- !u!1 &9213464545621643679
 GameObject:
   m_ObjectHideFlags: 0

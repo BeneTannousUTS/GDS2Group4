@@ -4,6 +4,7 @@ public class UIActivator : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     public Camera uiCamera;
+    public AudioClip openClip;
     private Vector3 cameraPos;
     private Quaternion cameraRot;
     private bool moveCamera;
@@ -16,6 +17,7 @@ public class UIActivator : MonoBehaviour
 
     public void ActivateCanvas()
     {
+        FindAnyObjectByType<AudioManager>().PlaySound(openClip);
         playerPos = mainCamera.transform.position;
         playerRot = mainCamera.transform.rotation;
         player.GetComponent<PlayerController>().enabled = false;
