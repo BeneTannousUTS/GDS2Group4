@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab86f91011455e64f8b54a5a6e25e2e7, type: 3}
-  m_Name: Stone
+  m_Name: ShipComputer
   m_EditorClassIdentifier: 
-  iType: 0
-  itemID: 2
-  itemName: Stone
-  prefab: {fileID: 8783299471594330318, guid: b5dbb135d53384340b0bc0b3a31fc280, type: 3}
-  itemWeight: 10
-  itemRarity: 1
-  itemIcon: {fileID: -2131128061, guid: 31c5e55ebb94b2b428147c550d546e16, type: 3}
-  itemDesc: a
-  useDesc: a
+  iType: 1
+  itemID: 67
+  itemName: Ship Computer
+  prefab: {fileID: 0}
+  itemWeight: 0
+  itemRarity: 0
+  itemIcon: {fileID: 0}
+  itemDesc: Base Ship
+  useDesc: Base Ship
   useImg: {fileID: 0}

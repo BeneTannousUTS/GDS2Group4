@@ -120,8 +120,18 @@ public class StorageUI : MonoBehaviour
     {
         if (selectedItem)
         {
-            Instantiate(selectedItem.GetPrefab()).transform.position = deploy.transform.position;
-            storageManager.RemoveItem(selectedItem, 1);
+            if (selectedItem.GetIType() == BaseItem.itemType.ship)
+            {
+            }
+            else if (selectedItem.GetIType() == BaseItem.itemType.defence)
+            {
+
+            }
+            else
+            {
+                Instantiate(selectedItem.GetPrefab()).transform.position = deploy.transform.position;
+                storageManager.RemoveItem(selectedItem, 1);
+            }
         }
         ResetUI();
     }

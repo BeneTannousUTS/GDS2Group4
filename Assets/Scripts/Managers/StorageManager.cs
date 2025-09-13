@@ -13,6 +13,7 @@ public class StorageManager : MonoBehaviour
     public int[] quantity = new int[100];
     [SerializeField]
     private StorageUI storageUI;
+    public ShipUI shipUI;
     public bool StoreItem(GameObject a)
     {
         BaseItem item = a.GetComponent<ItemInfo>().baseItem;
@@ -20,6 +21,10 @@ public class StorageManager : MonoBehaviour
         quantity[item.itemID]++;
         storageUI.UpdateUI();
         a.SetActive(false);
+        if (item.GetIType() == BaseItem.itemType.ship)
+        {
+            shipUI.UpdateUI(item.itemID - 66);
+        }
         return true;
     }
 

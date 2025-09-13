@@ -18,6 +18,9 @@ public class BaseItem : ScriptableObject
     private int itemRarity;
     [SerializeField]
     private Sprite itemIcon;
+    public string itemDesc;
+    public string useDesc;
+    public Sprite useImg;
 
     public Sprite GetImage() { return itemIcon; }
 

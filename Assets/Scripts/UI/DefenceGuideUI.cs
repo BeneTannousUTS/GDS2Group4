@@ -22,10 +22,10 @@ public class DefenceGuideUI : BaseGuideUI
             canvasPos = 0;
         }
         defName.text = defenceList[canvasPos].name;
-        defDesc.text = defenceList[canvasPos].name;
-        useDesc.text = defenceList[canvasPos].name;
+        defDesc.text = defenceList[canvasPos].itemDesc;
+        useDesc.text = defenceList[canvasPos].useDesc;
         defImg.sprite = defenceList[canvasPos].GetImage();
-        useImg.sprite = defenceList[canvasPos].GetImage();
+        useImg.sprite = defenceList[canvasPos].useImg;
     }
 
     public override void CanvasMax()

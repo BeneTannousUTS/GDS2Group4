@@ -19,7 +19,7 @@ public class GuideUI : MonoBehaviour
         //selectionCanvas.SetActive(true);
         //ListUI(option);
         screens[option].SetActive(true);
-        if (option != 1)
+        if (option != 0)
         {
             screens[option].GetComponent<BaseGuideUI>().SetupUI();
         }
