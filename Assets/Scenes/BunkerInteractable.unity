@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 190199009}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1120,6 +1120,20 @@ MonoBehaviour:
   cameraSensitivity: 10
   moveSpeed: 5
   interactCanvas: {fileID: 637529747}
+  grassStepClips:
+  - {fileID: 8300000, guid: 585205ebcb42ffe4b8fe3fe187768bcd, type: 3}
+  - {fileID: 8300000, guid: 9e83111d853f3154aba05dd5f8514309, type: 3}
+  - {fileID: 8300000, guid: dc1b4aff185e1144fba8309d7dd4e319, type: 3}
+  - {fileID: 8300000, guid: 5d128f2abd268a64aa8f8de779a40fd0, type: 3}
+  - {fileID: 8300000, guid: cc1abeb9f7d921e489fa412c8c5c482a, type: 3}
+  metalStepClips:
+  - {fileID: 8300000, guid: 3374c0d518ec3804293e66cc1ce21c50, type: 3}
+  - {fileID: 8300000, guid: 8046bfb3d828dbc48910b2f732b9f004, type: 3}
+  - {fileID: 8300000, guid: 70e4733023445ee488068b0cf2891b73, type: 3}
+  - {fileID: 8300000, guid: 2b9e33e2d336b764d9739ea3f7c55258, type: 3}
+  - {fileID: 8300000, guid: 733462c043dde5147b12845954d6c83a, type: 3}
+  - {fileID: 8300000, guid: 6023ed9316a6ff846a91d2cd8144bbef, type: 3}
+  audioManager: {fileID: 0}
 --- !u!136 &190199005
 CapsuleCollider:
   m_ObjectHideFlags: 0

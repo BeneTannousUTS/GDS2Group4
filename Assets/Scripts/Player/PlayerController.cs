@@ -15,10 +15,12 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     InputAction lookAction, moveAction, interactAction;
     private GameObject targetedInteractable;
-    private bool isHoldingObject = false;
+    private bool isHoldingObject = false, isInBunker = true;
     private LayerMask noPlayerMask;
-    private float gravity = -2f, interactDistance = 4f;
+    private float gravity = -2f, interactDistance = 4f, currentFootstepCooldown = 0f, baseFootStepCooldown = 0.5f;
     [SerializeField] private GameObject interactCanvas;
+    [SerializeField] private AudioClip[] grassStepClips, metalStepClips;
+    [SerializeField] private AudioManager audioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         noPlayerMask = LayerMask.GetMask("Player");
+        audioManager = FindAnyObjectByType<AudioManager>();
     }
 
     void Update()
@@ -73,6 +76,10 @@ public class PlayerController : MonoBehaviour
         {
             moveVector.y = gravity;
         }
+        else if ((moveVector.x != 0 || moveVector.z != 0) && currentFootstepCooldown < 0)
+        {
+            PlayWalkSound();
+        }
         moveVector = transform.TransformDirection(moveVector);
         characterController.Move(moveVector * Time.deltaTime * moveSpeed);
     }
@@ -92,6 +99,7 @@ public class PlayerController : MonoBehaviour
     private void HandleCooldowns()
     {
         interactCooldown -= Time.deltaTime;
+        currentFootstepCooldown -= Time.deltaTime;
     }
 
     private void Interact()
@@ -191,5 +199,23 @@ public class PlayerController : MonoBehaviour
     public void StopClimbing()
     {
         isClimbing = false;
+    }
+
+    public void setIsInBunker(bool isIn)
+    {
+        isInBunker = isIn;
+    }
+
+    private void PlayWalkSound()
+    {
+        if (isInBunker)
+        {
+            audioManager.PlaySound(metalStepClips[Random.Range(0, metalStepClips.Length)]);
+        }
+        else
+        {
+            audioManager.PlaySound(grassStepClips[Random.Range(0, grassStepClips.Length)]);
+        }
+        currentFootstepCooldown = baseFootStepCooldown;
     }
 }
