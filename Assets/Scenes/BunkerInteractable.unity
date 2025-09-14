@@ -749,6 +749,22 @@ PrefabInstance:
       propertyPath: storageManager
       value: 
       objectReference: {fileID: 700163735}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: recipeList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0edf9f8e8cc4b8c44b6e2843a4923163, type: 2}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b21e9637b42457b4cbf41996bee4365a, type: 2}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 56439dcd6db575f4394ab3948ad7e183, type: 2}
     - target: {fileID: 4876322856305340533, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
       propertyPath: m_Name
       value: RecipeManager
@@ -2202,7 +2218,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 72577af21860fb6488589dfa205d506a, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6496046273750405137, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7217932174584584026, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
