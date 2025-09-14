@@ -38,13 +38,16 @@ public class StorageUI : MonoBehaviour
 
     public void UpdateUI()
     {
+        x = 1;
+        y = 0;
         if (slots != null)
         {
             foreach (var slot in slots)
             {
-                Destroy(slot.gameObject);
-                x = 1;
-                y = 0;
+                if (slot != null)
+                {
+                    Destroy(slot.gameObject);
+                }
             }
             slots.Clear();
         }
@@ -175,7 +178,7 @@ public class StorageUI : MonoBehaviour
 
     void Start()
     {
-        slots = new List<GameObject>();
+        //slots = new List<GameObject>();
         //gameObject.SetActive(false);
     }
 
