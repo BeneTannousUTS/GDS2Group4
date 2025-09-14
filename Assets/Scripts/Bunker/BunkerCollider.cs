@@ -23,6 +23,7 @@ public class BunkerCollider : MonoBehaviour
             other.GetComponent<Inventory>().StoreResources();
             Debug.Log("Player Returned");
             timeManager.ReturnedToBunker(true);
+            other.GetComponent<PlayerController>().setIsInBunker(true);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -31,6 +32,7 @@ public class BunkerCollider : MonoBehaviour
         {
             Debug.Log("Player Left");
             timeManager.ReturnedToBunker(false);
+            other.GetComponent<PlayerController>().setIsInBunker(false);
         }
     }
 }
