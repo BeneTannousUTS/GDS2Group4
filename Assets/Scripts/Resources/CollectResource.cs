@@ -22,7 +22,8 @@ public class CollectResource : MonoBehaviour
     {
         if (other.GetComponent<ItemInfo>())
         {
-            storageManager.StoreItem(other.gameObject);
+            storageManager.StoreItem(other.gameObject.GetComponent<ItemInfo>().baseItem);
+            other.gameObject.SetActive(false);
         }
     }   
 }

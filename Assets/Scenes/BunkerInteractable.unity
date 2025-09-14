@@ -749,6 +749,14 @@ PrefabInstance:
       propertyPath: storageManager
       value: 
       objectReference: {fileID: 700163735}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: recipeList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c661aad41c1511e409425d1cc0f3564f, type: 2}
     - target: {fileID: 4876322856305340533, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
       propertyPath: m_Name
       value: RecipeManager
@@ -2201,6 +2209,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 72577af21860fb6488589dfa205d506a, type: 2}
+    - target: {fileID: 9199990276998466479, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199990276998466479, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

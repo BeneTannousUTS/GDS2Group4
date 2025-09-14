@@ -158,7 +158,7 @@ public class CraftingUI : MonoBehaviour
             }
             else
             {
-                //recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
+                recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
             }
             UpdateUI();
             ListView();
