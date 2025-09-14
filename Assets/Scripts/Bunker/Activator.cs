@@ -12,7 +12,7 @@ public class Activator : MonoBehaviour
 
     public virtual void PlaySound()
     {
-        FindAnyObjectByType<AudioManager>().PlaySound(ActivatorSounds[Random.Range(0, 4)]);
+        FindAnyObjectByType<AudioManager>().PlaySound(ActivatorSounds[Random.Range(0, ActivatorSounds.Count)]);
     }
     
     public virtual void PlayAnimation()

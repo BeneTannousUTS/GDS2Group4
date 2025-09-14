@@ -19,7 +19,7 @@ RenderSettings:
   m_FogMode: 1
   m_FogDensity: 0.1
   m_LinearFogStart: 0
-  m_LinearFogEnd: 15
+  m_LinearFogEnd: 40
   m_AmbientSkyColor: {r: 0.25882354, g: 0.21708368, b: 0.21176471, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -751,12 +751,24 @@ PrefabInstance:
       objectReference: {fileID: 700163735}
     - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
       propertyPath: recipeList.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
       propertyPath: 'recipeList.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: c661aad41c1511e409425d1cc0f3564f, type: 2}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0edf9f8e8cc4b8c44b6e2843a4923163, type: 2}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b21e9637b42457b4cbf41996bee4365a, type: 2}
+    - target: {fileID: 717679153794321712, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
+      propertyPath: 'recipeList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 56439dcd6db575f4394ab3948ad7e183, type: 2}
     - target: {fileID: 4876322856305340533, guid: dc8bd78ab980b5849a6d39063a79a91a, type: 3}
       propertyPath: m_Name
       value: RecipeManager
@@ -1999,10 +2011,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96520345582904584, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.449
+      objectReference: {fileID: 0}
     - target: {fileID: 130950705334053377, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
       propertyPath: recipeManager
       value: 
       objectReference: {fileID: 1605630505}
+    - target: {fileID: 147000842121918914, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_text
+      value: 'Bunker Integrity: 99%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 147000842121918914, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_fontSize
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 147000842121918914, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_margin.x
+      value: -0.44185722
+      objectReference: {fileID: 0}
+    - target: {fileID: 147000842121918914, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_margin.z
+      value: -0.387327
+      objectReference: {fileID: 0}
+    - target: {fileID: 147000842121918914, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 147000842121918914, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1077282478881822996, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
       propertyPath: turretShoot
       value: 
@@ -2010,6 +2050,10 @@ PrefabInstance:
     - target: {fileID: 1431695224036978926, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941318174913607559, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 1962781782678601270, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2066,6 +2110,30 @@ PrefabInstance:
     - target: {fileID: 2454035060447061305, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912858227335537160, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_text
+      value: 'Turret Integrity: 99%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912858227335537160, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_fontSize
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912858227335537160, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_margin.x
+      value: -0.42359042
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912858227335537160, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_margin.z
+      value: -0.4036282
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912858227335537160, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912858227335537160, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3076343654836162316, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2232,7 +2300,8 @@ PrefabInstance:
       value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6496046273750405137, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7217932174584584026, guid: 02c719f1e1872434ba27e8593bf7e1ca, type: 3}

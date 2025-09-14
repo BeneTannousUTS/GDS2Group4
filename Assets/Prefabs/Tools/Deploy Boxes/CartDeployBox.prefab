@@ -79,7 +79,7 @@ Animator:
   m_GameObject: {fileID: 3788302013751462222}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88ca5d978f04b734a8617e31277f2f67, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -140,6 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ec84586a3e811458bb7b481b15036b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivatorSounds:
+  - {fileID: 8300000, guid: 35a4015dedb46d840ac26ad434cd262d, type: 3}
+  - {fileID: 8300000, guid: f4564eb212befb248857e84957840b6f, type: 3}
+  - {fileID: 8300000, guid: e3a37ee5c6c9e28459382a6bc205287e, type: 3}
+  - {fileID: 8300000, guid: c54efbfa07f372841ac34f08d27a00fc, type: 3}
+  - {fileID: 8300000, guid: ca0a92ad11c7ddc4d8de295e48122f2c, type: 3}
   deployedTool: {fileID: 4250799281253828662, guid: 036022307fb408f4e9e0c405f54875e9, type: 3}
   isLadder: 0
 --- !u!1 &6357063718313565292

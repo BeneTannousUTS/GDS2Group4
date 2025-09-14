@@ -43,7 +43,6 @@ public class StorageCart : MonoBehaviour
                 //rb.linearVelocity = Vector3.Normalize(followPos - transform.position) * followSpeed * Time.deltaTime;
                 if (rb.linearVelocity.magnitude < maxSpeed)
                 {
-                    Debug.Log("YUP ITS LESS");
                     rb.AddForce(transform.forward * followSpeed, ForceMode.Acceleration);
                 }
                 //Debug.Log(Vector3.Normalize(followPos - transform.position) * followSpeed * Time.deltaTime);
