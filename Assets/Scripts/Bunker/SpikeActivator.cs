@@ -11,8 +11,8 @@ public class SpikeActivator : Activator
     {
         if (spikeCount > 0)
         {
-            spikeCount -= 1;
-            spikeValueDisplay.text = $"Spikes: {spikeCount}";
+            // spikeCount -= 1;
+            // spikeValueDisplay.text = $"Spikes: {spikeCount}";
             spikes.SetIsActive(true);
         }
     }

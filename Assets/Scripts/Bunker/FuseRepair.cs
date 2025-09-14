@@ -10,7 +10,7 @@ public class FuseRepair : Repair
         {
             Debug.Log(item);
         }
-        if (repairRequired && FindAnyObjectByType<Inventory>().GetHeldItemNames().Contains("Fuse"))
+        if (repairRequired && true) // FindAnyObjectByType<Inventory>().GetHeldItemNames().Contains("Fuse"))
         { // Will eventually be if holding fuse
             repairRequired = false;
             defence.Repair();

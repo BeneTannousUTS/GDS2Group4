@@ -24,4 +24,4 @@ MonoBehaviour:
     This is the same side as the turret is facing as to not add too many interactables.
     Each fire blows the fuse and thus must be replaced before another can be fired
     (pretty much ammo).
-  useImg: {fileID: 21300000, guid: f8ee4e41efa3d734684caa4bfd018d1f, type: 3}
+  useImg: {fileID: 0}

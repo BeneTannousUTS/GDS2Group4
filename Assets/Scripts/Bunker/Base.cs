@@ -109,13 +109,13 @@ public class Base : MonoBehaviour
         {
             if ((defence.GetSide() == 4 || defence.GetSide() == enemy.GetSide()) && defence.GetIsActive())
             {
-                defence.TakeDamage(50f);
-                defenceHit = true;
-
                 if (defence.GetIsCounter() && defence.GetIsActive())
                 {
                     enemy.DealDamage(defence.GetDamage(enemy.GetSide()));
                 }
+
+                defence.TakeDamage(50f);
+                defenceHit = true;
             }
         }
 
@@ -217,7 +217,7 @@ public class Base : MonoBehaviour
     void UnlockSpikes()
     {
         foreach (GameObject spikeObject in spikeObjects)
-        {
+        { 
             spikeObject.SetActive(true);
         }
     }

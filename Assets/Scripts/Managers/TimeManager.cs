@@ -54,8 +54,9 @@ public class TimeManager : MonoBehaviour
                     gameState = GameState.defence;
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
                     FindAnyObjectByType<EnemySpawner>().StartDefencePhase();
-                    door.GetComponent<BoxCollider>().enabled = true;
-                    door.GetComponent<Animator>().SetTrigger("Close");
+                    door.SetActive(true);
+                    // door.GetComponent<BoxCollider>().enabled = true;
+                    // door.GetComponent<Animator>().SetTrigger("Close");
                     FindAnyObjectByType<AudioManager>().PlaySound(doorClose);
                 }
                 else
@@ -73,8 +74,9 @@ public class TimeManager : MonoBehaviour
             }
             currentTime = 0;
             gameState = GameState.scavenge;
-            door.GetComponent<BoxCollider>().enabled = false;
-            door.GetComponent<Animator>().SetTrigger("Open");
+            door.SetActive(false);
+            // door.GetComponent<BoxCollider>().enabled = false;
+            // door.GetComponent<Animator>().SetTrigger("Open");
             FindAnyObjectByType<AudioManager>().PlaySound(doorOpen);
             //AssignEvent();
         }

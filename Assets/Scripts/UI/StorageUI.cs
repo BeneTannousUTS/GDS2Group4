@@ -78,9 +78,9 @@ public class StorageUI : MonoBehaviour
                             slot.transform.localPosition += new Vector3(200 * x, -250 * y);
                             slots.Add(slot);
                             x++;
-                            if (x > 5)
+                            if (x > 6)
                             {
-                                x = 0;
+                                x = 1;
                                 y++;
                             }
                             slot.GetComponent<Image>().sprite = item.GetImage();
