@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject interactCanvas;
     [SerializeField] private AudioClip[] grassStepClips, metalStepClips;
     [SerializeField] private AudioManager audioManager;
+    private VisorUI visor;
+    private StorageManager storageManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         noPlayerMask = LayerMask.GetMask("Player");
         audioManager = FindAnyObjectByType<AudioManager>();
+        visor = FindAnyObjectByType<VisorUI>();
+        storageManager = FindAnyObjectByType<StorageManager>();
     }
 
     void Update()
@@ -136,10 +140,16 @@ public class PlayerController : MonoBehaviour
                     if (targetedInteractable != null)
                     {
                         targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                        visor.ClearVisor();
                     }
                     interactCanvas.SetActive(true);
                     targetedInteractable = hitObject.collider.transform.gameObject;
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
+                    if (targetedInteractable.GetComponent<ItemInfo>())
+                    {
+                        BaseItem item = targetedInteractable.GetComponent<ItemInfo>().baseItem;
+                        visor.UpdateVisorText("Resource: " + item.name + " || Quantity: " + storageManager.CheckQuantity(item));
+                    }
                 }
             }
             else
@@ -149,6 +159,7 @@ public class PlayerController : MonoBehaviour
                 {
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
                     targetedInteractable = null;
+                    visor.ClearVisor();
                 }
             }
         }
