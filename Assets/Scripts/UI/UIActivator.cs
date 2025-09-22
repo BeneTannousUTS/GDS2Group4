@@ -16,6 +16,7 @@ public class UIActivator : MonoBehaviour
     public bool returnCamera;
     public bool tutorial;
     public GameObject guideCanvas;
+    public UIManager manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public void ActivateCanvas()
@@ -48,6 +49,7 @@ public class UIActivator : MonoBehaviour
                 uiCamera.gameObject.SetActive(true);
                 timer = 0;
                 moveCamera = false;
+                manager.enabled = true;
                 if (tutorial)
                 {
                     FindAnyObjectByType<UIManager>().tutorialAnim = false;
@@ -59,6 +61,7 @@ public class UIActivator : MonoBehaviour
         }
         if (returnCamera)
         {
+            manager.enabled = false;
             mainCamera.gameObject.SetActive(true);
             uiCamera.gameObject.SetActive(false);
             timer += Time.deltaTime;
@@ -71,6 +74,7 @@ public class UIActivator : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 timer = 0;
                 returnCamera = false;
+                
             }
         }
     }
