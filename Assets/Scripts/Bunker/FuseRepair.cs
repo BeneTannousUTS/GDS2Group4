@@ -3,10 +3,11 @@ using UnityEngine;
 public class FuseRepair : Repair
 {
     public GameObject visualFuse;
+    private bool isFuseInserted = false;
 
     public override void Activate()
     {
-        foreach (string item in FindAnyObjectByType<Inventory>().GetHeldItemNames())
+        /*foreach (string item in FindAnyObjectByType<Inventory>().GetHeldItemNames())
         {
             Debug.Log(item);
         }
@@ -15,12 +16,20 @@ public class FuseRepair : Repair
             repairRequired = false;
             defence.Repair();
             VisualRepair();
+        }*/
+        if (repairRequired && isFuseInserted)
+        {
+            repairRequired = false;
+            defence.Repair();
+            VisualRepair();
         }
     }
 
     public override void VisualRepair()
     {
-        visualFuse.SetActive(true);
+        Debug.Log("Visual Repair Triggered");
+        visualFuse.transform.localPosition = new Vector3(0, 0.0625f, 0);
+        visualFuse.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public override void TakeDamage()
@@ -31,6 +40,27 @@ public class FuseRepair : Repair
 
     public override void PlayAnimation()
     {
-        
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Fuse") && repairRequired)
+        {
+            isFuseInserted = true;
+            collision.gameObject.GetComponent<PickupHold>().playerTransform.gameObject.GetComponent<PlayerController>().SetIsHoldingObject(false);
+            Destroy(collision.gameObject);
+            visualFuse.transform.localPosition = new Vector3(0, 0.2f, 0);
+            visualFuse.transform.localRotation = Quaternion.Euler(-45, 0, 0);
+            visualFuse.SetActive(true);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TakeDamage();
+        }
     }
 }

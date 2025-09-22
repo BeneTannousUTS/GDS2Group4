@@ -8,7 +8,7 @@ public class PickupHold : MonoBehaviour
 {
     private bool isHeld;
     [SerializeField] private Transform playerHoldZone;
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] public Transform playerTransform;
     private Rigidbody pickupRB;
     [SerializeField] float objectCarrySpeed = 1000f;
     float dampingModifier = 1.2f;

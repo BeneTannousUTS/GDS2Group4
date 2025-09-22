@@ -229,4 +229,9 @@ public class PlayerController : MonoBehaviour
         }
         currentFootstepCooldown = baseFootStepCooldown;
     }
+
+    public void SetIsHoldingObject(bool isHolding)
+    {
+        isHoldingObject = isHolding;
+    }
 }
