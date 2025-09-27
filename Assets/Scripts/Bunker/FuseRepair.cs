@@ -55,12 +55,4 @@ public class FuseRepair : Repair
             visualFuse.SetActive(true);
         }
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            TakeDamage();
-        }
-    }
 }

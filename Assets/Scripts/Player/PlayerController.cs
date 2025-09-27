@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     private VisorUI visor;
     private StorageManager storageManager;
+    private bool isAbleToMove = true, isDetectingInteracts = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (!isAbleToMove) return;
         moveVector.Normalize();
         if (isClimbing)
         {
@@ -129,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForInteracts()
     {
-        if (isHoldingObject) return;
+        if (isHoldingObject || !isDetectingInteracts) return;
         RaycastHit hitObject;
         if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, interactDistance, ~noPlayerMask))
         {
@@ -233,5 +236,15 @@ public class PlayerController : MonoBehaviour
     public void SetIsHoldingObject(bool isHolding)
     {
         isHoldingObject = isHolding;
+    }
+
+    public void SetIsAbleToMove(bool isAble)
+    {
+        isAbleToMove = isAble;
+    }
+
+    public void SetIsDetectingInteracts(bool isDetecting)
+    {
+        isDetectingInteracts = isDetecting;
     }
 }
