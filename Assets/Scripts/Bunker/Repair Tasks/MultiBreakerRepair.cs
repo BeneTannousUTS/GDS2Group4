@@ -31,9 +31,4 @@ public class MultiBreakerRepair : Repair
             Debug.Log("Defense Repaired");
         }
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) TakeDamage();
-    }
 }

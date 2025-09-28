@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class PickupHold : MonoBehaviour
 {
-    private bool isHeld;
+    protected bool isHeld;
     [SerializeField] private Transform playerHoldZone;
     [SerializeField] public Transform playerTransform;
-    private Rigidbody pickupRB;
+    protected Rigidbody pickupRB;
     [SerializeField] float objectCarrySpeed = 1000f;
     float dampingModifier = 1.2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,7 +33,7 @@ public class PickupHold : MonoBehaviour
         }
     }
 
-    public void ToggleHeld()
+    public virtual void ToggleHeld()
     {
         isHeld = !isHeld;
         gameObject.GetComponent<Interactable>().ActivateOutline(0);
