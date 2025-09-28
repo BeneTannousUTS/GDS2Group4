@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
                     if (targetedInteractable != null)
                     {
                         targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
-                        visor.ClearVisor();
+                        //visor.ClearVisor();
                     }
                     interactCanvas.SetActive(true);
                     targetedInteractable = hitObject.collider.transform.gameObject;
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
                     if (targetedInteractable.GetComponent<ItemInfo>())
                     {
                         BaseItem item = targetedInteractable.GetComponent<ItemInfo>().baseItem;
-                        visor.UpdateVisorText("Resource: " + item.name + " || Quantity: " + storageManager.CheckQuantity(item));
+                        //visor.UpdateVisorText("Resource: " + item.name + " || Quantity: " + storageManager.CheckQuantity(item));
                     }
                 }
             }
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
                 {
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
                     targetedInteractable = null;
-                    visor.ClearVisor();
+                    //visor.ClearVisor();
                 }
             }
         }

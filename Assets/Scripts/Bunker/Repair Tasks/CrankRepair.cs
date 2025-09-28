@@ -30,7 +30,6 @@ public class CrankRepair : Repair
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) TakeDamage();
         if (isCamOnCrank && repairRequired)
         {
             if (Input.GetMouseButtonDown(0))
