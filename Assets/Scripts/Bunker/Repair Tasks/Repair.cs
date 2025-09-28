@@ -15,7 +15,7 @@ public class Repair : Activator
     }
 
     public virtual void VisualRepair() {
-        Debug.Log("Visual Changes Go Here!");
+        //Debug.Log("Visual Changes Go Here!");
     }
 
     public virtual void TakeDamage() {

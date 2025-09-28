@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     private VisorUI visor;
     private StorageManager storageManager;
+    private bool isAbleToMove = true, isDetectingInteracts = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (!isAbleToMove) return;
         moveVector.Normalize();
         if (isClimbing)
         {
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour
         currentFootstepCooldown -= Time.deltaTime;
     }
 
-    private void Interact()
+    public void Interact()
     {
         if (isHoldingObject)
         {
@@ -129,12 +132,13 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForInteracts()
     {
-        if (isHoldingObject) return;
+        if (isHoldingObject || !isDetectingInteracts) return;
         RaycastHit hitObject;
         if (Physics.Raycast(camObject.position, camObject.TransformDirection(Vector3.forward), out hitObject, interactDistance, ~noPlayerMask))
         {
             if (hitObject.collider.transform.gameObject.GetComponent<Interactable>())
             {
+                if (hitObject.collider.transform.gameObject.GetComponent<Interactable>().enabled == false) return;
                 if (targetedInteractable != hitObject.collider.transform.gameObject)
                 {
                     if (targetedInteractable != null)
@@ -228,5 +232,20 @@ public class PlayerController : MonoBehaviour
             audioManager.PlaySound(grassStepClips[Random.Range(0, grassStepClips.Length)]);
         }
         currentFootstepCooldown = baseFootStepCooldown;
+    }
+
+    public void SetIsHoldingObject(bool isHolding)
+    {
+        isHoldingObject = isHolding;
+    }
+
+    public void SetIsAbleToMove(bool isAble)
+    {
+        isAbleToMove = isAble;
+    }
+
+    public void SetIsDetectingInteracts(bool isDetecting)
+    {
+        isDetectingInteracts = isDetecting;
     }
 }

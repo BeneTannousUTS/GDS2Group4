@@ -16,30 +16,17 @@ public class Interactable : MonoBehaviour
     [SerializeField] List<GameObject> outlineObjects;
 
     public InteractType interactType;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnInteract(GameObject playerRef)
     {
         switch (interactType)
         {
             case InteractType.Pickup:
-                //get picked up?
                 gameObject.GetComponent<PickupHold>().SetPlayerHoldZone(playerRef);
                 gameObject.GetComponent<PickupHold>().ToggleHeld();
-                Debug.Log("Get picked up");
+                //Debug.Log("Get picked up");
                 break;
             case InteractType.Switch:
-                Debug.Log("Activate");
+                //Debug.Log("Activate");
                 GetComponent<Activator>().Activate();
                 GetComponent<Activator>().PlaySound();
                 GetComponent<Activator>().PlayAnimation();
@@ -48,7 +35,7 @@ public class Interactable : MonoBehaviour
                 GetComponent<Obstacle>().Unlock(playerRef.GetComponent<Inventory>().GetHeldItemNames());
                 break;
             case InteractType.Test:
-                Debug.Log("TESTING IF INTERACT WORKS");
+                //Debug.Log("TESTING IF INTERACT WORKS");
                 break;
             case InteractType.UI: 
                 GetComponent<UIActivator>().ActivateCanvas();
