@@ -3,6 +3,7 @@ using UnityEngine;
 public class Spikes : Defence
 {
     public GameObject spikeDisplay;
+    public int currentSide = 0;
 
     public override float GetDamage(int side)
     {
@@ -26,5 +27,10 @@ public class Spikes : Defence
         spikeDisplay.SetActive(value);
         currentDurability = 100f;
         isActive = value;
+    }
+
+    public override int GetSide()
+    {
+        return currentSide;
     }
 }
