@@ -113,7 +113,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e3a37ee5c6c9e28459382a6bc205287e, type: 3}
   - {fileID: 8300000, guid: c54efbfa07f372841ac34f08d27a00fc, type: 3}
   - {fileID: 8300000, guid: ca0a92ad11c7ddc4d8de295e48122f2c, type: 3}
-  deployedTool: {fileID: 6900724834394598091, guid: f43bd842297ac2045a804fbaa2511c4b, type: 3}
+  deployedTool: {fileID: 5516425181745674208, guid: 0b1cec39afed0fc4ebd7cb7a73c189e7, type: 3}
   isLadder: 0
 --- !u!1 &2016736901803159152
 GameObject:
