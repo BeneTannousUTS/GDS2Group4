@@ -12,6 +12,7 @@ TagManager:
   - Bball
   - Ladder
   - Tree
+  - Fuse
   layers:
   - Default
   - TransparentFX

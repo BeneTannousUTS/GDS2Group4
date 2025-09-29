@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class Activator : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Activator : MonoBehaviour
 
     public virtual void PlaySound()
     {
+        if (ActivatorSounds.Count == 0) return;
         FindAnyObjectByType<AudioManager>().PlaySound(ActivatorSounds[Random.Range(0, ActivatorSounds.Count)]);
     }
     

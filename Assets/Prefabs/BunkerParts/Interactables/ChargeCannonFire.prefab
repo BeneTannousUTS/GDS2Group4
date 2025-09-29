@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2792923005474369058, guid: b0f25d0317ae0ef48924a6493e7dcae6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4357118449180629203, guid: b0f25d0317ae0ef48924a6493e7dcae6, type: 3}
       propertyPath: m_Name
       value: ChargeCannonFire
