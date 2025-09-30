@@ -155,6 +155,10 @@ public class CraftingUI : MonoBehaviour
             {
                 selectedSlot.SetUnlocked(true);
                 FindAnyObjectByType<Base>().UnlockDefence(selectedRecipe.GetName());
+                if (selectedRecipe.GetName().Equals("Spikes"))
+                {
+                    recipeManager.GetStorageManger().StoreItem(selectedRecipe.GetRecipeItem());
+                }
             }
             else
             {
