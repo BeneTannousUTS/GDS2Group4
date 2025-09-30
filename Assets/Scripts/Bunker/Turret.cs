@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class Turret : Defence
 {
-    public int currentSide = 0;
+    int currentSide = 0;
     bool damaged = false;
 
-    public override float GetDamage(int side)
-    {
-        // if (damaged) {
-        // return damage * Mathf.Max(currentDurability / maxDurability, 0.25f);
-        // }
-
-        // else {
-        // return damage;
-        // }
-
-        return damage;
+    public override float GetDamage(int side) {
+        if (damaged) {
+            return damage * Mathf.Max(currentDurability / maxDurability, 0.25f);
+        }
+        else {
+            return damage;
+        }
     }
 
     public override void RotateRight() {
@@ -46,6 +42,7 @@ public class Turret : Defence
 
         if (damaged == false && currentDurability <= maxDurability / 2) {
             damaged = true;
+            GameObject.FindWithTag("Base").GetComponent<Base>().TriggerRepair("Turret");
         }
     }
 

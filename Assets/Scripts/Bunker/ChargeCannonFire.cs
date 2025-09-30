@@ -7,13 +7,12 @@ public class ChargeCannonFire : Activator
     public override void Activate()
     {
         Debug.Log(chargeCannon.GetCurrentDurability());
-
+        
         if (chargeCannon.GetCurrentDurability() > 0f)
         {
             GameObject.FindWithTag("Base").GetComponent<Base>().Attack(chargeCannon);
-            GameObject.FindWithTag("Base").GetComponent<Base>().TriggerRepair();
 
-            // chargeCannon.TakeDamage(100f);
+            chargeCannon.TakeDamage(100f);
         }
     }
 }

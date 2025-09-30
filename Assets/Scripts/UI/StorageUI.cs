@@ -172,10 +172,8 @@ public class StorageUI : MonoBehaviour
 
     public void DeployDefence(int pos)
     {
-        // storageManager.RemoveItem(selectedItem, 1);
+        storageManager.RemoveItem(selectedItem, 1);
         deployCanvas.gameObject.SetActive(false);
-
-        FindAnyObjectByType<Base>().DeployDefence(selectedItem.GetName(), pos);
     }
 
     void Start()

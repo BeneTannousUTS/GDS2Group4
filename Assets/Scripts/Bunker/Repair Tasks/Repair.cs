@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class Repair : Activator
 {
+    public Defence defence;
     public bool repairRequired = false;
 
     public override void Activate() {
         if (repairRequired) {
             repairRequired = false;
+            defence.Repair();
         }
 
         VisualRepair();
