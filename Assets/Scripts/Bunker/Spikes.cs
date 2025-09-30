@@ -24,7 +24,7 @@ public class Spikes : Defence
 
     public override void SetIsActive(bool value)
     {
-        spikeDisplay.SetActive(value);
+        GetComponent<MeshRenderer>().enabled = value;
         currentDurability = 100f;
         isActive = value;
     }

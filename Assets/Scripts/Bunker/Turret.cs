@@ -46,7 +46,6 @@ public class Turret : Defence
 
         if (damaged == false && currentDurability <= maxDurability / 2) {
             damaged = true;
-            GameObject.FindWithTag("Base").GetComponent<Base>().TriggerRepair("Turret");
         }
     }
 

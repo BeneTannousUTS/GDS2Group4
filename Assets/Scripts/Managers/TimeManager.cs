@@ -52,6 +52,7 @@ public class TimeManager : MonoBehaviour
                 {
                     currentTime = 0;
                     gameState = GameState.defence;
+                    FindAnyObjectByType<Base>().SetDefencePhase(true);
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
                     FindAnyObjectByType<EnemySpawner>().StartDefencePhase();
                     door.SetActive(true);
@@ -74,6 +75,7 @@ public class TimeManager : MonoBehaviour
             }
             currentTime = 0;
             gameState = GameState.scavenge;
+            FindAnyObjectByType<Base>().SetDefencePhase(false);
             door.SetActive(false);
             // door.GetComponent<BoxCollider>().enabled = false;
             // door.GetComponent<Animator>().SetTrigger("Open");

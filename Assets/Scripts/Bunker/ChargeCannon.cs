@@ -41,7 +41,6 @@ public class ChargeCannon : Defence
 
         if (damaged == false && currentDurability == 0f) {
             damaged = true;
-            GameObject.FindWithTag("Base").GetComponent<Base>().TriggerRepair("ChargeCannon");
         }
     }
 
