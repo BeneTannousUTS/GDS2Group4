@@ -4,8 +4,20 @@ using UnityEngine;
 public class VisorUI : MonoBehaviour
 {
     public TextMeshProUGUI visorTxt;
+    public string tutorialTxt;
     public GameObject visorImage;
+    private bool tutorial;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public void UpdateVisorTextTutorial(string visorText)
+    {
+        tutorial = true;
+        visorImage.SetActive(true);
+        visorTxt.text = visorText;
+        tutorialTxt = visorText;
+    }
+
+    public void ClearTutorial() {  tutorial = false; }
 
     public void UpdateVisorText(string visorText)
     {
@@ -15,8 +27,15 @@ public class VisorUI : MonoBehaviour
 
     public void ClearVisor()
     {
-        visorImage.SetActive(false);
-        visorTxt.text = null;
+        if (!tutorial)
+        {
+            visorImage.SetActive(false);
+            visorTxt.text = null;
+        }
+        else
+        {
+            visorTxt.text = tutorialTxt;
+        }
     }
     void Start()
     {

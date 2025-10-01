@@ -82,7 +82,7 @@ public class TimeManager : MonoBehaviour
         }
         if (gameState == GameState.scavenge)
         {
-            bunkerLight.color = Color.Lerp(Color.green, Color.red, currentTime/scavengeLength);
+            //bunkerLight.color = Color.Lerp(Color.green, Color.red, currentTime/scavengeLength);
         }
     }
 
