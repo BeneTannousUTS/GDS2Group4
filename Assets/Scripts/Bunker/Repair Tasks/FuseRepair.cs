@@ -20,7 +20,6 @@ public class FuseRepair : Repair
         if (repairRequired && isFuseInserted)
         {
             repairRequired = false;
-            defence.Repair();
             VisualRepair();
         }
     }
