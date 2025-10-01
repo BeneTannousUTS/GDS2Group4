@@ -48,8 +48,8 @@ public class EnemyAI : MonoBehaviour
 
         if (side == 0 || side == 2)
         {
-            startPos.x += Random.Range(-0.6f, 0.6f);
-            hitPos.x += Random.Range(-0.15f, 0.15f);
+            startPos.z += Random.Range(-0.6f, 0.6f);
+            hitPos.z += Random.Range(-0.15f, 0.15f);
         }
         else
         {

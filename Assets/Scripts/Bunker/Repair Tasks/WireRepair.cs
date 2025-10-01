@@ -21,7 +21,6 @@ public class WireRepair : Repair
         if (brokenPlugCount == 0)
         {
             repairRequired = false;
-            defence.Repair();
             Debug.Log("Defense Repaired");
         }
     }

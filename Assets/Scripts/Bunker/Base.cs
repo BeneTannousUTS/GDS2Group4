@@ -279,7 +279,10 @@ public class Base : MonoBehaviour
         }
 
         unlockedRepairs.Add(repairTasks[0]);
+        repairTasks[0].OnUnlock();
         unlockedRepairs.Add(repairTasks[1]);
+        repairTasks[1].OnUnlock();
+        
 
         turretUnlocked = true;
     }
