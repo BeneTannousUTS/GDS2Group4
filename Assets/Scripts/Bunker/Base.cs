@@ -8,25 +8,32 @@ public class Base : MonoBehaviour
     public GameObject emergencyLight;
     bool repair = false;
 
-     public AudioClip turretShoot;
+    public AudioClip turretShoot;
     public AudioClip steamSound;
     bool steam = false;
+    bool turretUnlocked = false;
 
     public float maxBunkerDurability = 250f;
     float currentBunkerDurability;
 
     public List<Defence> defences;
     public List<Repair> repairTasks;
+    public List<Repair> unlockedRepairs;
 
     public TMP_Text bunkerHealthDisplay;
     public TMP_Text turretHealthDisplay;
 
+    public List<GameObject> turretObjects;
     public List<GameObject> ccObjects;
     public List<GameObject> spikeObjects;
+
+    private float repairTimer = -30f;
+    private bool defencePhase = false;
 
     void Start()
     {
         currentBunkerDurability = maxBunkerDurability;
+        StartCoroutine(PlayTurretSound());
     }
 
     void UpdateDisplay()
@@ -40,22 +47,38 @@ public class Base : MonoBehaviour
     {
         UpdateDisplay();
 
-        if (defences[0].GetIsActive() == false && FindAnyObjectByType<EnemySpawner>().EnemyCount(defences[0].GetSide()) != 0)
+        if (defencePhase)
         {
-            defences[0].SetIsActive(true);
-            StartCoroutine(PlayTurretSound());
+            repairTimer += Time.deltaTime;
         }
-        else if (FindAnyObjectByType<EnemySpawner>().EnemyCount(defences[0].GetSide()) == 0)
+        else
         {
-            defences[0].SetIsActive(false);
+            currentBunkerDurability += Time.deltaTime;
+            currentBunkerDurability = Mathf.Min(250f, currentBunkerDurability);
         }
 
-        if (defences[0].GetIsActive())
+        if (turretUnlocked)
         {
-            FindAnyObjectByType<EnemySpawner>().DamageEnemies(defences[0].GetSide(), 1000f, false, defences[0].GetDamage(4) * Time.deltaTime);
+            for (int i = 0; i < 4; i++)
+            {
+                if (defences[i].GetIsActive() == false && FindAnyObjectByType<EnemySpawner>().EnemyCount(i) != 0)
+                {
+                    defences[i].SetIsActive(true);
+                }
+                else if (FindAnyObjectByType<EnemySpawner>().EnemyCount(i) == 0)
+                {
+                    defences[i].SetIsActive(false);
+                }
+
+                if (defences[i].GetIsActive())
+                {
+                    FindAnyObjectByType<EnemySpawner>().DamageEnemies(i, 1000f, false, defences[i].GetDamage(4) * Time.deltaTime);
+                }
+            }
         }
 
         bool repairRequired = false;
+
         foreach (Repair repairTask in repairTasks)
         {
             if (repairTask.GetRepairRequired())
@@ -65,6 +88,16 @@ public class Base : MonoBehaviour
         }
 
         repair = repairRequired;
+
+        if (repair)
+        {
+            currentBunkerDurability -= 1f * Time.deltaTime;
+        }
+        else if (repairTimer >= 5f)
+        {
+            TriggerRepair();
+            repairTimer = Random.Range(-35f, -25f);
+        }
     }
 
     IEnumerator FlashLight()
@@ -93,10 +126,15 @@ public class Base : MonoBehaviour
 
     IEnumerator PlayTurretSound()
     {
-        if (defences[0].GetIsActive())
+        if (defences[0].GetIsActive() || defences[1].GetIsActive() || defences[2].GetIsActive() || defences[3].GetIsActive())
         {
             FindAnyObjectByType<AudioManager>().PlaySound(turretShoot);
             yield return new WaitForSeconds(0.5f);
+            StartCoroutine(PlayTurretSound());
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
             StartCoroutine(PlayTurretSound());
         }
     }
@@ -107,13 +145,9 @@ public class Base : MonoBehaviour
 
         foreach (Defence defence in defences)
         {
-            if ((defence.GetSide() == 4 || defence.GetSide() == enemy.GetSide()) && defence.GetIsActive())
+            if ((defence.GetSide() == enemy.GetSide()) && defence.GetIsActive() && defence.GetIsCounter())
             {
-                if (defence.GetIsCounter() && defence.GetIsActive())
-                {
-                    enemy.DealDamage(defence.GetDamage(enemy.GetSide()));
-                }
-
+                enemy.DealDamage(defence.GetDamage(enemy.GetSide()));
                 defence.TakeDamage(50f);
                 defenceHit = true;
             }
@@ -122,6 +156,11 @@ public class Base : MonoBehaviour
         if (defenceHit == false)
         {
             currentBunkerDurability -= 5f;
+            if (Random.Range(0f, 1f) <= 0.5f)
+            {
+                TriggerRepair();
+            }
+
 
             if (currentBunkerDurability == 0f)
             {
@@ -140,16 +179,11 @@ public class Base : MonoBehaviour
 
     }
 
-    public void TriggerRepair(string defenceName)
+    public void TriggerRepair()
     {
-        if (defenceName.Equals("Turret"))
+        if (turretUnlocked)
         {
-            repairTasks[Random.Range(0, 2)].TakeDamage();
-        }
-
-        if (defenceName.Equals("ChargeCannon"))
-        {
-            repairTasks[2].TakeDamage();
+            unlockedRepairs[Random.Range(0, unlockedRepairs.Count)].TakeDamage();
         }
 
         if (repair == false)
@@ -159,26 +193,58 @@ public class Base : MonoBehaviour
         }
     }
 
+    public void DeploySpike(int side)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            defences[4 + i].SetIsActive(false);
+        }
+
+        defences[4 + side].SetIsActive(true);
+    }
+
+    public void DeployAudioLure(int side)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            defences[8 + i].SetIsActive(false);
+        }
+
+        defences[8 + side].SetIsActive(true);
+    }
+
+    public void DeployDefence(string defenceName, int side)
+    {
+        if (defenceName.Equals("Spikes"))
+        {
+            DeploySpike(side);
+        }
+        if (defenceName.Equals("Audio Lure"))
+        {
+            DeployAudioLure(side);
+        }
+    }
+
     public void RotateLeft()
     {
-        foreach (Defence defence in defences)
-        {
-            if (defence.GetSide() != 4)
-            {
-                defence.RotateLeft();
-            }
-        }
+        //foreach (Defence defence in defences)
+        //{
+        //if (defence.GetSide() != 4)
+        //{
+        //defence.RotateLeft();
+        //}
+        //}
     }
 
     public void RotateRight()
     {
-        foreach (Defence defence in defences)
-        {
-            if (defence.GetSide() != 4)
-            {
-                defence.RotateRight();
-            }
-        }
+        //foreach (Defence defence in defences)
+        //{
+        //if (defence.GetSide() != 4)
+        //{
+        //defence.RotateRight();
+        //}
+        //}
     }
 
     public void Attack(Defence defence)
@@ -189,13 +255,12 @@ public class Base : MonoBehaviour
         }
     }
 
-    public void ActivateTurrets(bool value)
-    {
-        defences[0].SetIsActive(value);
-    }
-
     public void UnlockDefence(string defenceString)
     {
+        if (defenceString.Equals("Turret"))
+        {
+            UnlockTurret();
+        }
         if (defenceString.Equals("Charge Cannon"))
         {
             UnlockChargeCannon();
@@ -206,18 +271,33 @@ public class Base : MonoBehaviour
         }
     }
 
+    void UnlockTurret()
+    {
+        foreach (GameObject turretObject in turretObjects)
+        {
+            turretObject.SetActive(true);
+        }
+
+        unlockedRepairs.Add(repairTasks[0]);
+        unlockedRepairs.Add(repairTasks[1]);
+
+        turretUnlocked = true;
+    }
+
     void UnlockChargeCannon()
     {
         foreach (GameObject ccObject in ccObjects)
         {
             ccObject.SetActive(true);
         }
+
+        unlockedRepairs.Add(repairTasks[2]);
     }
 
     void UnlockSpikes()
     {
         foreach (GameObject spikeObject in spikeObjects)
-        { 
+        {
             spikeObject.SetActive(true);
         }
     }
@@ -244,5 +324,10 @@ public class Base : MonoBehaviour
     public void StopSteamSound()
     {
         steam = false;
+    }
+
+    public void SetDefencePhase(bool value)
+    {
+        defencePhase = value;
     }
 }
