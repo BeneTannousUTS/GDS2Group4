@@ -147,7 +147,6 @@ public class PlayerController : MonoBehaviour
                         targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
                         visor.ClearVisor();
                     }
-                    interactCanvas.SetActive(true);
                     targetedInteractable = hitObject.collider.transform.gameObject;
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
                     if (targetedInteractable.GetComponent<ItemInfo>())
@@ -159,7 +158,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                interactCanvas.SetActive(false);
                 if (targetedInteractable != null)
                 {
                     targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
