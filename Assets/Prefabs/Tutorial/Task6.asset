@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1223b0a374c24314db773bc439a0c2fc, type: 3}
-  m_Name: Task2
+  m_Script: {fileID: 11500000, guid: 31c77fbec2c66a541a4e8e5c0a78c45d, type: 3}
+  m_Name: Task6
   m_EditorClassIdentifier: 
-  taskType: 1
-  taskDescription: Good Job. Now use the Terminal to craft a ladder
-  item: {fileID: 11400000, guid: 62d15e1c6e01cfd478502cf74d686f9b, type: 2}
+  taskType: 2
+  taskDescription: PROTECT THE BUNKER AT ALL COSTS

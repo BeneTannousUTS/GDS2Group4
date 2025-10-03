@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Task3
   m_EditorClassIdentifier: 
   taskType: 0
-  taskDescription: Deploy the ladder
+  taskDescription: Amazing. Now deploy the ladder by using the storage tab
   item: {fileID: 11400000, guid: 62d15e1c6e01cfd478502cf74d686f9b, type: 2}

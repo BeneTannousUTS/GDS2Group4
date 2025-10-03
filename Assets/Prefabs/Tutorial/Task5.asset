@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1223b0a374c24314db773bc439a0c2fc, type: 3}
-  m_Name: Task2
+  m_Name: Task5
   m_EditorClassIdentifier: 
   taskType: 1
-  taskDescription: Good Job. Now use the Terminal to craft a ladder
-  item: {fileID: 11400000, guid: 62d15e1c6e01cfd478502cf74d686f9b, type: 2}
+  taskDescription: Invaders are approaching, craft a turret to defend the bunker
+  item: {fileID: 11400000, guid: 4f41caae0ea6d244bb4f9f222cf9642a, type: 2}

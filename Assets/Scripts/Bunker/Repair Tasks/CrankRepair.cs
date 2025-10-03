@@ -16,9 +16,13 @@ public class CrankRepair : Repair
     private Vector2 prevMousePos, screenMidpoint;
     [SerializeField] private GameObject spinningPart;
 
+    private void Start()
+    {
+    }
+
     public override void OnUnlock()
     {
-        playerController = mainCamera.transform.parent.GetComponent<PlayerController>();
+        playerController = FindAnyObjectByType<PlayerController>();
         screenMidpoint = new Vector2(Screen.width / 2, Screen.height / 2);
     }
 

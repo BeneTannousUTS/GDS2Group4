@@ -14,4 +14,13 @@ public class CraftTask : TutorialTask
         } 
         return false;
     }
+
+    public override bool CraftCheck(BaseItem i)
+    {
+        if (i == item)
+        {
+            return true;
+        }
+        return false;
+    }
 }

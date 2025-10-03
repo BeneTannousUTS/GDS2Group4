@@ -21,7 +21,8 @@ public class StorageManager : MonoBehaviour
         items[item.itemID] = item;
         quantity[item.itemID]++;
         storageUI.UpdateUI();
-        tutorial.Invoke();
+        FindAnyObjectByType<TutorialManager>().Craft(item);
+        FindAnyObjectByType<TutorialManager>().Check();
         if (item.GetIType() == BaseItem.itemType.ship)
         {
             shipUI.UpdateUI(item.itemID - 66);

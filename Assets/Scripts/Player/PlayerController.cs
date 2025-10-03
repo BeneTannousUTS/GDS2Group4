@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
             }
             targetedInteractable = null;
             isHoldingObject = false;
+            visor.ClearVisor();
         }
         else if (targetedInteractable != null)
         {

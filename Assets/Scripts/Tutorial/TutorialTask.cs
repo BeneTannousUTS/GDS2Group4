@@ -8,7 +8,17 @@ public class TutorialTask : ScriptableObject
     public TaskType taskType;
     public string taskDescription;
 
+    public virtual void SetupTask()
+    {
+
+    }
+
     public virtual bool CheckTask()
+    {
+        return false;
+    }
+
+    public virtual bool CraftCheck(BaseItem item)
     {
         return false;
     }
