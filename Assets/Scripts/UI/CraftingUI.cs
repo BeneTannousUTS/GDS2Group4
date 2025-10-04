@@ -25,6 +25,8 @@ public class CraftingUI : MonoBehaviour
     private BaseRecipe selectedRecipe;
     private RecipeSlot selectedSlot;
     [SerializeField] private Button closeBtn;
+    private GameObject resultWireframe;
+    private bool isActiveWireframe = false;
 
 
     public void CloseUI()
@@ -40,16 +42,16 @@ public class CraftingUI : MonoBehaviour
         GameObject temp = Instantiate(recipeSlot, listCanvas.gameObject.transform);
         RecipeSlot slot = temp.GetComponent<RecipeSlot>();
         slot.SetRecipe(item);
-        temp.transform.localPosition += new Vector3(200 * x, -250 * y);
+        temp.transform.localPosition += new Vector3(220 * x, -100 * y);
         slots.Add(temp);
         x++;
-        if (x > 7)
+        if (x > 6)
         {
-            x = 0;
+            x = 1;
             y++;
         }
-        temp.GetComponent<Image>().sprite = item.GetImage();
-        temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName();
+        temp.transform.Find("Image").GetComponent<Image>().sprite = item.GetImage();
+        temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName().ToUpper();
         temp.GetComponent<Button>().onClick.AddListener(delegate { CraftView(slot); });
     }
 
@@ -59,24 +61,24 @@ public class CraftingUI : MonoBehaviour
         {
             Destroy(slot.gameObject);
         }
-        x = 0;
-        y = 0;
+        x = 1;
+        y = 1;
         slots.Clear();
         foreach (var item in recipeManager.recipeList)
         {
             GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
             RecipeSlot slot = temp.GetComponent<RecipeSlot>();
             slot.SetRecipe(item);
-            temp.transform.localPosition += new Vector3(200 * x, -250 * y);
+            temp.transform.localPosition += new Vector3(220 * x, -100 * y);
             slots.Add(temp);
             x++;
-            if (x > 7)
+            if (x > 6)
             {
                 x = 0;
                 y++;
             }
-            temp.GetComponent<Image>().sprite = item.GetImage();
-            temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName();
+            temp.transform.Find("Image").GetComponent<Image>().sprite = item.GetImage();
+            temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName().ToUpper();
             temp.GetComponent<Button>().onClick.AddListener(delegate { CraftView(slot); });
         }
     }
@@ -92,13 +94,15 @@ public class CraftingUI : MonoBehaviour
 
     public void CraftView(RecipeSlot slot)
     {
-        craftBtn.image.color = Color.blue;
+        //craftBtn.image.color = Color.blue;
         craftBtn.enabled = true;
         BaseRecipe recipe = slot.GetRecipe();
         selectedRecipe = recipe;
         selectedSlot = slot;
         Debug.Log(recipe);
-        craftResultImg.sprite = recipe.GetImage();
+        //craftResultImg.sprite = recipe.GetImage();
+        resultWireframe = Instantiate(recipe.GetWireFrame(), craftResultImg.transform.position, Quaternion.identity);
+        isActiveWireframe = true;
         x = 2;
         y = 1;
         itemCanvas.gameObject.SetActive(true);
@@ -106,12 +110,12 @@ public class CraftingUI : MonoBehaviour
         foreach (var ingredient in recipe.GetRecipeIngredients())
         {
             GameObject temp = Instantiate(itemSlot, itemCanvas.transform);
-            temp.transform.localPosition += new Vector3(200 * x, -100 * y);
+            temp.transform.localPosition += new Vector3(220 * x, -100 * y);
             ingredients.Add(temp);
             x++;
-            temp.GetComponent<Image>().sprite = ingredient.GetImage();
+            temp.transform.Find("Image").GetComponent<Image>().sprite = ingredient.GetImage();
             int quant = recipe.GetQuant(ingredient);
-            temp.transform.Find("Name").GetComponent<TMP_Text>().text = ingredient.GetName();
+            temp.transform.Find("Name").GetComponent<TMP_Text>().text = ingredient.GetName().ToUpper();
             temp.transform.Find("Quantity").GetComponent<TMP_Text>().text = quant.ToString();
             if (recipeManager.GetStorageManger().CheckQuantity(ingredient) < quant)
             {
@@ -128,6 +132,7 @@ public class CraftingUI : MonoBehaviour
 
     public void ListView()
     {
+        DestroyWireframe();
         foreach (var ing in ingredients)
         {
             Destroy(ing.gameObject);
@@ -173,6 +178,19 @@ public class CraftingUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isActiveWireframe)
+        {
+            resultWireframe.transform.Rotate(0, 30 * Time.deltaTime, 0);
+        }
+    }
+
+    public void DestroyWireframe()
+    {
+        if (resultWireframe)
+        {
+            isActiveWireframe = false;
+            Destroy(resultWireframe);
+            resultWireframe = null;
+        }
     }
 }

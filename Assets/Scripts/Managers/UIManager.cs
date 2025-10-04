@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
             {
                 timer -= Time.deltaTime;
             }
-            background.color = new Color32(0, (byte)Mathf.Lerp(79, 255, timer), 0, 255);
+            //background.color = new Color32(0, (byte)Mathf.Lerp(79, 255, timer), 0, 255);
         }
 
         if (closeAction.ReadValue<float>() > 0)
@@ -62,12 +62,16 @@ public class UIManager : MonoBehaviour
         {
             upgradeCanvas.GetComponent<CraftingUI>().ListView();
         }
-        currentCanvas.SetActive(false);
-        if (newCanvas)
+        if (currentCanvas)
         {
-            currentCanvas = newCanvas;
-            currentCanvas.SetActive(true);
+            if (currentCanvas == upgradeCanvas) upgradeCanvas.GetComponent<CraftingUI>().DestroyWireframe();
+            currentCanvas.SetActive(false);
         }
+        if (newCanvas)
+            {
+                currentCanvas = newCanvas;
+                currentCanvas.SetActive(true);
+            }
 
         }
 
