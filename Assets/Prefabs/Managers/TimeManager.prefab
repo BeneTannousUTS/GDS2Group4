@@ -157,7 +157,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309129839535889759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f63ef99fb12651f41b1de9a0e94caf60, type: 3}
   m_Name: 
@@ -175,6 +175,8 @@ MonoBehaviour:
   - {fileID: -6369392889999221118, guid: 8d87a124f846e3e4987cc2eed559d14d, type: 3}
   warningCanvas: {fileID: 489366566978779430}
   door: {fileID: 0}
+  doorClose: {fileID: 8300000, guid: a2b8265bb90e35341be19c1d5c0dc3a2, type: 3}
+  doorOpen: {fileID: 8300000, guid: f1fb02c10e1523243af7cb395f942ca4, type: 3}
 --- !u!1 &3561428660487683330
 GameObject:
   m_ObjectHideFlags: 0

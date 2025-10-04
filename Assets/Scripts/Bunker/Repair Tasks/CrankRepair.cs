@@ -11,17 +11,21 @@ public class CrankRepair : Repair
     private Vector3 originalCamPosition;
     private Quaternion originalCamRotation;
     private bool isCamOnCrank = false;
-    private GameObject mainCamera;
+    public GameObject mainCamera;
     private PlayerController playerController;
     private Vector2 prevMousePos, screenMidpoint;
     [SerializeField] private GameObject spinningPart;
 
-    void Start()
+    private void Start()
     {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        playerController = mainCamera.transform.parent.GetComponent<PlayerController>();
+    }
+
+    public override void OnUnlock()
+    {
+        playerController = FindAnyObjectByType<PlayerController>();
         screenMidpoint = new Vector2(Screen.width / 2, Screen.height / 2);
     }
+
     public override void VisualRepair()
     {
         gasLeak.SetActive(false);
@@ -58,7 +62,6 @@ public class CrankRepair : Repair
                 {
                     repairRequired = false;
                     VisualRepair();
-                    defence.Repair();
                 }
             }
             else

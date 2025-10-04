@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StorageManager : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class StorageManager : MonoBehaviour
     [SerializeField]
     private StorageUI storageUI;
     public ShipUI shipUI;
+    public UnityEvent tutorial;
     public bool StoreItem(BaseItem item)
     {
         items[item.itemID] = item;
         quantity[item.itemID]++;
         storageUI.UpdateUI();
+        FindAnyObjectByType<TutorialManager>().Craft(item);
+        FindAnyObjectByType<TutorialManager>().Check();
         if (item.GetIType() == BaseItem.itemType.ship)
         {
             shipUI.UpdateUI(item.itemID - 66);
@@ -41,6 +45,7 @@ public class StorageManager : MonoBehaviour
         {
             quantity[item.itemID] = 0;
         }
+        tutorial.Invoke();
         storageUI.UpdateUI();
     }
 
@@ -49,6 +54,7 @@ public class StorageManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        tutorial.AddListener(FindAnyObjectByType<TutorialManager>().Check);
         //items = new BaseItem[100];
         //quantity = new int[100];
 

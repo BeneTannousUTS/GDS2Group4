@@ -27,26 +27,26 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tutorialAnim)
-        {
-            if (timer > 1)
-            {
-                increase = false;
-            }
-            if (timer < 0)
-            {
-                increase = true;
-            }
-            if (increase)
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
-            //background.color = new Color32(0, (byte)Mathf.Lerp(79, 255, timer), 0, 255);
-        }
+        //if (tutorialAnim)
+        //{
+        //    if (timer > 1)
+        //    {
+        //        increase = false;
+        //    }
+        //    if (timer < 0)
+        //    {
+        //        increase = true;
+        //    }
+        //    if (increase)
+        //    {
+        //        timer += Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        timer -= Time.deltaTime;
+        //    }
+        //    background.color = new Color32(0, (byte)Mathf.Lerp(79, 255, timer), 0, 255);
+        //}
 
         if (closeAction.ReadValue<float>() > 0)
         {

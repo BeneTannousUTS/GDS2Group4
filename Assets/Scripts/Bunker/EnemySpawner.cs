@@ -98,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
     public void RemoveEnemy(int side, EnemyAI enemy)
     {
         enemyList[side].Remove(enemy);
+        FindAnyObjectByType<TutorialManager>().Check();
     }
 
     IEnumerator WinState()
