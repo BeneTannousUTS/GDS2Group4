@@ -20,6 +20,22 @@ MonoBehaviour:
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
+--- !u!114 &-1504713855203964364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1fc12ddd23443b47b1a51403adeb283, type: 3}
+  m_Name: Water_Volume
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    material: {fileID: 2100000, guid: ad0a7fc2d1190ff46985f49b15861c82, type: 2}
+    renderPass: 400
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,7 +65,8 @@ MonoBehaviour:
   - {fileID: 7839842153183502139}
   - {fileID: -7415546849678323093}
   - {fileID: 4043430864891026765}
-  m_RendererFeatureMap: f0dedc19f614e8363bdfa2abe6b6cc6c6b12a8f16daf16994d1daed7f2261d38
+  - {fileID: -1504713855203964364}
+  m_RendererFeatureMap: f0dedc19f614e8363bdfa2abe6b6cc6c6b12a8f16daf16994d1daed7f2261d38348af593b82e1eeb
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
