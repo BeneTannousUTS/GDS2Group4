@@ -49,16 +49,19 @@ public class TutorialManager : MonoBehaviour
 
     public void Craft(BaseItem item)
     {
-        if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.craft)
+        if (tutorialId < tutorialTask.Length)
         {
-            if (tutorialTask[tutorialId].CraftCheck(item))
+            if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.craft)
             {
-                tutorialId++;
-                Debug.Log("Task Complete");
-                visorUI.UpdateVisorTextTutorial(tutorialTask[tutorialId].taskDescription);
-                if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.defend)
+                if (tutorialTask[tutorialId].CraftCheck(item))
                 {
-                    tutorialTask[tutorialId].SetupTask();
+                    tutorialId++;
+                    Debug.Log("Task Complete");
+                    visorUI.UpdateVisorTextTutorial(tutorialTask[tutorialId].taskDescription);
+                    if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.defend)
+                    {
+                        tutorialTask[tutorialId].SetupTask();
+                    }
                 }
             }
         }
