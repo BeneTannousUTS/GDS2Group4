@@ -35,7 +35,6 @@ public class Base : MonoBehaviour
     {
         currentBunkerDurability = maxBunkerDurability;
         StartCoroutine(PlayTurretSound());
-        repairTasks[3].TakeDamage();
     }
 
     void UpdateDisplay()
