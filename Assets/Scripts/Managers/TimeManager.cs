@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private AudioClip doorClose;
     [SerializeField] private AudioClip doorOpen;
     private bool playerInBunker;
-
+    [SerializeField] VisorUI visor;
     public void AssignEvent()
     {
         if (gameObject.GetComponent<BaseEvent>())
@@ -44,7 +44,7 @@ public class TimeManager : MonoBehaviour
         {
             if (currentTime > scavengeLength-30)
             {
-                warningCanvas.SetActive(true);
+                  visor.SetReturn();
             }
             if (currentTime > scavengeLength)
             {
