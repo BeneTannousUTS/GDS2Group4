@@ -29,12 +29,14 @@ public class FuseRepair : Repair
         Debug.Log("Visual Repair Triggered");
         visualFuse.transform.localPosition = new Vector3(0, 0.0625f, 0);
         visualFuse.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        damageParticles.SetActive(false);
     }
 
     public override void TakeDamage()
     {
         repairRequired = true;
         visualFuse.SetActive(false);
+        damageParticles.SetActive(true);
     }
 
     public override void PlayAnimation()

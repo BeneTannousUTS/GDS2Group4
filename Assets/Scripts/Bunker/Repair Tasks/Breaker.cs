@@ -7,6 +7,7 @@ public class Breaker : Repair
     {
         repairRequired = true;
         GetComponent<Animator>().SetTrigger("Break");
+        damageParticles.SetActive(true);
     }
 
     public override void Activate()
@@ -15,6 +16,7 @@ public class Breaker : Repair
         {
             repairRequired = false;
             VisualRepair();
+            damageParticles.SetActive(false);
             multiBreakerRepair.RegisterFixedBreaker();
             Debug.Log("Breaker repaired");
             GetComponent<Animator>().SetTrigger("Fix");
