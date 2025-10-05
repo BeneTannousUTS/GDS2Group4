@@ -35,6 +35,7 @@ public class Base : MonoBehaviour
     {
         currentBunkerDurability = maxBunkerDurability;
         StartCoroutine(PlayTurretSound());
+        repairTasks[3].TakeDamage();
     }
 
     void UpdateDisplay()
@@ -311,7 +312,7 @@ public class Base : MonoBehaviour
             spikeObject.SetActive(true);
         }
 
-        // unlockedRepairs.Add(repairTasks[3]);
+        unlockedRepairs.Add(repairTasks[3]);
     }
 
     void UnlockAudioLure()
@@ -321,7 +322,7 @@ public class Base : MonoBehaviour
             audioObject.SetActive(true);
         }
 
-        // unlockedRepairs.Add(repairTasks[4]);
+        unlockedRepairs.Add(repairTasks[4]);
     }
 
     public bool GetBarrierActive(int side)
