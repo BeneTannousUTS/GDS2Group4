@@ -26,6 +26,7 @@ public class Base : MonoBehaviour
     public List<GameObject> turretObjects;
     public List<GameObject> ccObjects;
     public List<GameObject> spikeObjects;
+    public List<GameObject> audioObjects;
 
     private float repairTimer = -30f;
     private bool defencePhase = false;
@@ -174,9 +175,11 @@ public class Base : MonoBehaviour
 
     }
 
-    public void AttackAudioLure(EnemyAI enemy)
+    public bool AttackAudioLure(EnemyAI enemy)
     {
+        defences[8 + enemy.GetSide()].TakeDamage(50f);
 
+        return !GetAudioLureActive(enemy.GetSide());
     }
 
     public void TriggerRepair()
@@ -269,6 +272,10 @@ public class Base : MonoBehaviour
         {
             UnlockSpikes();
         }
+        if (defenceString.Equals("Audio Lure"))
+        {
+            UnlockAudioLure();
+        }
     }
 
     void UnlockTurret()
@@ -303,6 +310,18 @@ public class Base : MonoBehaviour
         {
             spikeObject.SetActive(true);
         }
+
+        // unlockedRepairs.Add(repairTasks[3]);
+    }
+
+    void UnlockAudioLure()
+    {
+        foreach (GameObject audioObject in audioObjects)
+        {
+            audioObject.SetActive(true);
+        }
+
+        // unlockedRepairs.Add(repairTasks[4]);
     }
 
     public bool GetBarrierActive(int side)
@@ -312,7 +331,7 @@ public class Base : MonoBehaviour
 
     public bool GetAudioLureActive(int side)
     {
-        return false;
+        return defences[8 + side].GetIsActive();
     }
 
     public void StartSteamSound()

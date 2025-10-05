@@ -4,7 +4,7 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
-    int side = 0;
+    public int side = 0;
     Vector3 startPos;
     Vector3 endPos;
     Vector3 hitPos;
@@ -82,6 +82,7 @@ public class EnemyAI : MonoBehaviour
     {
         startPos = endPos;
         timeTillHit = enemySpeed * (1 - (Vector3.Distance(transform.position, hitPos) / distanceToBunker));
+        currentState = AiState.ApproachBunker;
     }
 
     // Update is called once per frame
@@ -130,7 +131,10 @@ public class EnemyAI : MonoBehaviour
 
         else if (currentState == AiState.AttackAudioLure && timeTillHit >= attackSpeed)
         {
-            GameObject.FindWithTag("Base").GetComponent<Base>().AttackAudioLure(this);
+            if (GameObject.FindWithTag("Base").GetComponent<Base>().AttackAudioLure(this))
+            {
+                ResumePath();
+            }
             timeTillHit = 0f;
         }
 

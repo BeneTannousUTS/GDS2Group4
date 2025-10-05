@@ -394,17 +394,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emergencyLight: {fileID: 0}
+  turretShoot: {fileID: 0}
+  steamSound: {fileID: 0}
   maxBunkerDurability: 250
   defences:
   - {fileID: 4851320934013579833}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   repairTasks:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  unlockedRepairs: []
   bunkerHealthDisplay: {fileID: 0}
   turretHealthDisplay: {fileID: 0}
+  turretObjects: []
   ccObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -412,6 +426,7 @@ MonoBehaviour:
   spikeObjects:
   - {fileID: 0}
   - {fileID: 0}
+  audioObjects: []
 --- !u!1 &3180352503862138956
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +991,7 @@ MonoBehaviour:
   isRanged: 1
   isActive: 0
   isCounter: 0
+  currentSide: 0
 --- !u!1 &7923318258871142329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7cebfdb99c7814eb71403f4713e084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numEnemies: 0100000006000000080000000c000000
+  numEnemies: 0f00000006000000080000000c000000
   waitTimes:
   - 10
   - 20
@@ -1146,24 +1162,24 @@ MonoBehaviour:
   - 3
   EnemySpawnPositions:
   - {x: 0, y: 3.9, z: -0.1}
-  - {x: 1.75, y: 2.2, z: -0.1}
+  - {x: 1.75, y: 2.2, z: -1.75}
   - {x: 0, y: 0.5, z: -0.1}
-  - {x: -1.75, y: 2.2, z: -0.1}
+  - {x: -1.75, y: 2.2, z: 1.75}
   BunkerSidePositions:
   - {x: 0, y: 2.55, z: -0.1}
-  - {x: 0.35, y: 2.2, z: -0.1}
+  - {x: 0.35, y: 2.2, z: -0.35}
   - {x: 0, y: 1.85, z: -0.1}
-  - {x: -0.35, y: 2.2, z: -0.1}
+  - {x: -0.35, y: 2.2, z: 0.35}
   BarrierPositions:
   - {x: 0, y: 3.2, z: -0.1}
-  - {x: 0.8, y: 2.2, z: -0.1}
+  - {x: 0.8, y: 2.2, z: -0.8}
   - {x: 0, y: 1.2, z: -0.1}
-  - {x: -0.8, y: 2.2, z: -0.1}
+  - {x: -0.8, y: 2.2, z: 0.8}
   AudioLurePositions:
   - {x: 0, y: 3.7, z: -0.1}
-  - {x: 1.5, y: 2.2, z: -0.1}
+  - {x: 1.5, y: 2.2, z: -1.5}
   - {x: 0, y: 0.7, z: -0.1}
-  - {x: -1.5, y: 2.2, z: -0.1}
+  - {x: -1.5, y: 2.2, z: 1.5}
   waveCount: 4
   enemyPrefab: {fileID: 1853220047124446615, guid: b11e5f2031a09ed438d9c61f9a21f343, type: 3}
 --- !u!1 &8463622248269994719

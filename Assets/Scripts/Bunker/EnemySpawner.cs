@@ -119,14 +119,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (EnemyAI enemy in enemyList[side])
         {
-            if (FindAnyObjectByType<Base>().GetBarrierActive(side))
-            {
-                enemy.BarrierActivate(BarrierPositions[side] + transform.position);
-            }
-            else
-            {
-                enemy.ResumePath();
-            }
+            enemy.ResumePath();
         }
     }
 

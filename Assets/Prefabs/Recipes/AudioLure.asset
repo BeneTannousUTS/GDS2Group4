@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44144519c43f379439200cd8dcd90861, type: 3}
-  m_Name: Turret
+  m_Name: AudioLure
   m_EditorClassIdentifier: 
   rType: 1
-  recipeID: 7
-  recipeName: Turret
-  recipeItem: {fileID: 11400000, guid: 4f41caae0ea6d244bb4f9f222cf9642a, type: 2}
+  recipeID: 8
+  recipeName: Audio Lure
+  recipeItem: {fileID: 11400000, guid: a75a4f4e60fce35478c10e5319e98ea8, type: 2}
   recipeIngredients:
-  - {fileID: 11400000, guid: b56ccf9625084d649a6748af590cfba9, type: 2}
-  - {fileID: 11400000, guid: a8af54793ca7f0a419b41fbfd1799adb, type: 2}
-  recipeQuant: 0200000002000000
+  - {fileID: 11400000, guid: b4c99ec560168354cb959f9337244051, type: 2}
+  - {fileID: 11400000, guid: 9f68248550cdbb4499543c377f5509ad, type: 2}
+  recipeQuant: 0100000002000000
   recipeIcon: {fileID: 0}
   recipeWireframe: {fileID: 634970416892260046, guid: 30f8a391fe63e6547bb650ae82c9592f, type: 3}
