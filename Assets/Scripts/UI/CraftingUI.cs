@@ -74,8 +74,8 @@ public class CraftingUI : MonoBehaviour
             x++;
             if (x > 6)
             {
-                x = 0;
-                y++;
+                x = 1;
+                y += 3;
             }
             temp.transform.Find("Image").GetComponent<Image>().sprite = item.GetImage();
             temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName().ToUpper();

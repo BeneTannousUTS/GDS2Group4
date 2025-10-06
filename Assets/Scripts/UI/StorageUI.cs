@@ -55,7 +55,7 @@ public class StorageUI : MonoBehaviour
         {
             foreach (var item in storageManager.items)
             {
-                if (item != null && storageManager.quantity[item.itemID] != 0)
+                if (item != null && storageManager.quantity[item.itemID] != 0 && item.GetIType() != BaseItem.itemType.ship)
                 {
                     GameObject parentCanvas = canvasArray[0].gameObject;
                     switch (item.GetIType())

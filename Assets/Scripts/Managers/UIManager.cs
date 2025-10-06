@@ -62,6 +62,10 @@ public class UIManager : MonoBehaviour
         {
             upgradeCanvas.GetComponent<CraftingUI>().ListView();
         }
+        if (newCanvas == storageCanvas)
+        {
+            storageCanvas.GetComponent<StorageUI>().ChangeScreen(0);
+        }
         if (currentCanvas)
         {
             if (currentCanvas == upgradeCanvas) upgradeCanvas.GetComponent<CraftingUI>().DestroyWireframe();
