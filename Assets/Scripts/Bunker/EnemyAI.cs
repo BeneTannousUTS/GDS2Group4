@@ -11,6 +11,10 @@ public class EnemyAI : MonoBehaviour
     Vector3 barrierPos;
     Vector3 audioLurePos;
 
+    public AudioClip deaggroSound;
+    public List<AudioClip> moveSounds;
+    public List<AudioClip> hitSounds; 
+
     float distanceToBunker = 0f;
 
     float timeTillHit = 0f;
@@ -60,6 +64,8 @@ public class EnemyAI : MonoBehaviour
         endPos = startPos;
         distanceToBunker = Vector3.Distance(startPos, hitPos);
         transform.position = startPos;
+
+        FindAnyObjectByType<AudioManager>().PlaySound(moveSounds[Random.Range(0, moveSounds.Count)]);
     }
 
     public void BarrierActivate(Vector3 spawnBarrierPos)
@@ -83,6 +89,7 @@ public class EnemyAI : MonoBehaviour
         startPos = endPos;
         timeTillHit = enemySpeed * (1 - (Vector3.Distance(transform.position, hitPos) / distanceToBunker));
         currentState = AiState.ApproachBunker;
+        FindAnyObjectByType<AudioManager>().PlaySound(moveSounds[Random.Range(0, moveSounds.Count)]);
     }
 
     // Update is called once per frame
@@ -120,17 +127,20 @@ public class EnemyAI : MonoBehaviour
         else if (currentState == AiState.AttackBunker && timeTillHit >= attackSpeed)
         {
             GameObject.FindWithTag("Base").GetComponent<Base>().AttackBunker(this);
+            FindAnyObjectByType<AudioManager>().PlaySound(hitSounds[Random.Range(0, hitSounds.Count)]);
             timeTillHit = 0f;
         }
 
         else if (currentState == AiState.AttackBarrier && timeTillHit >= attackSpeed)
         {
             GameObject.FindWithTag("Base").GetComponent<Base>().AttackBarrier(this);
+            FindAnyObjectByType<AudioManager>().PlaySound(hitSounds[Random.Range(0, hitSounds.Count)]);
             timeTillHit = 0f;
         }
 
         else if (currentState == AiState.AttackAudioLure && timeTillHit >= attackSpeed)
         {
+            FindAnyObjectByType<AudioManager>().PlaySound(hitSounds[Random.Range(0, hitSounds.Count)]);
             if (GameObject.FindWithTag("Base").GetComponent<Base>().AttackAudioLure(this))
             {
                 ResumePath();
@@ -148,13 +158,14 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void Deaggro()
+    public void Deaggro()
     {
         FindAnyObjectByType<EnemySpawner>().RemoveEnemy(side, this);
         timeTillHit = 0.5f * enemySpeed * (Vector3.Distance(transform.position, hitPos) / distanceToBunker);
         Debug.Log(timeTillHit);
         currentState = AiState.Run;
         StartCoroutine(Flash());
+        FindAnyObjectByType<AudioManager>().PlaySound(deaggroSound);
     }
 
     public void DealDamage(float damage)

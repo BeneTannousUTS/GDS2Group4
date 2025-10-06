@@ -5,7 +5,8 @@ public class TutorialManager : MonoBehaviour
     public TutorialTask[] tutorialTask;
     public int tutorialId;
     public VisorUI visorUI;
-    public BoxCollider door;
+    public GameObject door;
+    public AudioClip doorOpen;
     public TimeManager timeManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +31,6 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("Task Complete");
                 if (tutorialId >= tutorialTask.Length)
                 {
-                    door.enabled = false;
                     visorUI.UpdateVisorTextTutorial("Now go out and find the remaining 4 ship parts");
                     visorUI.ClearTutorial();
                     timeManager.enabled = true;

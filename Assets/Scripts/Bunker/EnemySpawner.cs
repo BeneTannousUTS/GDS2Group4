@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public List<float> waitTimes;
     public List<float> maxSpawnIntervals;
     public List<float> minSpawnIntervals;
+
+    public List<DefenceWave> defenceWaves;
     public List<Vector3> EnemySpawnPositions;
     public List<Vector3> BunkerSidePositions;
     public List<Vector3> BarrierPositions;
@@ -83,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
         if (waveIndex < waveCount - 1)
         {
             waveIndex += 1;
+
             maxTimeTillNext = maxSpawnIntervals[waveIndex];
             minTimeTillNext = minSpawnIntervals[waveIndex];
             enemiesLeft = numEnemies[waveIndex];
@@ -91,6 +94,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             waveIndex = -1;
+            StartCoroutine(FinishDefence());
             // StartCoroutine(WinState());
         }
     }
@@ -150,5 +154,42 @@ public class EnemySpawner : MonoBehaviour
     public int EnemyCount(int side)
     {
         return enemyList[side].Count;
+    }
+
+    IEnumerator FinishDefence()
+    {
+        yield return new WaitForSeconds(11f);
+        for (int i = 0; i < 4; i++)
+        {
+            foreach (EnemyAI enemy in enemyList[i])
+            {
+                enemy.Deaggro();
+            }
+        }
+        FindAnyObjectByType<Base>().SetDefencePhase(false);
+        yield return new WaitForSeconds(6f);
+        FindAnyObjectByType<TimeManager>().EndDefencePhase();
+        LoadDefenceWaves(FindAnyObjectByType<TimeManager>().GetCurrentDay());
+    }
+
+    void LoadDefenceWaves(int day)
+    {
+        int index = 0;
+
+        if (day < defenceWaves.Count)
+        {
+            index = day;
+        }
+        else
+        {
+            index = defenceWaves.Count - 1;
+        }
+
+        numEnemies = defenceWaves[day].numEnemies;
+        waitTimes = defenceWaves[day].waitTimes;
+        minSpawnIntervals = defenceWaves[day].minSpawnIntervals;
+        maxSpawnIntervals = defenceWaves[day].maxSpawnIntervals;
+
+        waveCount = defenceWaves[day].numWaves;
     }
 }

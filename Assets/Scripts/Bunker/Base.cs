@@ -28,7 +28,7 @@ public class Base : MonoBehaviour
     public List<GameObject> spikeObjects;
     public List<GameObject> audioObjects;
 
-    private float repairTimer = -30f;
+    private float repairTimer = -12f;
     private bool defencePhase = false;
 
     void Start()
@@ -97,7 +97,7 @@ public class Base : MonoBehaviour
         else if (repairTimer >= 5f)
         {
             TriggerRepair();
-            repairTimer = Random.Range(-35f, -25f);
+            repairTimer = Random.Range(-15f, -10f);
         }
     }
 
@@ -112,6 +112,7 @@ public class Base : MonoBehaviour
         else
         {
             emergencyLight.SetActive(false);
+            GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -157,6 +158,8 @@ public class Base : MonoBehaviour
         if (defenceHit == false)
         {
             currentBunkerDurability -= 5f;
+
+            currentBunkerDurability = Mathf.Max(0f, currentBunkerDurability);
             if (Random.Range(0f, 1f) <= 0.5f)
             {
                 TriggerRepair();
@@ -193,6 +196,7 @@ public class Base : MonoBehaviour
         {
             repair = true;
             StartCoroutine(FlashLight());
+            GetComponent<AudioSource>().Play();
         }
     }
 
