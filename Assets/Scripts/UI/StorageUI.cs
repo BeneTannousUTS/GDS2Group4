@@ -75,7 +75,7 @@ public class StorageUI : MonoBehaviour
                         if (baseSlot)
                         {
                             GameObject slot = Instantiate(baseSlot, parentCanvas.transform);
-                            slot.transform.localPosition += new Vector3(200 * x, -250 * y);
+                            slot.transform.localPosition += new Vector3(220 * x, -150 * y);
                             slots.Add(slot);
                             x++;
                             if (x > 6)
@@ -83,8 +83,8 @@ public class StorageUI : MonoBehaviour
                                 x = 1;
                                 y++;
                             }
-                            slot.GetComponent<Image>().sprite = item.GetImage();
-                            slot.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName();
+                            slot.transform.Find("Image").GetComponent<Image>().sprite = item.GetImage();
+                            slot.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName().ToUpper();
                             slot.transform.Find("Quantity").GetComponent<TMP_Text>().text = storageManager.quantity[item.itemID].ToString();
                             slot.GetComponent<Button>().onClick.AddListener(delegate { SelectItem(slot); });
                             ResourceSlot rSlot = slot.GetComponent<ResourceSlot>();
@@ -99,13 +99,13 @@ public class StorageUI : MonoBehaviour
     public void SelectItem(GameObject slot)
     {
         selectedItem = slot.GetComponent<ResourceSlot>().GetItem();
-        selectImg.transform.position = slot.transform.position;
+        selectImg.transform.position = slot.transform.Find("Image").transform.position;
         selectImg.gameObject.SetActive(true);
         deployBtn.enabled = true;
         discardBtn.enabled = true;
 
-        deployBtn.image.color = Color.blue;
-        discardBtn.image.color = Color.red;
+        //deployBtn.image.color = Color.blue;
+        //discardBtn.image.color = Color.red;
     }
 
     public void DiscardItem()

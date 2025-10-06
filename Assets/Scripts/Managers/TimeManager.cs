@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private AudioClip doorClose;
     [SerializeField] private AudioClip doorOpen;
     private bool playerInBunker;
-
+    [SerializeField] VisorUI visor;
     public void AssignEvent()
     {
         if (gameObject.GetComponent<BaseEvent>())
@@ -44,7 +44,7 @@ public class TimeManager : MonoBehaviour
         {
             if (currentTime > scavengeLength-30)
             {
-                warningCanvas.SetActive(true);
+                  visor.SetReturn();
             }
             if (currentTime > scavengeLength)
             {
@@ -55,9 +55,9 @@ public class TimeManager : MonoBehaviour
                     FindAnyObjectByType<Base>().SetDefencePhase(true);
                     warningCanvas.GetComponent<WarningUI>().ResetWarning();
                     FindAnyObjectByType<EnemySpawner>().StartDefencePhase();
-                    door.SetActive(true);
-                    // door.GetComponent<BoxCollider>().enabled = true;
-                    // door.GetComponent<Animator>().SetTrigger("Close");
+                    // door.SetActive(true);
+                    door.GetComponent<BoxCollider>().enabled = true;
+                    door.GetComponent<Animator>().SetTrigger("Close");
                     FindAnyObjectByType<AudioManager>().PlaySound(doorClose);
                 }
                 else
@@ -65,22 +65,6 @@ public class TimeManager : MonoBehaviour
                     FindAnyObjectByType<GameManager>().LoseState();
                 }
             }
-        }
-        if (currentTime > defenceLength && gameState == GameState.defence)
-        {
-            currentDay++;
-            if (currentDay >= 2)
-            {
-                FindAnyObjectByType<GameManager>().WinState();
-            }
-            currentTime = 0;
-            gameState = GameState.scavenge;
-            FindAnyObjectByType<Base>().SetDefencePhase(false);
-            door.SetActive(false);
-            // door.GetComponent<BoxCollider>().enabled = false;
-            // door.GetComponent<Animator>().SetTrigger("Open");
-            FindAnyObjectByType<AudioManager>().PlaySound(doorOpen);
-            //AssignEvent();
         }
         if (gameState == GameState.scavenge)
         {
@@ -91,6 +75,17 @@ public class TimeManager : MonoBehaviour
     public void ReturnedToBunker(bool inBunker)
     {
         playerInBunker = inBunker;
+    }
+
+    public void EndDefencePhase()
+    {
+        currentDay++;
+        currentTime = 0;
+        gameState = GameState.scavenge;
+        // door.SetActive(false);
+        door.GetComponent<BoxCollider>().enabled = false;
+        door.GetComponent<Animator>().SetTrigger("Open");
+        FindAnyObjectByType<AudioManager>().PlaySound(doorOpen);
     }
 
     public void ChangeScavLength(float length) { scavengeLength = length; }

@@ -13,6 +13,7 @@ public class WireRepair : Repair
         {
             plug.ResetPlug();
         }
+        damageParticles.SetActive(true);
     }
 
     public void FixPlug()
@@ -21,7 +22,8 @@ public class WireRepair : Repair
         if (brokenPlugCount == 0)
         {
             repairRequired = false;
-            Debug.Log("Defense Repaired");
+            Debug.Log("Defence Repaired");
+            damageParticles.SetActive(false);
         }
     }
 }

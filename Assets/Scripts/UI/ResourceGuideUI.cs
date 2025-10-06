@@ -28,13 +28,13 @@ public class ResourceGuideUI : BaseGuideUI
         {
             canvasPos--;
         } 
-        lName.text = resourceList[canvasPos].name;
-        lDescription.text = resourceList[canvasPos].itemDesc;
+        lName.text = resourceList[canvasPos].name.ToUpper();
+        lDescription.text = resourceList[canvasPos].itemDesc.ToUpper();
         lImage.sprite = resourceList[canvasPos].GetImage();
         if (canvasPos+1 < resourceList.Count)
         {
-            rName.text = resourceList[canvasPos+1].name;
-            rDescription.text = resourceList[canvasPos+1].itemDesc;
+            rName.text = resourceList[canvasPos+1].name.ToUpper();
+            rDescription.text = resourceList[canvasPos+1].itemDesc.ToUpper();
             rImage.sprite = resourceList[canvasPos+1].GetImage();
         }
         else

@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8af54793ca7f0a419b41fbfd1799adb, type: 2}
   recipeQuant: 0200000002000000
   recipeIcon: {fileID: 0}
+  recipeWireframe: {fileID: 634970416892260046, guid: 30f8a391fe63e6547bb650ae82c9592f, type: 3}

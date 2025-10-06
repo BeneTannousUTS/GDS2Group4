@@ -62,12 +62,16 @@ public class UIManager : MonoBehaviour
         {
             upgradeCanvas.GetComponent<CraftingUI>().ListView();
         }
-        currentCanvas.SetActive(false);
-        if (newCanvas)
+        if (currentCanvas)
         {
-            currentCanvas = newCanvas;
-            currentCanvas.SetActive(true);
+            if (currentCanvas == upgradeCanvas) upgradeCanvas.GetComponent<CraftingUI>().DestroyWireframe();
+            currentCanvas.SetActive(false);
         }
+        if (newCanvas)
+            {
+                currentCanvas = newCanvas;
+                currentCanvas.SetActive(true);
+            }
 
         }
 

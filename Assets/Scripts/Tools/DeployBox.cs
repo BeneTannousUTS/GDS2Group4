@@ -8,7 +8,8 @@ public class DeployBox : Activator
     public override void Activate()
     {
         if (isLadder) GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StopClimbing();
-        Instantiate(deployedTool, gameObject.transform.position, quaternion.identity);
+        GameObject newtool = Instantiate(deployedTool, gameObject.transform.parent.position, quaternion.identity);
+        newtool.transform.eulerAngles = new Vector3(0, transform.parent.eulerAngles.y, 0);
         Destroy(gameObject.transform.parent.gameObject);
     }
 }

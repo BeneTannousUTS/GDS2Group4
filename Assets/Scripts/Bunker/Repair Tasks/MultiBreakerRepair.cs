@@ -27,7 +27,7 @@ public class MultiBreakerRepair : Repair
         if (damagedBreakersCount == 0)
         {
             repairRequired = false;
-            Debug.Log("Defense Repaired");
+            Debug.Log("Defence Repaired");
         }
     }
 }

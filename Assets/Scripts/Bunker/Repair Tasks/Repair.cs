@@ -3,6 +3,7 @@ using UnityEngine;
 public class Repair : Activator
 {
     public bool repairRequired = false;
+    [SerializeField] protected GameObject damageParticles;
 
     public override void Activate()
     {

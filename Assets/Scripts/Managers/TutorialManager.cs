@@ -5,7 +5,8 @@ public class TutorialManager : MonoBehaviour
     public TutorialTask[] tutorialTask;
     public int tutorialId;
     public VisorUI visorUI;
-    public BoxCollider door;
+    public GameObject door;
+    public AudioClip doorOpen;
     public TimeManager timeManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +31,6 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("Task Complete");
                 if (tutorialId >= tutorialTask.Length)
                 {
-                    door.enabled = false;
                     visorUI.UpdateVisorTextTutorial("Now go out and find the remaining 4 ship parts");
                     visorUI.ClearTutorial();
                     timeManager.enabled = true;
@@ -49,16 +49,19 @@ public class TutorialManager : MonoBehaviour
 
     public void Craft(BaseItem item)
     {
-        if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.craft)
+        if (tutorialId < tutorialTask.Length)
         {
-            if (tutorialTask[tutorialId].CraftCheck(item))
+            if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.craft)
             {
-                tutorialId++;
-                Debug.Log("Task Complete");
-                visorUI.UpdateVisorTextTutorial(tutorialTask[tutorialId].taskDescription);
-                if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.defend)
+                if (tutorialTask[tutorialId].CraftCheck(item))
                 {
-                    tutorialTask[tutorialId].SetupTask();
+                    tutorialId++;
+                    Debug.Log("Task Complete");
+                    visorUI.UpdateVisorTextTutorial(tutorialTask[tutorialId].taskDescription);
+                    if (tutorialTask[tutorialId].taskType == TutorialTask.TaskType.defend)
+                    {
+                        tutorialTask[tutorialId].SetupTask();
+                    }
                 }
             }
         }

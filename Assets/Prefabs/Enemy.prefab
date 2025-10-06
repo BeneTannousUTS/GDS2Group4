@@ -121,6 +121,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69918418877f46f4fa94e642b483b8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
+  deaggroSound: {fileID: 8300000, guid: cb42b432814fd0a4aba683d848b8583c, type: 3}
+  moveSounds:
+  - {fileID: 8300000, guid: 3f1e8333d4db2954280c63775ce08db4, type: 3}
+  - {fileID: 8300000, guid: 3003f809473a03a47ae4471aca951c97, type: 3}
+  - {fileID: 8300000, guid: dcf10240824ed6346b8efc5e976805cb, type: 3}
+  - {fileID: 8300000, guid: 83341b95c82f0d14fbda5880f3f7ff1e, type: 3}
+  - {fileID: 8300000, guid: 784f435bc919c844fa16273a0d991355, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 4c536ededd311b140bd61ed4e000a27b, type: 3}
+  - {fileID: 8300000, guid: 0697c3862d2b43f4187143415e22eb78, type: 3}
+  - {fileID: 8300000, guid: b700c13acf6b09247a1ef19b49277288, type: 3}
+  - {fileID: 8300000, guid: 9a3213aed1a22114fa4dffbbb2a4feb4, type: 3}
+  - {fileID: 8300000, guid: 53a59522948f3954a813975a672a1a49, type: 3}
   enemySpeed: 10
   attackSpeed: 5
   deaggroMax: 20

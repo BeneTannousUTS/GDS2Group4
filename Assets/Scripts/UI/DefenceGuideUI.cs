@@ -22,9 +22,9 @@ public class DefenceGuideUI : BaseGuideUI
         {
             canvasPos = 0;
         }
-        defName.text = defenceList[canvasPos].name;
-        defDesc.text = defenceList[canvasPos].itemDesc;
-        useDesc.text = defenceList[canvasPos].useDesc;
+        defName.text = defenceList[canvasPos].name.ToUpper();
+        defDesc.text = defenceList[canvasPos].itemDesc.ToUpper();
+        useDesc.text = defenceList[canvasPos].useDesc.ToUpper();
         if (defenceList[canvasPos].useImg)
         {
             useImg.sprite = defenceList[canvasPos].useImg;
