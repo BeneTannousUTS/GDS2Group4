@@ -46,6 +46,7 @@ public class WirePlug : PickupHold
         GetComponent<Interactable>().enabled = true;
         UpdateWirePosition();
         pickupRB.useGravity = true;
+        pickupRB.constraints = RigidbodyConstraints.None;
     }
 
     void OnTriggerEnter(Collider other)
@@ -58,7 +59,8 @@ public class WirePlug : PickupHold
             GetComponent<Interactable>().enabled = false;
             pickupRB.useGravity = false;
             transform.parent.GetComponent<WireRepair>().FixPlug();
-            if(playerTransform) playerTransform.GetComponent<PlayerController>().Interact();
+            pickupRB.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            if (playerTransform) playerTransform.GetComponent<PlayerController>().Interact();
         }
     }
 }

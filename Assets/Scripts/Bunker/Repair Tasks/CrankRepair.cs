@@ -15,7 +15,7 @@ public class CrankRepair : Repair
     private PlayerController playerController;
     private Vector2 prevMousePos, screenMidpoint;
     [SerializeField] private GameObject spinningPart;
-
+    private bool isCamMoving = false;
     private void Start()
     {
     }
@@ -78,6 +78,7 @@ public class CrankRepair : Repair
 
     public override void Activate()
     {
+        if (isCamMoving) return;
         if (!isCamOnCrank)
         {
             playerController.SetIsDetectingInteracts(false);
@@ -109,7 +110,7 @@ public class CrankRepair : Repair
 
     IEnumerator LerpCamera(Vector3 targetPos, Quaternion targetRot)
     {
-        
+        isCamMoving = true;
         Vector3 startPosition = mainCamera.transform.position;
         Quaternion startRotation = mainCamera.transform.rotation;
         float lerpTime = 0;
@@ -125,7 +126,7 @@ public class CrankRepair : Repair
             mainCamera.transform.parent.GetComponent<PlayerController>().SetIsAbleToMove(isCamOnCrank);
             mainCamera.transform.parent.GetComponent<PlayerController>().ToggleCamLock();
         }
-
+        isCamMoving = false;
         isCamOnCrank = !isCamOnCrank;
         
     }
