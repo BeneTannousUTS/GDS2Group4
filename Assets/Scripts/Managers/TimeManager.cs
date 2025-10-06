@@ -66,8 +66,9 @@ public class TimeManager : MonoBehaviour
                 }
             }
         }
-        if (gameState == GameState.scavenge)
+        if (gameState == GameState.defence)
         {
+            visor.ResetTimer();
             //bunkerLight.color = Color.Lerp(Color.green, Color.red, currentTime/scavengeLength);
         }
     }
