@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8855287277017154975}
+  - component: {fileID: 5893977465287596869}
+  - component: {fileID: 8234705712536817184}
   m_Layer: 0
   m_Name: BreakableCaveEntrance
   m_TagString: Untagged
@@ -24,9 +26,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591894280787004797}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.35000002, y: 0.35, z: 0.35000005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1714236731063052796}
@@ -36,6 +38,34 @@ Transform:
   - {fileID: 2906544061011408604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5893977465287596869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591894280787004797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994afba211c2ecb4a9bf5524579bacef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineObjects:
+  - {fileID: 1591894280787004797}
+  interactType: 2
+--- !u!114 &8234705712536817184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591894280787004797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970b7abafa66afb4bba27fae7f4f7a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnlockItemName: Bomb
 --- !u!1001 &880953052236603463
 PrefabInstance:
   m_ObjectHideFlags: 0
