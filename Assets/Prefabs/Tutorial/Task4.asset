@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: 0
   taskDescription: Use the ladder to reach the top floor, and collect the resources
-    and ship part
+    and ship part (Press E or Esc to close the Terminal)
   items:
   - {fileID: 11400000, guid: 50dd2b7d8bd0316409cdbce618baa099, type: 2}
   - {fileID: 11400000, guid: a8af54793ca7f0a419b41fbfd1799adb, type: 2}

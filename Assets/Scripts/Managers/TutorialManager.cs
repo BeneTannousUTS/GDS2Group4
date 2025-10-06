@@ -31,7 +31,7 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("Task Complete");
                 if (tutorialId >= tutorialTask.Length)
                 {
-                    visorUI.UpdateVisorTextTutorial("Now go out and find the remaining 4 ship parts");
+                    visorUI.UpdateVisorTextTutorial("The doors will shortly open. Now go out and find the remaining 4 ship parts");
                     visorUI.ClearTutorial();
                     timeManager.enabled = true;
                 }

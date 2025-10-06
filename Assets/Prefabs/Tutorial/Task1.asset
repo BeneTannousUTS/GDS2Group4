@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskType: 0
   taskDescription: Welcome to the B.U.N.K.E.R, please collect the resources and put
-    them in the storage box
+    them in the storage box (Press E to interact)
   items:
   - {fileID: 11400000, guid: b4c99ec560168354cb959f9337244051, type: 2}
   - {fileID: 11400000, guid: b56ccf9625084d649a6748af590cfba9, type: 2}
