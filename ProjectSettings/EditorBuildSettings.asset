@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/JulesTestScene.unity
     guid: 4b83a8ce0fe51f54c9f83c855abfb1ed
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 21f0dbc016aae7e4a922fb3466435d09
+  - enabled: 1
     path: Assets/Scenes/BunkerInteractable.unity
     guid: c9438c87dbf4f81468e9bb71429960fa
   - enabled: 1
