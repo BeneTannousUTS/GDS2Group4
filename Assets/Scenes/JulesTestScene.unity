@@ -30413,7 +30413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSensitivity: 10
-  moveSpeed: 7
+  moveSpeed: 10
   interactCanvas: {fileID: 5215099675096573145}
   grassStepClips:
   - {fileID: 8300000, guid: 585205ebcb42ffe4b8fe3fe187768bcd, type: 3}
