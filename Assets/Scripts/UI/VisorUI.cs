@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +19,14 @@ public class VisorUI : MonoBehaviour
         visorImage.SetActive(true);
         visorTxt.text = visorText;
         tutorialTxt = visorText;
+    }
+
+    public void ResetTimer()
+    {
+        timer = 0;
+        returnToBunker = false;
+        visorImage.GetComponent<Image>().color = visorColour;
+        visorImage.SetActive(false);
     }
 
     public void ClearTutorial() {  tutorial = false; }

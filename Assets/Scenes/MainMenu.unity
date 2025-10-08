@@ -834,6 +834,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 474844311265591876, guid: e217acc5fbaab4b40ada475329bbf3d1, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 76dc1aa441f12394fabc92f021203bb9, type: 3}
+    - target: {fileID: 474844311265591876, guid: e217acc5fbaab4b40ada475329bbf3d1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6979976373884430490, guid: e217acc5fbaab4b40ada475329bbf3d1, type: 3}
       propertyPath: m_Name
       value: AudioManager
