@@ -19,7 +19,6 @@ public class CrankRepair : Repair
     [SerializeField] private float crankSpeed = 225f;
     private void Start()
     {
-        playerController = FindAnyObjectByType<PlayerController>();
     }
 
     public override void OnUnlock()
@@ -36,7 +35,6 @@ public class CrankRepair : Repair
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace)) TakeDamage();
         if (isCamOnCrank)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -58,8 +56,8 @@ public class CrankRepair : Repair
                     {
                         if (angleDifference < -180 * Time.deltaTime)
                         {
-                            spinningPart.transform.Rotate(0, 180 * Time.deltaTime, 0);
-                            currentRotation += 180 * Time.deltaTime;
+                            spinningPart.transform.Rotate(0, crankSpeed * Time.deltaTime, 0);
+                            currentRotation += crankSpeed * Time.deltaTime;
                         }
                         else
                         {
@@ -115,7 +113,7 @@ public class CrankRepair : Repair
     public override void TakeDamage()
     {
         gasLeak.SetActive(true);
-        //FindAnyObjectByType<Base>().StartSteamSound();
+        FindAnyObjectByType<Base>().StartSteamSound();
         repairRequired = true;
         currentRotation = 0;
     }
