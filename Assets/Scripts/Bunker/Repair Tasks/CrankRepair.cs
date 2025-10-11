@@ -12,10 +12,11 @@ public class CrankRepair : Repair
     private Quaternion originalCamRotation;
     private bool isCamOnCrank = false;
     public GameObject mainCamera;
-    private PlayerController playerController;
+    [SerializeField] private PlayerController playerController;
     private Vector2 prevMousePos, screenMidpoint;
     [SerializeField] private GameObject spinningPart;
-
+    private bool isCamMoving = false;
+    [SerializeField] private float crankSpeed = 225f;
     private void Start()
     {
     }
@@ -34,50 +35,60 @@ public class CrankRepair : Repair
 
     void Update()
     {
-        if (isCamOnCrank && repairRequired)
+        if (isCamOnCrank)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                prevMousePos = Input.mousePosition;
+                Activate();
             }
-            if (Input.GetMouseButton(0))
-            {
-                float angleDifference = Vector2.SignedAngle(prevMousePos - screenMidpoint, new Vector2(Input.mousePosition.x, Input.mousePosition.y) - screenMidpoint);
 
-                if (angleDifference < 0)
-                {
-                    if (angleDifference < -180 * Time.deltaTime)
-                    {
-                        spinningPart.transform.Rotate(0, 180 * Time.deltaTime, 0);
-                        currentRotation += 180 * Time.deltaTime;
-                    }
-                    else
-                    {
-                        spinningPart.transform.Rotate(0, -angleDifference, 0);
-                        currentRotation += -angleDifference;
-                    }
-                }
-                prevMousePos = Input.mousePosition;
-                if (currentRotation >= requiredRotation)
-                {
-                    repairRequired = false;
-                    VisualRepair();
-                }
-            }
-            else
+            if (repairRequired)
             {
-                if (currentRotation > 0)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    spinningPart.transform.Rotate(0, -30 * Time.deltaTime, 0);
-                    currentRotation -= 30 * Time.deltaTime;
+                    prevMousePos = Input.mousePosition;
+                }
+                if (Input.GetMouseButton(0))
+                {
+                    float angleDifference = Vector2.SignedAngle(prevMousePos - screenMidpoint, new Vector2(Input.mousePosition.x, Input.mousePosition.y) - screenMidpoint);
+
+                    if (angleDifference < 0)
+                    {
+                        if (angleDifference < -180 * Time.deltaTime)
+                        {
+                            spinningPart.transform.Rotate(0, crankSpeed * Time.deltaTime, 0);
+                            currentRotation += crankSpeed * Time.deltaTime;
+                        }
+                        else
+                        {
+                            spinningPart.transform.Rotate(0, -angleDifference, 0);
+                            currentRotation += -angleDifference;
+                        }
+                    }
+                    prevMousePos = Input.mousePosition;
+                    if (currentRotation >= requiredRotation)
+                    {
+                        repairRequired = false;
+                        VisualRepair();
+                    }
+                }
+                else
+                {
+                    if (currentRotation > 0)
+                    {
+                        spinningPart.transform.Rotate(0, -45 * Time.deltaTime, 0);
+                        currentRotation -= 45 * Time.deltaTime;
+                    }
                 }
             }
+
         }
         
     }
 
     public override void Activate()
     {
+        if (isCamMoving) return;
         if (!isCamOnCrank)
         {
             playerController.SetIsDetectingInteracts(false);
@@ -109,7 +120,7 @@ public class CrankRepair : Repair
 
     IEnumerator LerpCamera(Vector3 targetPos, Quaternion targetRot)
     {
-        
+        isCamMoving = true;
         Vector3 startPosition = mainCamera.transform.position;
         Quaternion startRotation = mainCamera.transform.rotation;
         float lerpTime = 0;
@@ -125,7 +136,7 @@ public class CrankRepair : Repair
             mainCamera.transform.parent.GetComponent<PlayerController>().SetIsAbleToMove(isCamOnCrank);
             mainCamera.transform.parent.GetComponent<PlayerController>().ToggleCamLock();
         }
-
+        isCamMoving = false;
         isCamOnCrank = !isCamOnCrank;
         
     }

@@ -10,7 +10,8 @@ public class Interactable : MonoBehaviour
         Switch,
         Obstacle,
         UI,
-        Test
+        Test,
+        Visor
     }
 
     [SerializeField] List<GameObject> outlineObjects;
@@ -40,6 +41,11 @@ public class Interactable : MonoBehaviour
             case InteractType.UI: 
                 GetComponent<UIActivator>().ActivateCanvas();
                 break;
+            case InteractType.Visor:
+                GetComponent<VisorInteract>().SetupVisor();
+                gameObject.SetActive(false);
+                break;
+                
 
         }
     }

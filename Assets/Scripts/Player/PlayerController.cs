@@ -22,9 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject interactCanvas;
     [SerializeField] private AudioClip[] grassStepClips, metalStepClips;
     [SerializeField] private AudioManager audioManager;
-    private VisorUI visor;
+    [SerializeField] private VisorUI visor;
     private StorageManager storageManager;
     private bool isAbleToMove = true, isDetectingInteracts = true;
+    public bool canMove = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,14 +38,17 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         noPlayerMask = LayerMask.GetMask("Player");
         audioManager = FindAnyObjectByType<AudioManager>();
-        visor = FindAnyObjectByType<VisorUI>();
+        //visor = FindAnyObjectByType<VisorUI>();
         storageManager = FindAnyObjectByType<StorageManager>();
     }
 
     void Update()
     {
         GetInputs();
-        HandleMovement();
+        if (canMove)
+        {
+            HandleMovement();
+        }
         CheckForInteracts();
         HandleCooldowns();
     }
