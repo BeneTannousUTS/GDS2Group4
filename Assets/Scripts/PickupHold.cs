@@ -10,7 +10,7 @@ public class PickupHold : MonoBehaviour
     [SerializeField] private Transform playerHoldZone;
     [SerializeField] public Transform playerTransform;
     protected Rigidbody pickupRB;
-    [SerializeField] float objectCarrySpeed = 1000f;
+    [SerializeField] float objectCarrySpeed = 2500f;
     float dampingModifier = 1.2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,8 +43,20 @@ public class PickupHold : MonoBehaviour
         if (isHeld)
         {
             gameObject.layer = 6; // no collision with player
+            if (transform.GetChild(0))
+            {
+                transform.GetChild(0).gameObject.layer = 6;
+            }
         }
-        else gameObject.layer = 0;
+        else
+        {
+            gameObject.layer = 0;
+            if (transform.GetChild(0))
+            {
+                transform.GetChild(0).gameObject.layer = 0;
+            }
+        }
+        
     }
 
     public void SetPlayerHoldZone(GameObject player)

@@ -21,6 +21,14 @@ public class VisorUI : MonoBehaviour
         tutorialTxt = visorText;
     }
 
+    public void ResetTimer()
+    {
+        timer = 0;
+        returnToBunker = false;
+        visorImage.GetComponent<Image>().color = visorColour;
+        visorImage.SetActive(false);
+    }
+
     public void ClearTutorial() {  tutorial = false; }
 
     public void SetReturn() { returnToBunker = true; }
