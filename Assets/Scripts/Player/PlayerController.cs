@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         noPlayerMask = LayerMask.GetMask("Player");
+        noPlayerMask += LayerMask.GetMask("Ignore Raycast");
         audioManager = FindAnyObjectByType<AudioManager>();
         visor = FindAnyObjectByType<VisorUI>();
         storageManager = FindAnyObjectByType<StorageManager>();
