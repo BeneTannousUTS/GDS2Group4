@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6713187227743484141}
   - component: {fileID: 8365942406831134472}
   - component: {fileID: 6335728904417774686}
+  - component: {fileID: 7264317261619224017}
   m_Layer: 0
   m_Name: FlightComputer
   m_TagString: Untagged
@@ -70,7 +71,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -4854267140297420254, guid: f6886857a5e18b44489cd977cd27f62c, type: 3}
-  - {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
   playerHoldZone: {fileID: 0}
   playerTransform: {fileID: 0}
   objectCarrySpeed: 1000
+  childColliders: []
+  isDeployBox: 0
 --- !u!114 &6335728904417774686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +185,21 @@ MonoBehaviour:
   outlineObjects:
   - {fileID: 8698934654217025133}
   interactType: 0
+--- !u!114 &7264317261619224017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8698934654217025133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

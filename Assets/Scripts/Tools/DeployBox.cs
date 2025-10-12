@@ -26,6 +26,7 @@ public class DeployBox : Activator
             GameObject newtool = Instantiate(deployedTool, mainObject.transform.position, quaternion.identity);
             newtool.transform.eulerAngles = new Vector3(0, mainObject.transform.eulerAngles.y, 0);
         }
+        mainObject.GetComponent<Interactable>().enabled = false;
         //Destroy(mainObject);
     }
 

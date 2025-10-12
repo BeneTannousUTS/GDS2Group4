@@ -38,7 +38,7 @@ public class PickupHold : MonoBehaviour
     public virtual void ToggleHeld()
     {
         isHeld = !isHeld;
-        gameObject.GetComponent<Interactable>().ActivateOutline(0);
+        gameObject.GetComponent<Interactable>().ActivateOutline(false);
         pickupRB.linearDamping = 0f;
         pickupRB.useGravity = !pickupRB.useGravity;
         pickupRB.freezeRotation = !pickupRB.freezeRotation;
