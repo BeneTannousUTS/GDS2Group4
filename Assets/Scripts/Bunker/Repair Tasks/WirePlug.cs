@@ -24,7 +24,7 @@ public class WirePlug : PickupHold
     {
         if (isPlugged) return;
         isHeld = !isHeld;
-        gameObject.GetComponent<Interactable>().ActivateOutline(0);
+        gameObject.GetComponent<Interactable>().ActivateOutline(false);
         pickupRB.linearDamping = 0f;
         pickupRB.useGravity = !pickupRB.useGravity;
     }

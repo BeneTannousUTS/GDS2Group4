@@ -12,6 +12,8 @@ public class PickupHold : MonoBehaviour
     protected Rigidbody pickupRB;
     [SerializeField] float objectCarrySpeed = 2500f;
     float dampingModifier = 1.2f;
+    [SerializeField] private GameObject[] childColliders;
+    [SerializeField] private bool isDeployBox = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +26,7 @@ public class PickupHold : MonoBehaviour
         {
             pickupRB.linearDamping = dampingModifier * pickupRB.linearVelocity.magnitude / math.max(math.square(Vector3.Distance(transform.position, playerHoldZone.position)), 0.01f);
             pickupRB.AddForce(Vector3.Normalize(playerHoldZone.position - transform.position) * Vector3.Distance(transform.position, playerHoldZone.position) * Time.deltaTime * objectCarrySpeed);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y, playerHoldZone.eulerAngles.z);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y-180, playerHoldZone.eulerAngles.z);
             if (Vector3.Distance(transform.position, playerHoldZone.parent.transform.position) < playerHoldZone.transform.localPosition.z)
             {
                 pickupRB.AddForce(Vector3.Normalize(transform.position - playerHoldZone.parent.transform.position) * Time.deltaTime * objectCarrySpeed * 10f * (playerHoldZone.transform.localPosition.z - Vector3.Distance(transform.position, playerHoldZone.parent.transform.position)));
@@ -36,24 +38,24 @@ public class PickupHold : MonoBehaviour
     public virtual void ToggleHeld()
     {
         isHeld = !isHeld;
-        gameObject.GetComponent<Interactable>().ActivateOutline(0);
+        gameObject.GetComponent<Interactable>().ActivateOutline(false);
         pickupRB.linearDamping = 0f;
         pickupRB.useGravity = !pickupRB.useGravity;
         pickupRB.freezeRotation = !pickupRB.freezeRotation;
         if (isHeld)
         {
             gameObject.layer = 6; // no collision with player
-            if (transform.GetChild(0))
+            foreach (GameObject childObj in childColliders)
             {
-                transform.GetChild(0).gameObject.layer = 6;
+                childObj.layer = 6;
             }
         }
         else
         {
             gameObject.layer = 0;
-            if (transform.GetChild(0))
+            foreach (GameObject childObj in childColliders)
             {
-                transform.GetChild(0).gameObject.layer = 0;
+                childObj.layer = 0;
             }
         }
         
@@ -63,5 +65,14 @@ public class PickupHold : MonoBehaviour
     {
         playerTransform = player.transform;
         playerHoldZone = playerTransform.Find("Main Camera").Find("PickupZone");
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (isDeployBox) childColliders[0].GetComponent<DeployBox>().EnterTrigger(other);
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (isDeployBox) childColliders[0].GetComponent<DeployBox>().ExitTrigger(other);
     }
 }

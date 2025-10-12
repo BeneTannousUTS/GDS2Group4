@@ -92,7 +92,7 @@ public class CrankRepair : Repair
         if (!isCamOnCrank)
         {
             playerController.SetIsDetectingInteracts(false);
-            gameObject.GetComponent<Interactable>().ActivateOutline(0);
+            gameObject.GetComponent<Interactable>().ActivateOutline(false);
             playerController.SetIsAbleToMove(isCamOnCrank);
             playerController.ToggleCamLock();
             originalCamPosition = mainCamera.transform.position;

@@ -15,7 +15,7 @@ MonoBehaviour:
   iType: 2
   itemID: 41
   itemName: Ladder
-  prefab: {fileID: 2016736901803159152, guid: da3b372662ef43144adfbbac6afdaf11, type: 3}
+  prefab: {fileID: 2151963596549119072, guid: f62d5a42bb0299841a88fb83f39bc554, type: 3}
   itemWeight: 0
   itemRarity: 0
   itemIcon: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   iType: 2
   itemID: 44
   itemName: Storage Box
-  prefab: {fileID: 366660384888179462, guid: cdc7ee1b48752ae44b34a17738010d23, type: 3}
+  prefab: {fileID: 5876731103166487901, guid: e4313fa8320994c4eb79272473ed2474, type: 3}
   itemWeight: 0
   itemRarity: 0
   itemIcon: {fileID: 0}
