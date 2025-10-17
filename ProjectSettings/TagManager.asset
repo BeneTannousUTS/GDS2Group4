@@ -13,6 +13,7 @@ TagManager:
   - Ladder
   - Tree
   - Fuse
+  - DeployTrigger
   layers:
   - Default
   - TransparentFX

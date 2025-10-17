@@ -15,7 +15,7 @@ MonoBehaviour:
   iType: 2
   itemID: 43
   itemName: Cart
-  prefab: {fileID: 6923757781699837276, guid: 4cae412272a35b84da79f720840bb593, type: 3}
+  prefab: {fileID: 2799284679440968417, guid: 065b681ab8911f544a503bc75fb0ed8f, type: 3}
   itemWeight: 0
   itemRarity: 0
   itemIcon: {fileID: 0}

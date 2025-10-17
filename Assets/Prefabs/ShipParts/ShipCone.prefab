@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7534254560740504077}
   - component: {fileID: 362981845513278645}
   - component: {fileID: 8709217070894675691}
+  - component: {fileID: 1489803037345064688}
   m_Layer: 0
   m_Name: ShipCone
   m_TagString: Untagged
@@ -70,7 +71,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 3263931781923126087, guid: f6886857a5e18b44489cd977cd27f62c, type: 3}
-  - {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,6 +155,8 @@ MonoBehaviour:
   playerHoldZone: {fileID: 0}
   playerTransform: {fileID: 0}
   objectCarrySpeed: 1000
+  childColliders: []
+  isDeployBox: 0
 --- !u!114 &362981845513278645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +185,21 @@ MonoBehaviour:
   outlineObjects:
   - {fileID: 3100589966290604781}
   interactType: 0
+--- !u!114 &1489803037345064688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100589966290604781}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

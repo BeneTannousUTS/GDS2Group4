@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         noPlayerMask = LayerMask.GetMask("Player");
+        noPlayerMask += LayerMask.GetMask("Ignore Raycast");
         audioManager = FindAnyObjectByType<AudioManager>();
         //visor = FindAnyObjectByType<VisorUI>();
         storageManager = FindAnyObjectByType<StorageManager>();
@@ -148,11 +149,11 @@ public class PlayerController : MonoBehaviour
                 {
                     if (targetedInteractable != null)
                     {
-                        targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                        targetedInteractable.GetComponent<Interactable>().ActivateOutline(false);
                         visor.ClearVisor();
                     }
                     targetedInteractable = hitObject.collider.transform.gameObject;
-                    targetedInteractable.GetComponent<Interactable>().ActivateOutline(1);
+                    targetedInteractable.GetComponent<Interactable>().ActivateOutline(true);
                     if (targetedInteractable.GetComponent<ItemInfo>())
                     {
                         BaseItem item = targetedInteractable.GetComponent<ItemInfo>().baseItem;
@@ -164,7 +165,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (targetedInteractable != null)
                 {
-                    targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                    targetedInteractable.GetComponent<Interactable>().ActivateOutline(false);
                     targetedInteractable = null;
                     visor.ClearVisor();
                 }
@@ -174,7 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             if (targetedInteractable != null)
             {
-                targetedInteractable.GetComponent<Interactable>().ActivateOutline(0);
+                targetedInteractable.GetComponent<Interactable>().ActivateOutline(false);
                 targetedInteractable = null;
             }
         }
