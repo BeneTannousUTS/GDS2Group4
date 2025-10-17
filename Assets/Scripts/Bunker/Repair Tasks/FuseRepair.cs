@@ -4,6 +4,7 @@ public class FuseRepair : Repair
 {
     public GameObject visualFuse;
     private bool isFuseInserted = false;
+    [SerializeField] public Animator animator;
 
     public override void Activate()
     {
@@ -54,6 +55,10 @@ public class FuseRepair : Repair
             visualFuse.transform.localPosition = new Vector3(0, 0.2f, 0);
             visualFuse.transform.localRotation = Quaternion.Euler(-45, 0, 0);
             visualFuse.SetActive(true);
+            if (animator != null)
+            {
+                animator.enabled = true;
+            }
         }
     }
 }
