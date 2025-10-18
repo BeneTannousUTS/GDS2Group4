@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 6389179716384688820, guid: 4c3b710db6ebacf40ba9e0c72cf33a5f, type: 3}
   itemWeight: 5
   itemRarity: 5
-  itemIcon: {fileID: 21300000, guid: d9d7281b161c7fc44829daf0eb4db0d7, type: 3}
+  itemIcon: {fileID: 21300000, guid: db8dc37c91211cc4383fac2f49ce78c7, type: 3}
   itemDesc: Some crystals
   useDesc: a
   useImg: {fileID: 0}

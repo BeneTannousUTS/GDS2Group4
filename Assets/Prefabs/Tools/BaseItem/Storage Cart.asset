@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 2799284679440968417, guid: 065b681ab8911f544a503bc75fb0ed8f, type: 3}
   itemWeight: 0
   itemRarity: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 6afc4605b27dbb84284d3db7cfeb7ae3, type: 3}
   itemDesc: A cart to carry things for you
   useDesc: Hit the switch to change from stationary mode to follow mode
   useImg: {fileID: 0}

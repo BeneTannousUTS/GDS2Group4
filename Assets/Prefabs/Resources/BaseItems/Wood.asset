@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 1811003716385203346, guid: b182bfef99af5ed46872e6fd5c379482, type: 3}
   itemWeight: 5
   itemRarity: 1
-  itemIcon: {fileID: 21300000, guid: cbc25d6919ff6d648aad905b5e4011c8, type: 3}
+  itemIcon: {fileID: 21300000, guid: d6e4063f3862ecd45a640e6fa3c8fb59, type: 3}
   itemDesc: A wood plank. Used for upgrading and crafting
   useDesc: Used for upgrading and crafting
   useImg: {fileID: 0}

@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 2151963596549119072, guid: f62d5a42bb0299841a88fb83f39bc554, type: 3}
   itemWeight: 0
   itemRarity: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1c6ad5fc159df714c9c68e8bf37095a8, type: 3}
   itemDesc: A ladder to climb over obstacles
   useDesc: 
   useImg: {fileID: 0}

@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 5988731412029572348, guid: 6846da91053be5d47b30b8ccc0356c26, type: 3}
   itemWeight: 0
   itemRarity: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: b984a1bfc70edc74598c24abc7c83520, type: 3}
   itemDesc: A bomb to blast open blocked paths
   useDesc: 
   useImg: {fileID: 0}

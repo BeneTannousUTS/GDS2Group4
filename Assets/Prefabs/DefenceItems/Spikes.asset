@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   itemWeight: 10
   itemRarity: 5
-  itemIcon: {fileID: 21300000, guid: 5272dc47b5d310d49bb440ff5f8b8493, type: 3}
+  itemIcon: {fileID: 21300000, guid: 1b5bdc31bedf4dd428bf18f119cc9171, type: 3}
   itemDesc: The spikes are great at stopping invaders
   useDesc: Use the spike activator on the back of the pillar to deploy on all sides,
     deaggros the enemy instantly if they get too close.

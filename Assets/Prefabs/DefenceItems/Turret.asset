@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   itemWeight: 10
   itemRarity: 5
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d96d384143e20eb4285d7cfe44c63c8a, type: 3}
   itemDesc: 
   useDesc: 
   useImg: {fileID: 0}

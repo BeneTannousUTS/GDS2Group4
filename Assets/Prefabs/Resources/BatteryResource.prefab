@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHoldZone: {fileID: 0}
   playerTransform: {fileID: 0}
-  objectCarrySpeed: 1000
+  objectCarrySpeed: 1500
   childColliders: []
   isDeployBox: 0
 --- !u!114 &5828538255263724461

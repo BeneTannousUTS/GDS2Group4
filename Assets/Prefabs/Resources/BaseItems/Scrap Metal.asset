@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 2878634719463868514, guid: fc19c34e04edbc640bee8352f895acbd, type: 3}
   itemWeight: 5
   itemRarity: 1
-  itemIcon: {fileID: 21300000, guid: cbc25d6919ff6d648aad905b5e4011c8, type: 3}
+  itemIcon: {fileID: 21300000, guid: 4beef6cfeb1d2964893c43cfb3d3bc16, type: 3}
   itemDesc: A basket of metal. Used for upgrades
   useDesc: Used for upgrading and crafting
   useImg: {fileID: 0}

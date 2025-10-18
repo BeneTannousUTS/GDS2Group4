@@ -18,7 +18,7 @@ MonoBehaviour:
   prefab: {fileID: 542326020018531225, guid: d0b22e5d501265e448d1a2de95d585de, type: 3}
   itemWeight: 5
   itemRarity: 1
-  itemIcon: {fileID: 21300000, guid: cbc25d6919ff6d648aad905b5e4011c8, type: 3}
+  itemIcon: {fileID: 21300000, guid: 9f62a1d7108bcd747a6d828a0902dfd2, type: 3}
   itemDesc: A motherboard. Used for creating more powerful upgrades
   useDesc: 
   useImg: {fileID: 0}
