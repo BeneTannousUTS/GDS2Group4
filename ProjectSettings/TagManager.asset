@@ -14,6 +14,8 @@ TagManager:
   - Tree
   - Fuse
   - DeployTrigger
+  - Crowbar
+  - CartTrigger
   layers:
   - Default
   - TransparentFX

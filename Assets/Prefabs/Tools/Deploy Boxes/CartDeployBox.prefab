@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7190812379467521994}
   - component: {fileID: 3617536182353598978}
   - component: {fileID: 467582701240339781}
+  - component: {fileID: 2952525175969799232}
   m_Layer: 0
   m_Name: base
   m_TagString: Untagged
@@ -137,6 +138,27 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &2952525175969799232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659416845968486190}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 0.0625, z: 1.0000002}
+  m_Center: {x: 0, y: 0.03125, z: 0}
 --- !u!1 &1995393213082985624
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +421,7 @@ MonoBehaviour:
   childColliders:
   - {fileID: 5485371701338056362}
   isDeployBox: 1
+  pickupDistance: 1.5
 --- !u!65 &1561495425938162590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -754,10 +777,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e3a37ee5c6c9e28459382a6bc205287e, type: 3}
   - {fileID: 8300000, guid: c54efbfa07f372841ac34f08d27a00fc, type: 3}
   - {fileID: 8300000, guid: ca0a92ad11c7ddc4d8de295e48122f2c, type: 3}
-  deployedTool: {fileID: 4250799281253828662, guid: 036022307fb408f4e9e0c405f54875e9, type: 3}
+  deployedTool: {fileID: 1892764810115875224, guid: 7ea31a263dd83874e9ba3d1a3da9febd, type: 3}
   mainObject: {fileID: 2799284679440968417}
   isDeployable: 0
-  requiresTrigger: 1
+  requiresTrigger: 0
+  flatCollider: {fileID: 2952525175969799232}
+  mainCollider: {fileID: 1561495425938162590}
 --- !u!65 &4434528588701626744
 BoxCollider:
   m_ObjectHideFlags: 0

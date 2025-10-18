@@ -31,8 +31,6 @@ public class StorageCart : MonoBehaviour
             {
                 Vector3 moveVec = Vector3.MoveTowards(transform.position, followPos, followSpeed * Time.deltaTime);
                 float moveAngle = Vector3.SignedAngle(transform.forward, (followPos - transform.position).normalized, Vector3.up);
-                //GetComponent<Rigidbody>().MovePosition(moveVec);
-                //rb.MoveRotation(Quaternion.LookRotation(followPos - transform.position).normalized);
                 if (Mathf.Abs(moveAngle) >= minFollowAngle)
                 {
                     if (rb.angularVelocity.y < maxTorque)
@@ -40,12 +38,10 @@ public class StorageCart : MonoBehaviour
                         rb.AddTorque(moveAngle > 0 ? Vector3.up * rotateSpeed : Vector3.down * rotateSpeed, ForceMode.Acceleration);
                     }
                 }
-                //rb.linearVelocity = Vector3.Normalize(followPos - transform.position) * followSpeed * Time.deltaTime;
                 if (rb.linearVelocity.magnitude < maxSpeed)
                 {
                     rb.AddForce(transform.forward * followSpeed, ForceMode.Acceleration);
                 }
-                //Debug.Log(Vector3.Normalize(followPos - transform.position) * followSpeed * Time.deltaTime);
             }
         }
     }

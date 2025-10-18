@@ -14,6 +14,8 @@ public class PickupHold : MonoBehaviour
     float dampingModifier = 1.2f;
     [SerializeField] private GameObject[] childColliders;
     [SerializeField] private bool isDeployBox = false;
+    [SerializeField] private float pickupDistance = 1.5f;
+    private bool isInCart = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,7 +52,7 @@ public class PickupHold : MonoBehaviour
                 childObj.layer = 6;
             }
         }
-        else
+        else if (!isInCart)
         {
             gameObject.layer = 0;
             foreach (GameObject childObj in childColliders)
@@ -65,14 +67,51 @@ public class PickupHold : MonoBehaviour
     {
         playerTransform = player.transform;
         playerHoldZone = playerTransform.Find("Main Camera").Find("PickupZone");
+        playerHoldZone.localPosition = new Vector3(playerHoldZone.localPosition.x, playerHoldZone.localPosition.y, pickupDistance);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (isDeployBox) childColliders[0].GetComponent<DeployBox>().EnterTrigger(other);
+        if (other.CompareTag("CartTrigger"))
+        {
+            if (!isDeployBox)
+            {
+                transform.parent = other.transform.parent;
+            }
+            else
+            {
+                GetComponent<DeployBox>().mainObject.transform.parent = other.transform.parent;
+            }
+            gameObject.layer = 6; // no collision with player
+            foreach (GameObject childObj in childColliders)
+            {
+                childObj.layer = 6;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {
         if (isDeployBox) childColliders[0].GetComponent<DeployBox>().ExitTrigger(other);
+        if (other.CompareTag("CartTrigger"))
+        {
+            //Debug.Log("Exit cart trigger");
+            if (!isDeployBox)
+            {
+                transform.parent = null;
+            }
+            else
+            {
+                GetComponent<DeployBox>().mainObject.transform.parent = null;
+            }
+            if (!isHeld)
+            {
+                gameObject.layer = 0; // no collision with player
+                foreach (GameObject childObj in childColliders)
+                {
+                    childObj.layer = 0;
+                }
+            }
+        }
     }
 }

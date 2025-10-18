@@ -5,16 +5,19 @@ public class DeployBox : Activator
 {
     [SerializeField] private GameObject deployedTool;
     //[SerializeField] private bool isLadder;
-    [SerializeField] private GameObject mainObject;
+    [SerializeField] public GameObject mainObject;
     [SerializeField] private bool isDeployable = false;
     [SerializeField] private bool requiresTrigger = false;
     private Transform triggerTransform;
+    [SerializeField] private BoxCollider flatCollider, mainCollider;
     public override void Activate()
     {
         if (!isDeployable && requiresTrigger) return;
         //if (isLadder) GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StopClimbing();
         mainObject.GetComponent<Animator>().SetTrigger("Open");
         mainObject.layer = 6;
+        mainCollider.enabled = false;
+        flatCollider.enabled = true;
         GetComponent<BoxCollider>().enabled = false;
         if (requiresTrigger)
         {
