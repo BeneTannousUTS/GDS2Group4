@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CraftingUI : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private Button closeBtn;
     private GameObject resultWireframe;
     private bool isActiveWireframe = false;
+    private TutorialManager tutorialManager;
 
 
     public void CloseUI()
@@ -64,22 +66,69 @@ public class CraftingUI : MonoBehaviour
         x = 1;
         y = 1;
         slots.Clear();
-        foreach (var item in recipeManager.recipeList)
+        tutorialManager = FindAnyObjectByType<TutorialManager>();
+        if (tutorialManager.tutorialActive)
         {
-            GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
-            RecipeSlot slot = temp.GetComponent<RecipeSlot>();
-            slot.SetRecipe(item);
-            temp.transform.localPosition += new Vector3(220 * x, -100 * y);
-            slots.Add(temp);
-            x++;
-            if (x > 6)
+            for (int i = 0; i < 2; i++)
             {
-                x = 1;
-                y += 3;
+                GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
+                RecipeSlot slot = temp.GetComponent<RecipeSlot>();
+                slot.SetRecipe(recipeManager.recipeList[i]);
+                temp.transform.localPosition += new Vector3(220 * x, -100 * y);
+                slots.Add(temp);
+                x++;
+                if (x > 6)
+                {
+                    x = 1;
+                    y += 3;
+                }
+                temp.transform.Find("Image").GetComponent<Image>().sprite = recipeManager.recipeList[i].GetImage();
+                temp.transform.Find("Name").GetComponent<TMP_Text>().text = recipeManager.recipeList[i].GetName().ToUpper();
+                temp.GetComponent<Button>().onClick.AddListener(delegate { CraftView(slot); });
             }
-            temp.transform.Find("Image").GetComponent<Image>().sprite = item.GetImage();
-            temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName().ToUpper();
-            temp.GetComponent<Button>().onClick.AddListener(delegate { CraftView(slot); });
+        }
+        else
+        {
+            foreach (var item in recipeManager.recipeList)
+            {
+                GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
+                RecipeSlot slot = temp.GetComponent<RecipeSlot>();
+                slot.SetRecipe(item);
+                temp.transform.localPosition += new Vector3(220 * x, -100 * y);
+                slots.Add(temp);
+                x++;
+                if (x > 6)
+                {
+                    x = 1;
+                    y += 3;
+                }
+                temp.transform.Find("Image").GetComponent<Image>().sprite = item.GetImage();
+                temp.transform.Find("Name").GetComponent<TMP_Text>().text = item.GetName().ToUpper();
+                temp.GetComponent<Button>().onClick.AddListener(delegate { CraftView(slot); });
+            }
+        }
+    }
+
+    public void TutorialClearCrafting()
+    {
+        x = 3;
+        y = 1;
+        for (int i = 2; i < recipeManager.recipeList.Count; i++)
+        {
+                GameObject temp = Instantiate(recipeSlot, listCanvas.transform);
+                RecipeSlot slot = temp.GetComponent<RecipeSlot>();
+                slot.SetRecipe(recipeManager.recipeList[i]);
+                temp.transform.localPosition += new Vector3(220 * x, -100 * y);
+                slots.Add(temp);
+                x++;
+                if (x > 6)
+                {
+                    x = 1;
+                    y += 3;
+                }
+                temp.transform.Find("Image").GetComponent<Image>().sprite = recipeManager.recipeList[i].GetImage();
+                temp.transform.Find("Name").GetComponent<TMP_Text>().text = recipeManager.recipeList[i].GetName().ToUpper();
+                temp.GetComponent<Button>().onClick.AddListener(delegate { CraftView(slot); });
         }
     }
 

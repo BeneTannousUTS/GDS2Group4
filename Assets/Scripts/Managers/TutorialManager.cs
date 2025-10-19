@@ -8,6 +8,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject door;
     public AudioClip doorOpen;
     public TimeManager timeManager;
+    public bool tutorialActive = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +35,8 @@ public class TutorialManager : MonoBehaviour
                     visorUI.UpdateVisorTextTutorial("The doors will shortly open. Now go out and find the remaining 4 ship parts");
                     visorUI.ClearTutorial();
                     timeManager.enabled = true;
+                    tutorialActive = false;
+                    FindAnyObjectByType<CraftingUI>().TutorialClearCrafting();
                 }
                 else
                 {
