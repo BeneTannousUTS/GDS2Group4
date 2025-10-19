@@ -28,7 +28,14 @@ public class PickupHold : MonoBehaviour
         {
             pickupRB.linearDamping = dampingModifier * pickupRB.linearVelocity.magnitude / math.max(math.square(Vector3.Distance(transform.position, playerHoldZone.position)), 0.01f);
             pickupRB.AddForce(Vector3.Normalize(playerHoldZone.position - transform.position) * Vector3.Distance(transform.position, playerHoldZone.position) * Time.deltaTime * objectCarrySpeed);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y-180, playerHoldZone.eulerAngles.z);
+            if (isDeployBox)
+            {
+                transform.eulerAngles = new Vector3(0, playerHoldZone.eulerAngles.y - 180, playerHoldZone.eulerAngles.z);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y-180, playerHoldZone.eulerAngles.z);
+            }
             if (Vector3.Distance(transform.position, playerHoldZone.parent.transform.position) < playerHoldZone.transform.localPosition.z)
             {
                 pickupRB.AddForce(Vector3.Normalize(transform.position - playerHoldZone.parent.transform.position) * Time.deltaTime * objectCarrySpeed * 10f * (playerHoldZone.transform.localPosition.z - Vector3.Distance(transform.position, playerHoldZone.parent.transform.position)));

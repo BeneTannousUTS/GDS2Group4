@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3714128629073041668}
   - component: {fileID: 4877197556040244533}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Inner Cart Trigger
   m_TagString: CartTrigger
   m_Icon: {fileID: 0}
@@ -104,6 +104,10 @@ PrefabInstance:
     - target: {fileID: 4893659943693556747, guid: 0e27433e48d2f0d429cd04f56e2ac3db, type: 3}
       propertyPath: m_Name
       value: StoreCart
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893659943693556747, guid: 0e27433e48d2f0d429cd04f56e2ac3db, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

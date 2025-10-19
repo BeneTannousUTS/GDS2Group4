@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
     {
         foreach (string itemName in heldItems)
         {
-            if (itemName == UnlockItemName) Destroy(gameObject);
+            if (itemName.Contains(UnlockItemName)) Destroy(gameObject);
         }
     }
 

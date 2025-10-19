@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7443134478005518431}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1349778863970046294}
   - component: {fileID: 4215852947086601929}
   - component: {fileID: 8148841125884578241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ladder
   m_TagString: Ladder
   m_Icon: {fileID: 0}

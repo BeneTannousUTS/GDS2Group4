@@ -16,6 +16,7 @@ public class DeployBox : Activator
         //if (isLadder) GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StopClimbing();
         mainObject.GetComponent<Animator>().SetTrigger("Open");
         mainObject.layer = 6;
+        flatCollider.gameObject.layer = 6;
         mainCollider.enabled = false;
         flatCollider.enabled = true;
         GetComponent<BoxCollider>().enabled = false;
