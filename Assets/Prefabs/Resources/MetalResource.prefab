@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
+    - target: {fileID: -5717342516502252895, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -5076731048625503174, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -101,6 +105,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
     - target: {fileID: -2184341254851922705, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2184341254851922705, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -140,6 +148,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 655516004b670f343a2b35a7ce1d1638, type: 2}
+    - target: {fileID: 5736572776688992642, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6999637508133217054, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -334,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItem: {fileID: 11400000, guid: b56ccf9625084d649a6748af590cfba9, type: 2}
+  respawn: 0
 --- !u!114 &1535458488694421056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +364,7 @@ MonoBehaviour:
   objectCarrySpeed: 1500
   childColliders: []
   isDeployBox: 0
+  pickupDistance: 1.5
 --- !u!1 &3384838555419019976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1098229751366588151, guid: e9b2139f7af1c44408755971ee782ea3, type: 3}
