@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 6196321374885235980}
   - component: {fileID: 9167578772572556668}
   - component: {fileID: 7409760353413966259}
+  - component: {fileID: -8038189107378854925}
   m_Layer: 0
   m_Name: BombDeployBox
   m_TagString: Untagged
@@ -564,6 +565,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-8038189107378854925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988731412029572348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c079f5ff3684b84bb8b2df4f755b291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseItem: {fileID: 11400000, guid: 5439e640b152a83469234ceba0c1b0be, type: 2}
 --- !u!1 &6061796512357069128
 GameObject:
   m_ObjectHideFlags: 0
