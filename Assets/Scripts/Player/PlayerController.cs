@@ -177,6 +177,7 @@ public class PlayerController : MonoBehaviour
             {
                 targetedInteractable.GetComponent<Interactable>().ActivateOutline(false);
                 targetedInteractable = null;
+                visor.ClearVisor();
             }
         }
     }

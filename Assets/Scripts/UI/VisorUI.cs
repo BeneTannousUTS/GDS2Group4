@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class VisorUI : MonoBehaviour
@@ -11,6 +12,10 @@ public class VisorUI : MonoBehaviour
     public bool returnToBunker;
     private float timer;
     private Color visorColour;
+    private bool start = true;
+    private GameObject image;
+    private float startTimer;
+    private float charCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public void UpdateVisorTextTutorial(string visorText)
@@ -19,6 +24,7 @@ public class VisorUI : MonoBehaviour
         visorImage.SetActive(true);
         visorTxt.text = visorText;
         tutorialTxt = visorText;
+        charCount = 0;
     }
 
     public void ResetTimer()
@@ -35,7 +41,7 @@ public class VisorUI : MonoBehaviour
 
     public void UpdateVisorText(string visorText)
     {
-        if(!returnToBunker)
+        if(!returnToBunker && charCount >= visorTxt.text.Length)
         {
             visorImage.SetActive(true);
             visorTxt.text = visorText;
@@ -60,11 +66,31 @@ public class VisorUI : MonoBehaviour
     void Start()
     {
         visorColour = visorImage.GetComponent<Image>().color;
+        image = gameObject.transform.GetChild(0).gameObject;
+        image.transform.localScale = Vector3.zero;
+        visorTxt.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (start)
+        {
+            startTimer += Time.deltaTime;
+            image.transform.localScale = new Vector3(1, startTimer, 1);
+            if (startTimer > 1)
+            {
+                start = false;
+                startTimer = 0;
+                image.transform.localScale = new Vector3(1, 1, 1);
+                visorTxt.gameObject.SetActive(true);
+            }
+        }
+        if (visorTxt.text != null && !start)
+        {
+            charCount += Time.deltaTime * 20;
+            visorTxt.maxVisibleCharacters = (int)charCount;
+        }
         if (returnToBunker)
         {
             visorImage.SetActive(true);

@@ -1003,6 +1003,7 @@ GameObject:
   - component: {fileID: 3029311666412440663}
   - component: {fileID: 7964000849011465394}
   - component: {fileID: 4970277248706712430}
+  - component: {fileID: 4655477484538429463}
   m_Layer: 0
   m_Name: StorageDeployBox
   m_TagString: Untagged
@@ -1135,6 +1136,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &4655477484538429463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876731103166487901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c079f5ff3684b84bb8b2df4f755b291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseItem: {fileID: 11400000, guid: af284afc3a7d65847bd126828b7cb21f, type: 2}
 --- !u!1 &6940150858180867721
 GameObject:
   m_ObjectHideFlags: 0

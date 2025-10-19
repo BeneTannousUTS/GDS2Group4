@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 3468670079990435898}
   - component: {fileID: 7147419590562774546}
   - component: {fileID: 1561495425938162590}
+  - component: {fileID: 6478233807909785276}
   m_Layer: 0
   m_Name: CartDeployBox
   m_TagString: Untagged
@@ -443,6 +444,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &6478233807909785276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799284679440968417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c079f5ff3684b84bb8b2df4f755b291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseItem: {fileID: 11400000, guid: 60278dc65838df04a93514866cf01dfb, type: 2}
 --- !u!1 &3064171591795381243
 GameObject:
   m_ObjectHideFlags: 0
