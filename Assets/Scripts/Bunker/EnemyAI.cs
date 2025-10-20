@@ -186,7 +186,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Flash()
     {
         yield return new WaitForSeconds(0.2f);
-        GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = !transform.GetChild(0).GetComponent<SpriteRenderer>().enabled;
         StartCoroutine(Flash());
     }
 

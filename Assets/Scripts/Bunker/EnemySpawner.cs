@@ -192,4 +192,14 @@ public class EnemySpawner : MonoBehaviour
 
         waveCount = defenceWaves[day].numWaves;
     }
+
+    public Vector3 GetFirstEnemyPos(int side)
+    {
+        if (enemyList[side].Count != 0)
+        {
+            return enemyList[side][0].transform.position;
+        }
+
+        return Vector3.zero;
+    }
 }
