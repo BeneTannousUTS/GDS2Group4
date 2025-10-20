@@ -1,8 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 public class AudioLure : Defence
 {
     public int currentSide = 0;
+
+    public override void Start() {
+        currentDurability = maxDurability;
+        StartCoroutine(AudioDisplay());
+    }
 
     public override void TakeDamage(float damageValue)
     {
@@ -17,7 +23,7 @@ public class AudioLure : Defence
 
     public override void SetIsActive(bool value)
     {
-        GetComponent<MeshRenderer>().enabled = value;
+        transform.GetChild(0).gameObject.SetActive(value);
         currentDurability = maxDurability;
         isActive = value;
 
@@ -34,5 +40,21 @@ public class AudioLure : Defence
     public override int GetSide()
     {
         return currentSide;
+    }
+
+    IEnumerator AudioDisplay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        transform.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        transform.GetChild(2).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        transform.GetChild(3).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
+
+        StartCoroutine(AudioDisplay());
     }
 }

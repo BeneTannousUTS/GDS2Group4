@@ -12,7 +12,7 @@ public class Defence : MonoBehaviour
     public bool isCounter = false;
 
 
-    void Start()
+    public virtual void Start()
     {
         currentDurability = maxDurability;
     }

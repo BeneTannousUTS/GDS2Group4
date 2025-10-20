@@ -24,7 +24,7 @@ public class Spikes : Defence
 
     public override void SetIsActive(bool value)
     {
-        GetComponent<MeshRenderer>().enabled = value;
+        transform.GetChild(0).gameObject.SetActive(value);
         currentDurability = 100f;
         isActive = value;
     }
