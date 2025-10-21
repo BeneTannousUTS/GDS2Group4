@@ -44,16 +44,26 @@ public class AudioLure : Defence
 
     IEnumerator AudioDisplay()
     {
-        yield return new WaitForSeconds(0.1f);
-        transform.GetChild(1).gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        transform.GetChild(2).gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        transform.GetChild(3).gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        transform.GetChild(1).gameObject.SetActive(false);
-        transform.GetChild(2).gameObject.SetActive(false);
-        transform.GetChild(3).gameObject.SetActive(false);
+        if (GetIsActive())
+        {
+            yield return new WaitForSeconds(0.1f);
+            transform.GetChild(1).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            transform.GetChild(2).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            transform.GetChild(3).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else
+        {
+            transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(3).gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+        }
 
         StartCoroutine(AudioDisplay());
     }
