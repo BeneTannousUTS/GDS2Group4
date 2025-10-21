@@ -1327,7 +1327,12 @@ MonoBehaviour:
 
     Alistair Tubb
 
-'
+
+    Audio by:
+
+    Chun Ming Lee
+
+    Eythan Widjaja'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c25a42d190ee4c24d9aecc5236cd2216, type: 2}
   m_sharedMaterial: {fileID: -2923093767656967119, guid: c25a42d190ee4c24d9aecc5236cd2216, type: 2}
@@ -1354,8 +1359,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.1
+  m_fontSize: 0.06
+  m_fontSizeBase: 0.06
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
