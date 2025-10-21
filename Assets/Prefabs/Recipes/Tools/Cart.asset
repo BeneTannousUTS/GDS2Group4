@@ -23,3 +23,4 @@ MonoBehaviour:
   recipeQuant: 010000000100000001000000
   recipeIcon: {fileID: 21300000, guid: 6afc4605b27dbb84284d3db7cfeb7ae3, type: 3}
   recipeWireframe: {fileID: 188990214365609241, guid: cd77a03aa1ad3534687459c5ae2ac2db, type: 3}
+  description: Used to help carry items back with you

@@ -22,3 +22,4 @@ MonoBehaviour:
   recipeQuant: 0200000002000000
   recipeIcon: {fileID: 21300000, guid: b984a1bfc70edc74598c24abc7c83520, type: 3}
   recipeWireframe: {fileID: 4408800653719471230, guid: adff8db2e09ec9b4fae760d6c0aa14e9, type: 3}
+  description: Used to clear debris

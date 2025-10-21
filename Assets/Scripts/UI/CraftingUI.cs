@@ -29,6 +29,9 @@ public class CraftingUI : MonoBehaviour
     private GameObject resultWireframe;
     private bool isActiveWireframe = false;
     private TutorialManager tutorialManager;
+    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TextMeshProUGUI desc;
+
 
 
     public void CloseUI()
@@ -156,6 +159,8 @@ public class CraftingUI : MonoBehaviour
         y = 1;
         itemCanvas.gameObject.SetActive(true);
         listCanvas.gameObject.SetActive(false);
+        title.text = recipe.GetName();
+        desc.text = recipe.GetDesc();
         foreach (var ingredient in recipe.GetRecipeIngredients())
         {
             GameObject temp = Instantiate(itemSlot, itemCanvas.transform);

@@ -22,3 +22,4 @@ MonoBehaviour:
   recipeQuant: 0100000001000000
   recipeIcon: {fileID: 21300000, guid: 114a423d75dafb34bb17bdf8a95ba656, type: 3}
   recipeWireframe: {fileID: 8451869994353198351, guid: c4dc97a829dffad44a32a243384fba66, type: 3}
+  description: Used for powering devices

@@ -22,3 +22,4 @@ MonoBehaviour:
   recipeQuant: 0300000001000000
   recipeIcon: {fileID: 21300000, guid: 1c6ad5fc159df714c9c68e8bf37095a8, type: 3}
   recipeWireframe: {fileID: 7070729673134904493, guid: 63cb6fdbfbec2fb4396131cd61e19408, type: 3}
+  description: Used for exploring high up places

@@ -22,3 +22,4 @@ MonoBehaviour:
   recipeQuant: 0200000002000000
   recipeIcon: {fileID: 21300000, guid: d96d384143e20eb4285d7cfe44c63c8a, type: 3}
   recipeWireframe: {fileID: 3169597138618434467, guid: 14509eca7565b214289577d31fcf5c07, type: 3}
+  description: Automatically aims and fires at the invaders

@@ -88,7 +88,7 @@ public class VisorUI : MonoBehaviour
         }
         if (visorTxt.text != null && !start)
         {
-            charCount += Time.deltaTime * 20;
+            charCount += Time.deltaTime * 30;
             visorTxt.maxVisibleCharacters = (int)charCount;
         }
         if (returnToBunker)

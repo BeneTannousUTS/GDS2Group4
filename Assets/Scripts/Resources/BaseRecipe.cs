@@ -22,6 +22,8 @@ public class BaseRecipe : ScriptableObject
     private Sprite recipeIcon;
     [SerializeField]
     private GameObject recipeWireframe;
+    [SerializeField]
+    private string description;
 
     public Sprite GetImage() { return recipeIcon; }
     public string GetName() { return recipeName; }
@@ -31,4 +33,6 @@ public class BaseRecipe : ScriptableObject
     public int GetQuant(BaseItem ing) { return recipeQuant[recipeIngredients.IndexOf(ing)]; }
     public recipeType GetRType() { return rType; }
     public GameObject GetWireFrame() { return recipeWireframe; }
+
+    public string GetDesc() { return description; }
 }
