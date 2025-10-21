@@ -675,8 +675,9 @@ MonoBehaviour:
   objectCarrySpeed: 2500
   childColliders:
   - {fileID: 5254597073668311337}
+  - {fileID: 3746657554572850315}
   isDeployBox: 1
-  pickupDistance: 1.5
+  pickupDistance: 2
 --- !u!65 &7933429320257249002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -711,6 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItem: {fileID: 11400000, guid: 62d15e1c6e01cfd478502cf74d686f9b, type: 2}
+  respawn: 0
 --- !u!1 &3495085127880287863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1173,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e3a37ee5c6c9e28459382a6bc205287e, type: 3}
   - {fileID: 8300000, guid: c54efbfa07f372841ac34f08d27a00fc, type: 3}
   - {fileID: 8300000, guid: ca0a92ad11c7ddc4d8de295e48122f2c, type: 3}
-  deployedTool: {fileID: 5516425181745674208, guid: 0b1cec39afed0fc4ebd7cb7a73c189e7, type: 3}
+  deployedTool: {fileID: 5568392793793052252, guid: 3c5748d0fec744b488e593c65953aa90, type: 3}
   mainObject: {fileID: 2151963596549119072}
   isDeployable: 0
   requiresTrigger: 1

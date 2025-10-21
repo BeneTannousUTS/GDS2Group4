@@ -7,6 +7,7 @@ public class Bomb : BaseTool
     [SerializeField] private float explosionRadius = 5f;
     public GameObject explosionEffect;
     [SerializeField] private float explosiontimer = 5f;
+    [SerializeField] private AudioClip beepClip, explosionClip;
     void Deploy()
     {
         StartCoroutine("Explode");
@@ -19,8 +20,13 @@ public class Bomb : BaseTool
 
     private IEnumerator Explode()
     {
-        yield return new WaitForSeconds(explosiontimer);
+        for (int i = 0; i < explosiontimer; i++)
+        {
+            FindAnyObjectByType<AudioManager>().PlaySound(beepClip);
+            yield return new WaitForSeconds(1);
+        }
         CreateExplosion();
+        FindAnyObjectByType<AudioManager>().PlaySound(explosionClip);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (var hitCollider in hitColliders)
         {

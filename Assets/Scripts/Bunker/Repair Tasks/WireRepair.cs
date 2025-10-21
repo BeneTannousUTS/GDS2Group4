@@ -13,7 +13,7 @@ public class WireRepair : Repair
         {
             plug.ResetPlug();
         }
-        damageParticles.SetActive(true);
+        //damageParticles.SetActive(true);
     }
 
     public void FixPlug()
@@ -23,7 +23,14 @@ public class WireRepair : Repair
         {
             repairRequired = false;
             Debug.Log("Defence Repaired");
-            damageParticles.SetActive(false);
+            //damageParticles.SetActive(false);
+        }
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TakeDamage();
         }
     }
 }

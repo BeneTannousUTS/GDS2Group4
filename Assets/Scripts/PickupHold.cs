@@ -7,11 +7,11 @@ using UnityEngine;
 public class PickupHold : MonoBehaviour
 {
     protected bool isHeld;
-    [SerializeField] private Transform playerHoldZone;
+    [SerializeField] protected Transform playerHoldZone;
     [SerializeField] public Transform playerTransform;
     protected Rigidbody pickupRB;
-    [SerializeField] float objectCarrySpeed = 2500f;
-    float dampingModifier = 1.2f;
+    [SerializeField] protected float objectCarrySpeed = 2500f;
+    protected float dampingModifier = 1.2f;
     [SerializeField] private GameObject[] childColliders;
     [SerializeField] private bool isDeployBox = false;
     [SerializeField] private float pickupDistance = 1.5f;
@@ -24,6 +24,11 @@ public class PickupHold : MonoBehaviour
 
     private void FixedUpdate()
     {
+        MovePickup();
+    }
+    
+    protected virtual void MovePickup()
+    {
         if (isHeld)
         {
             pickupRB.linearDamping = dampingModifier * pickupRB.linearVelocity.magnitude / math.max(math.square(Vector3.Distance(transform.position, playerHoldZone.position)), 0.01f);
@@ -34,7 +39,7 @@ public class PickupHold : MonoBehaviour
             }
             else
             {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y-180, playerHoldZone.eulerAngles.z);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, playerHoldZone.eulerAngles.y - 180, playerHoldZone.eulerAngles.z);
             }
             if (Vector3.Distance(transform.position, playerHoldZone.parent.transform.position) < playerHoldZone.transform.localPosition.z)
             {

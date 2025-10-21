@@ -421,8 +421,9 @@ MonoBehaviour:
   objectCarrySpeed: 2500
   childColliders:
   - {fileID: 5485371701338056362}
+  - {fileID: 1659416845968486190}
   isDeployBox: 1
-  pickupDistance: 1.5
+  pickupDistance: 2
 --- !u!65 &1561495425938162590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -457,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItem: {fileID: 11400000, guid: 60278dc65838df04a93514866cf01dfb, type: 2}
+  respawn: 0
 --- !u!1 &3064171591795381243
 GameObject:
   m_ObjectHideFlags: 0

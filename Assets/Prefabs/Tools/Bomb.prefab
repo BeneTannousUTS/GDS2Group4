@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 948412233607708014}
   - component: {fileID: 43008942082348712}
   - component: {fileID: 7848589214991901616}
-  - component: {fileID: 8444524533578874058}
   m_Layer: 7
   m_Name: wrap
   m_TagString: Untagged
@@ -113,21 +112,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1050908021570271116, guid: 56fafe9c51ba9694cb3c6c4f3a6a6c7f, type: 3}
---- !u!114 &8444524533578874058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586537853726099716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0eb12541aa82345b319249369efda3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionRadius: 5
-  explosionEffect: {fileID: 0}
-  explosiontimer: 5
 --- !u!1 &8796831723443149379
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +162,8 @@ MonoBehaviour:
   explosionRadius: 5
   explosionEffect: {fileID: 317812865150878703, guid: 95a6d84b5a589f24086e283092825982, type: 3}
   explosiontimer: 5
+  beepClip: {fileID: 8300000, guid: ba5ad6b5770efae4387c96654d7eafb9, type: 3}
+  explosionClip: {fileID: 8300000, guid: 7c06890edee56cc4d8041a7a62b5ce07, type: 3}
 --- !u!65 &-3873720953429861257
 BoxCollider:
   m_ObjectHideFlags: 0
