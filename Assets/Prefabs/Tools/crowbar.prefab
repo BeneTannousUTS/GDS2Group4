@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3279917682025348724}
   - component: {fileID: 5139674661664671438}
   - component: {fileID: 3191533912114452428}
+  - component: {fileID: -3740019688762247268}
   m_Layer: 0
   m_Name: crowbar
   m_TagString: Crowbar
@@ -90,6 +91,7 @@ MonoBehaviour:
   objectCarrySpeed: 2500
   childColliders: []
   isDeployBox: 0
+  pickupDistance: 1.5
 --- !u!54 &3191533912114452428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,6 +119,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3740019688762247268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554056678681146850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c079f5ff3684b84bb8b2df4f755b291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseItem: {fileID: 11400000, guid: 4a3a9899201032f4c95a86b75f706ec6, type: 2}
+  respawn: 0
 --- !u!1 &6444053100862730994
 GameObject:
   m_ObjectHideFlags: 0
