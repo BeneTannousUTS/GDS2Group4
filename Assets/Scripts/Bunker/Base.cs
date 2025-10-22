@@ -32,6 +32,8 @@ public class Base : MonoBehaviour
     private float repairTimer = -12f;
     private bool defencePhase = false;
 
+    public List<AudioClip> deploySounds;
+
     void Start()
     {
         currentBunkerDurability = maxBunkerDurability;
@@ -242,6 +244,8 @@ public class Base : MonoBehaviour
 
     public void DeployDefence(string defenceName, int side)
     {
+        FindAnyObjectByType<AudioManager>().PlaySound(deploySounds[Random.Range(0, deploySounds.Count)]);
+
         if (defenceName.Equals("Spikes"))
         {
             DeploySpike(side);

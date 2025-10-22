@@ -9,6 +9,7 @@ public class DefenceTask : TutorialTask
     {
         eSpawn = FindAnyObjectByType<EnemySpawner>();
         eSpawn.StartDefencePhase();
+        FindAnyObjectByType<TimeManager>().StartDefenceMusic();
     }
 
     public override bool CheckTask()

@@ -7,6 +7,21 @@ public class ShipUI : MonoBehaviour
     {
         ships[ship].SetActive(true);
     }
+
+    public int GetNumShipParts()
+    {
+        int count = 0;
+        foreach (GameObject shipPart in ships)
+        {
+            if (shipPart.activeSelf)
+            {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

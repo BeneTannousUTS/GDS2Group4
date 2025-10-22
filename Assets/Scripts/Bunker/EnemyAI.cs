@@ -10,9 +10,6 @@ public class EnemyAI : MonoBehaviour
     Vector3 hitPos;
     Vector3 barrierPos;
     Vector3 audioLurePos;
-
-    public AudioClip deaggroSound;
-    public List<AudioClip> moveSounds;
     public List<AudioClip> hitSounds; 
 
     float distanceToBunker = 0f;
@@ -64,8 +61,6 @@ public class EnemyAI : MonoBehaviour
         endPos = startPos;
         distanceToBunker = Vector3.Distance(startPos, hitPos);
         transform.position = startPos;
-
-        FindAnyObjectByType<AudioManager>().PlaySound(moveSounds[Random.Range(0, moveSounds.Count)]);
     }
 
     public void BarrierActivate(Vector3 spawnBarrierPos)
@@ -89,7 +84,6 @@ public class EnemyAI : MonoBehaviour
         startPos = endPos;
         timeTillHit = enemySpeed * (1 - (Vector3.Distance(transform.position, hitPos) / distanceToBunker));
         currentState = AiState.ApproachBunker;
-        FindAnyObjectByType<AudioManager>().PlaySound(moveSounds[Random.Range(0, moveSounds.Count)]);
     }
 
     // Update is called once per frame
@@ -165,7 +159,6 @@ public class EnemyAI : MonoBehaviour
         Debug.Log(timeTillHit);
         currentState = AiState.Run;
         StartCoroutine(Flash());
-        FindAnyObjectByType<AudioManager>().PlaySound(deaggroSound);
     }
 
     public void DealDamage(float damage)

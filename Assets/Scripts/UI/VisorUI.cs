@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using System.Collections;
 
 public class VisorUI : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class VisorUI : MonoBehaviour
     public GameObject visorImage;
     private bool tutorial;
     public bool returnToBunker;
+    public bool ignitionPhase;
     private float timer;
     private Color visorColour;
     private bool start = true;
@@ -38,6 +40,7 @@ public class VisorUI : MonoBehaviour
     public void ClearTutorial() {  tutorial = false; }
 
     public void SetReturn() { returnToBunker = true; }
+    public void SetIgnition() { ignitionPhase = true; }
 
     public void UpdateVisorText(string visorText)
     {
@@ -95,7 +98,7 @@ public class VisorUI : MonoBehaviour
         {
             visorImage.SetActive(true);
             timer += Time.deltaTime;
-            visorTxt.text = "Warning - Return to bunker: " + (30-(int)timer) + " Seconds Remaining";
+            visorTxt.text = "Warning - Return to bunker: " + (30 - (int)timer) + " Seconds Remaining";
             visorImage.GetComponent<Image>().color = Color.red;
             if (timer > 30)
             {
@@ -105,5 +108,26 @@ public class VisorUI : MonoBehaviour
                 visorImage.SetActive(false);
             }
         }
+        if (ignitionPhase)
+        {
+            visorImage.SetActive(true);
+            timer += Time.deltaTime;
+            visorTxt.text = "Ignition Phase: " + (120 - (int)timer) + " Seconds Remaining";
+            visorImage.GetComponent<Image>().color = Color.red;
+            if (timer > 120)
+            {
+                timer = 0;
+                ignitionPhase = false;
+                visorImage.GetComponent<Image>().color = visorColour;
+                visorImage.SetActive(false);
+            }
+        }
+    }
+    
+    public IEnumerator SetVisorTextInteract(string visorText)
+    {
+        UpdateVisorTextTutorial(visorText);
+        yield return new WaitForSeconds(5f);
+        tutorial = false;
     }
 }

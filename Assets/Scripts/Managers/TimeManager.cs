@@ -25,6 +25,12 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private AudioClip doorOpen;
     private bool playerInBunker;
     [SerializeField] VisorUI visor;
+
+    public AudioClip tensionMusic;
+    public AudioClip defenceMusic;
+    public AudioClip scavengeMusic;
+    bool tension = false;
+    
     public void AssignEvent()
     {
         if (gameObject.GetComponent<BaseEvent>())
@@ -44,7 +50,13 @@ public class TimeManager : MonoBehaviour
         {
             if (currentTime > scavengeLength-30)
             {
-                  visor.SetReturn();
+                visor.SetReturn();
+
+                if (!tension)
+                {
+                    StartTensionMusic();
+                    tension = true;
+                }
             }
             if (currentTime > scavengeLength)
             {
@@ -59,6 +71,7 @@ public class TimeManager : MonoBehaviour
                     door.GetComponent<BoxCollider>().enabled = true;
                     door.GetComponent<Animator>().SetTrigger("Close");
                     FindAnyObjectByType<AudioManager>().PlaySound(doorClose);
+                    StartDefenceMusic();
                 }
                 else
                 {
@@ -87,6 +100,8 @@ public class TimeManager : MonoBehaviour
         door.GetComponent<BoxCollider>().enabled = false;
         door.GetComponent<Animator>().SetTrigger("Open");
         FindAnyObjectByType<AudioManager>().PlaySound(doorOpen);
+        tension = false;
+        StartScavengeMusic();
     }
 
     public void ChangeScavLength(float length) { scavengeLength = length; }
@@ -105,5 +120,32 @@ public class TimeManager : MonoBehaviour
     {
         UpdateTime();
 
+    }
+
+    public bool GetIsDefence()
+    {
+        return gameState == GameState.defence;
+    }
+
+    public void CloseDoor()
+    {
+        door.GetComponent<BoxCollider>().enabled = true;
+        door.GetComponent<Animator>().SetTrigger("Close");
+        FindAnyObjectByType<AudioManager>().PlaySound(doorClose);
+    }
+
+    public void StartDefenceMusic()
+    {
+        FindAnyObjectByType<AudioManager>().PlayMusic(defenceMusic);
+    }
+
+    public void StartScavengeMusic()
+    {
+        FindAnyObjectByType<AudioManager>().PlayMusic(scavengeMusic);
+    }
+
+    public void StartTensionMusic()
+    {
+        FindAnyObjectByType<AudioManager>().PlayMusic(tensionMusic);
     }
 }

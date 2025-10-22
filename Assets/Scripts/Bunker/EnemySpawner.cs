@@ -18,6 +18,9 @@ public class EnemySpawner : MonoBehaviour
     public int waveCount;
     private int waveIndex = -1;
 
+    public AudioClip endDefenceSound;
+    public List<AudioClip> monsterSounds;
+
     public GameObject enemyPrefab;
     private float timeTillNext = 0f;
     private float maxTimeTillNext = 4f;
@@ -25,6 +28,9 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesLeft;
 
     private int nextSide = 0;
+
+    private float soundTimer = 0f;
+    private float soundTime = 5f;
 
     void Start()
     {
@@ -47,6 +53,14 @@ public class EnemySpawner : MonoBehaviour
     {
         if (waveIndex >= 0)
         {
+            soundTimer += Time.deltaTime;
+
+            if (soundTimer >= soundTime) {
+                soundTime = Random.Range(5f, 10f);
+                soundTimer = 0f;
+                FindAnyObjectByType<AudioManager>().PlaySound(monsterSounds[Random.Range(0, monsterSounds.Count)]);
+            }
+
             if (timeTillNext <= 0f)
             {
                 GameObject tempEnemy = Instantiate(enemyPrefab);
@@ -94,6 +108,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             waveIndex = -1;
+            FindAnyObjectByType<AudioManager>().PlaySound(endDefenceSound);
             StartCoroutine(FinishDefence());
             // StartCoroutine(WinState());
         }
@@ -153,7 +168,16 @@ public class EnemySpawner : MonoBehaviour
 
     public int EnemyCount(int side)
     {
-        return enemyList[side].Count;
+        int count = 0;
+
+        foreach (EnemyAI enemy in enemyList[side])
+        {
+            if (enemy.GetAggro()) {
+                count += 1;
+            }
+        }
+        
+        return count;
     }
 
     IEnumerator FinishDefence()
@@ -197,9 +221,27 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyList[side].Count != 0)
         {
-            return enemyList[side][0].transform.position;
+            foreach (EnemyAI enemy in enemyList[side]) {
+                if (enemy.GetAggro())
+                {
+                    return enemy.transform.position;
+                }
+            }
         }
 
         return Vector3.zero;
+    }
+
+    public void FinalDefence(DefenceWave defenceWave)
+    {
+        numEnemies = defenceWave.numEnemies;
+        waitTimes = defenceWave.waitTimes;
+        minSpawnIntervals = defenceWave.minSpawnIntervals;
+        maxSpawnIntervals = defenceWave.maxSpawnIntervals;
+
+        waveCount = defenceWave.numWaves;
+
+        FindAnyObjectByType<Base>().SetDefencePhase(true);
+        StartDefencePhase();
     }
 }
