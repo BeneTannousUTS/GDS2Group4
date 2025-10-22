@@ -5,7 +5,7 @@ using TMPro;
 
 public class Base : MonoBehaviour
 {
-    public GameObject emergencyLight;
+    public List<GameObject> emergencyLights;
     bool repair = false;
 
     public AudioClip turretShoot;
@@ -40,7 +40,7 @@ public class Base : MonoBehaviour
 
     void UpdateDisplay()
     {
-        bunkerHealthDisplay.text = $"Bunker Integrity: {Mathf.Floor((currentBunkerDurability * 100f) / maxBunkerDurability)}%";
+        bunkerHealthDisplay.text = $"{Mathf.Floor((currentBunkerDurability * 100f) / maxBunkerDurability)}%";
         turretHealthDisplay.text = $"Turret Integrity: {Mathf.Floor(defences[0].GetCurrentDurability())}%";
     }
 
@@ -107,12 +107,16 @@ public class Base : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (repair)
         {
-            emergencyLight.SetActive(!emergencyLight.activeSelf);
+            foreach (GameObject light in emergencyLights) {
+                light.SetActive(!light.activeSelf);
+            }
             StartCoroutine(FlashLight());
         }
         else
         {
-            emergencyLight.SetActive(false);
+            foreach (GameObject light in emergencyLights) {
+                light.SetActive(false);
+            }
             GetComponent<AudioSource>().Stop();
         }
     }
