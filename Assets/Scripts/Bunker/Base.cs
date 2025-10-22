@@ -27,6 +27,7 @@ public class Base : MonoBehaviour
     public List<GameObject> ccObjects;
     public List<GameObject> spikeObjects;
     public List<GameObject> audioObjects;
+    public List<GameObject> electrifyObjects;
 
     private float repairTimer = -12f;
     private bool defencePhase = false;
@@ -200,6 +201,21 @@ public class Base : MonoBehaviour
         }
     }
 
+    public void TriggerAllRepairs()
+    {
+        foreach(Repair repairTask in unlockedRepairs)
+        {
+            repairTask.TakeDamage();
+        }
+
+        if (repair == false)
+        {
+            repair = true;
+            StartCoroutine(FlashLight());
+            GetComponent<AudioSource>().Play();
+        }
+    }
+
     public void DeploySpike(int side)
     {
         for (int i = 0; i < 4; i++)
@@ -234,31 +250,26 @@ public class Base : MonoBehaviour
 
     public void RotateLeft()
     {
-        //foreach (Defence defence in defences)
-        //{
-        //if (defence.GetSide() != 4)
-        //{
-        //defence.RotateLeft();
-        //}
-        //}
+        defences[12].RotateLeft();
     }
 
     public void RotateRight()
     {
-        //foreach (Defence defence in defences)
-        //{
-        //if (defence.GetSide() != 4)
-        //{
-        //defence.RotateRight();
-        //}
-        //}
+        defences[12].RotateRight();
     }
 
-    public void Attack(Defence defence)
+    public void Attack(Defence defence, float range)
     {
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        if (defence.GetSide() != 4)
         {
-            enemy.GetComponent<EnemyAI>().DealDamage(defence.GetDamage(enemy.GetComponent<EnemyAI>().GetSide()));
+            FindAnyObjectByType<EnemySpawner>().DamageEnemies(defence.GetSide(), range, true, defence.GetDamage(4));
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                FindAnyObjectByType<EnemySpawner>().DamageEnemies(i, range, true, defence.GetDamage(4));
+            }
         }
     }
 
@@ -279,6 +290,10 @@ public class Base : MonoBehaviour
         if (defenceString.Equals("Audio Lure"))
         {
             UnlockAudioLure();
+        }
+        if (defenceString.Equals("Electrify"))
+        {
+            UnlockElectrify();
         }
     }
 
@@ -304,8 +319,6 @@ public class Base : MonoBehaviour
         {
             ccObject.SetActive(true);
         }
-
-        unlockedRepairs.Add(repairTasks[2]);
     }
 
     void UnlockSpikes()
@@ -315,7 +328,7 @@ public class Base : MonoBehaviour
             spikeObject.SetActive(true);
         }
 
-        unlockedRepairs.Add(repairTasks[3]);
+        unlockedRepairs.Add(repairTasks[2]);
     }
 
     void UnlockAudioLure()
@@ -325,7 +338,15 @@ public class Base : MonoBehaviour
             audioObject.SetActive(true);
         }
 
-        unlockedRepairs.Add(repairTasks[4]);
+        unlockedRepairs.Add(repairTasks[3]);
+    }
+
+    void UnlockElectrify()
+    {
+        foreach (GameObject electrifyObject in electrifyObjects)
+        {
+            electrifyObject.SetActive(true);
+        }
     }
 
     public bool GetBarrierActive(int side)

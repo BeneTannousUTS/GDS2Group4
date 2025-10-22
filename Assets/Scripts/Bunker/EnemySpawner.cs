@@ -139,7 +139,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (EnemyAI enemy in enemyList[side])
         {
-            if (enemy.GetDistanceToBunker() <= distance)
+            if (enemy.GetDistanceToBunker() <= distance && enemy.GetAggro())
             {
                 enemy.DealDamage(damage);
 

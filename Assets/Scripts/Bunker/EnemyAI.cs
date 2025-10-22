@@ -153,6 +153,7 @@ public class EnemyAI : MonoBehaviour
             transform.position = hitPos + ((endPos - hitPos) * (timeTillHit / (enemySpeed * 0.5f)));
             if (Vector3.Distance(transform.position, endPos) <= 0.01f)
             {
+                FindAnyObjectByType<EnemySpawner>().RemoveEnemy(side, this);
                 Destroy(gameObject);
             }
         }
@@ -160,7 +161,6 @@ public class EnemyAI : MonoBehaviour
 
     public void Deaggro()
     {
-        FindAnyObjectByType<EnemySpawner>().RemoveEnemy(side, this);
         timeTillHit = 0.5f * enemySpeed * (Vector3.Distance(transform.position, hitPos) / distanceToBunker);
         Debug.Log(timeTillHit);
         currentState = AiState.Run;
@@ -192,6 +192,11 @@ public class EnemyAI : MonoBehaviour
 
     public float GetDistanceToBunker()
     {
-        return distanceToBunker;
+        return Vector3.Distance(transform.position, hitPos);
+    }
+
+    public bool GetAggro()
+    {
+        return currentState != AiState.Run;
     }
 }

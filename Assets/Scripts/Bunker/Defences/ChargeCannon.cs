@@ -4,16 +4,15 @@ public class ChargeCannon : Defence
 {
     int currentSide = 0;
     bool damaged = false;
+    public TurretDisplay chargeCannonDisplay;
 
     public override float GetDamage(int side) {
-        if (side == GetSide()) {
-            return damage;
-        }
-        return 0f;
+        return damage;
     }
 
     public override void RotateRight()
     {
+        chargeCannonDisplay.RotateRight();
         if (currentSide == 3)
         {
             currentSide = 0;
@@ -25,6 +24,7 @@ public class ChargeCannon : Defence
     }
 
     public override void RotateLeft() {
+        chargeCannonDisplay.RotateLeft();
         if (currentSide == 0)
         {
             currentSide = 3;

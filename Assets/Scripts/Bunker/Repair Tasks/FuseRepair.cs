@@ -5,6 +5,7 @@ public class FuseRepair : Repair
     public GameObject visualFuse;
     private bool isFuseInserted = false;
     [SerializeField] public Animator animator;
+    public ChargeCannon chargeCannon;
 
     public override void Activate()
     {
@@ -22,6 +23,10 @@ public class FuseRepair : Repair
         {
             repairRequired = false;
             VisualRepair();
+            if (chargeCannon != null)
+            {
+                chargeCannon.Repair();
+            }
         }
     }
 
