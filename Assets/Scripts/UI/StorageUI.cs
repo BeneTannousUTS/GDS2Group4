@@ -67,7 +67,7 @@ public class StorageUI : MonoBehaviour
                             parentCanvas = canvasArray[0].gameObject;
                             break;
                         case BaseItem.itemType.defence:
-                            parentCanvas = canvasArray[2].gameObject;
+                            parentCanvas = canvasArray[1].gameObject;
                             break;
                     }
                     if (parentCanvas == canvasArray[canvasPos].gameObject)

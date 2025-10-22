@@ -58,7 +58,7 @@ public class VisorUI : MonoBehaviour
             if (!tutorial)
             {
                 visorImage.SetActive(false);
-                visorTxt.text = null;
+                visorTxt.text = $"";
             }
             else
             {
