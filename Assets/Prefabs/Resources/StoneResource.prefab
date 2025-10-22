@@ -252,7 +252,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -277,6 +277,7 @@ MonoBehaviour:
   objectCarrySpeed: 1500
   childColliders: []
   isDeployBox: 0
+  pickupDistance: 1.5
 --- !u!114 &4105925617387045079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,3 +291,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItem: {fileID: 11400000, guid: f25b69eb177eca44c9b1b3c1d077efb1, type: 2}
+  respawn: 0
