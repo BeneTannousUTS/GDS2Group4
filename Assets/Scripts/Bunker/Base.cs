@@ -51,7 +51,7 @@ public class Base : MonoBehaviour
     {
         UpdateDisplay();
 
-        if (defencePhase)
+        if (defencePhase && !repair)
         {
             repairTimer += Time.deltaTime;
         }

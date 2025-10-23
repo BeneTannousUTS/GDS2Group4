@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
             soundTimer += Time.deltaTime;
 
             if (soundTimer >= soundTime) {
-                soundTime = Random.Range(5f, 10f);
+                soundTime = Random.Range(1.5f, 3f);
                 soundTimer = 0f;
                 FindAnyObjectByType<AudioManager>().PlaySound(monsterSounds[Random.Range(0, monsterSounds.Count)]);
             }
