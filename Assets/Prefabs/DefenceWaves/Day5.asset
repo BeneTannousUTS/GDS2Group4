@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9142ff56457a44d8ab91ff515da6a9, type: 3}
   m_Name: Day5
   m_EditorClassIdentifier: 
-  numEnemies: 050000000f0000001e000000140000001e000000
+  numEnemies: 050000000f0000000f000000140000000f000000
   waitTimes:
   - 5
   - 5
