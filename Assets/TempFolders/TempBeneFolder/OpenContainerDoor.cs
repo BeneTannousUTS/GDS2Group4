@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OpenContainerDoor : MonoBehaviour
 {
-    [SerializeField] public Animator animator;
+    [SerializeField] public GameObject[] doors;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +20,13 @@ public class OpenContainerDoor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Crowbar"))
         {
-            animator.enabled = true;
+            foreach (GameObject door in doors)
+            {
+                if (door.GetComponent<Animator>() != null)
+                {
+                    door.GetComponent<Animator>().enabled = true;
+                }
+            }
         }
     }
 }
