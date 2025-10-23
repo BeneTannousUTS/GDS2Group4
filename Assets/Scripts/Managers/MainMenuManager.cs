@@ -14,6 +14,8 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void StartGame(string sceneName)
