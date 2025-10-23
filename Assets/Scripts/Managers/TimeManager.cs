@@ -75,7 +75,7 @@ public class TimeManager : MonoBehaviour
                 }
                 else
                 {
-                    FindAnyObjectByType<GameManager>().LoseState();
+                    FindAnyObjectByType<GameManager>().ScavengeLoseState();
                 }
             }
         }

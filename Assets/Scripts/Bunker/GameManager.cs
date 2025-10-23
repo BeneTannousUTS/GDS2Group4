@@ -7,11 +7,16 @@ public class GameManager : MonoBehaviour
 
     public void WinState()
     {
-        SceneManager.LoadScene("WinState");
+        SceneManager.LoadScene("WinCutscene");
         dayNum += 1;
     }
 
-    public void LoseState()
+    public void DefenceLoseState()
+    {
+        SceneManager.LoadScene("LoseDefenceCutscene");
+    }
+
+    public void ScavengeLoseState()
     {
         SceneManager.LoadScene("LoseState");
     }

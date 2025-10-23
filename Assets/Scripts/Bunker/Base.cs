@@ -175,7 +175,7 @@ public class Base : MonoBehaviour
 
             if (currentBunkerDurability == 0f)
             {
-                FindAnyObjectByType<GameManager>().LoseState(); // YOU LOSE
+                FindAnyObjectByType<GameManager>().DefenceLoseState(); // YOU LOSE
             }
         }
     }
